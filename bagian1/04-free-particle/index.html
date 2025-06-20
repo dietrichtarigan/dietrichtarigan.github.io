@@ -8,24 +8,26 @@
       
       
       
-        <link rel="canonical" href="https://dietrichtarigan.github.io/blog/">
+        <link rel="canonical" href="https://dietrichtarigan.github.io/bagian1/04-free-particle/">
+      
+      
+        <link rel="prev" href="../03-galilean-relativity/">
       
       
       
-      
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Blog - Catatan Kuliah Dietrich</title>
+        <title>§4. Lagrangian for free particle - Catatan Kuliah Dietrich</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#terjemahan" class="md-skip">
           Skip to content
         </a>
       
@@ -84,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Catatan Kuliah Dietrich" class="md-header__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+    <a href="../.." title="Catatan Kuliah Dietrich" class="md-header__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -104,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              §4. Lagrangian for free particle
             
           </span>
         </div>
@@ -203,7 +205,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -220,11 +222,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../bagian1/01-generalised-coordinates.md" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-generalised-coordinates.md" class="md-tabs__link">
           
   
   
@@ -244,7 +248,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../bagian2/06-energy.md" class="md-tabs__link">
+        <a href="../../bagian2/06-energy.md" class="md-tabs__link">
           
   
   
@@ -264,7 +268,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../bagian3/11-one-dimension.md" class="md-tabs__link">
+        <a href="../../bagian3/11-one-dimension.md" class="md-tabs__link">
           
   
   
@@ -298,7 +302,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Catatan Kuliah Dietrich" class="md-nav__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+    <a href="../.." title="Catatan Kuliah Dietrich" class="md-nav__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -316,7 +320,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -335,26 +339,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -367,7 +376,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             I. The Equations of Motion
@@ -381,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian1/01-generalised-coordinates.md" class="md-nav__link">
+      <a href="../01-generalised-coordinates.md" class="md-nav__link">
         
   
   
@@ -404,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian1/02-least-action/" class="md-nav__link">
+      <a href="../02-least-action/" class="md-nav__link">
         
   
   
@@ -427,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian1/03-galilean-relativity/" class="md-nav__link">
+      <a href="../03-galilean-relativity/" class="md-nav__link">
         
   
   
@@ -447,10 +456,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../bagian1/04-free-particle/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    §4. Lagrangian for free particle
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -461,6 +490,66 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terjemahan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terjemahan:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terjemahan:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-lagrangian-untuk-partikel-bebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      §4. Lagrangian untuk Partikel Bebas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terjemahan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terjemahan:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terjemahan_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terjemahan:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -473,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian1/05-system-of-particles.md" class="md-nav__link">
+      <a href="../05-system-of-particles.md" class="md-nav__link">
         
   
   
@@ -546,7 +635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian2/06-energy.md" class="md-nav__link">
+      <a href="../../bagian2/06-energy.md" class="md-nav__link">
         
   
   
@@ -569,7 +658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian2/07-momentum.md" class="md-nav__link">
+      <a href="../../bagian2/07-momentum.md" class="md-nav__link">
         
   
   
@@ -592,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian2/08-centre-of-mass.md" class="md-nav__link">
+      <a href="../../bagian2/08-centre-of-mass.md" class="md-nav__link">
         
   
   
@@ -615,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian2/09-angular-momentum.md" class="md-nav__link">
+      <a href="../../bagian2/09-angular-momentum.md" class="md-nav__link">
         
   
   
@@ -638,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian2/10-mechanical-similarity.md" class="md-nav__link">
+      <a href="../../bagian2/10-mechanical-similarity.md" class="md-nav__link">
         
   
   
@@ -711,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian3/11-one-dimension.md" class="md-nav__link">
+      <a href="../../bagian3/11-one-dimension.md" class="md-nav__link">
         
   
   
@@ -734,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian3/12-potential-from-period.md" class="md-nav__link">
+      <a href="../../bagian3/12-potential-from-period.md" class="md-nav__link">
         
   
   
@@ -757,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian3/13-reduced-mass.md" class="md-nav__link">
+      <a href="../../bagian3/13-reduced-mass.md" class="md-nav__link">
         
   
   
@@ -780,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian3/14-central-field.md" class="md-nav__link">
+      <a href="../../bagian3/14-central-field.md" class="md-nav__link">
         
   
   
@@ -803,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bagian3/15-kepler.md" class="md-nav__link">
+      <a href="../../bagian3/15-kepler.md" class="md-nav__link">
         
   
   
@@ -843,8 +932,56 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terjemahan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terjemahan:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terjemahan:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-lagrangian-untuk-partikel-bebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      §4. Lagrangian untuk Partikel Bebas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terjemahan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terjemahan:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terjemahan_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terjemahan:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -853,16 +990,87 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog</h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+
+
+  <h1>§4. Lagrangian for free particle</h1>
+
+<h3 id="terjemahan">Terjemahan:</h3>
+<h4 id="4-lagrangian-untuk-partikel-bebas">§4. Lagrangian untuk Partikel Bebas</h4>
+<p>Kini kita akan menentukan bentuk Lagrangian, dan pertama-tama mempertimbangkan kasus yang paling sederhana, yaitu gerakan bebas suatu partikel relatif terhadap sistem koordinat inertial. Seperti telah kita lihat sebelumnya, dalam kasus ini Lagrangian hanya dapat bergantung pada kuadrat kecepatan. Untuk menemukan bentuk ketergantungan ini, kita menggunakan <strong>prinsip relativitas Galileo</strong>. Jika sebuah sistem koordinat inertial <span class="arithmatex">\( K \)</span> bergerak dengan kecepatan infinitesimal <span class="arithmatex">\( \epsilon \)</span> relatif terhadap sistem koordinat inertial lain <span class="arithmatex">\( K' \)</span>, maka <span class="arithmatex">\( v' = v + \epsilon \)</span>. Karena persamaan-persamaan gerak harus memiliki bentuk yang sama di setiap sistem koordinat, maka Lagrangian <span class="arithmatex">\( L(v^2) \)</span> harus diubah melalui transformasi ini menjadi fungsi <span class="arithmatex">\( L' \)</span> yang, jika ada, hanya berbeda dari <span class="arithmatex">\( L(v^2) \)</span> oleh turunan total terhadap waktu dari suatu fungsi koordinat dan waktu (lihat akhir §2).</p>
+<hr />
+<p>† Asumsi ini tidak berlaku dalam mekanika relativistik.</p>
+<hr />
+<p>Kita memiliki <span class="arithmatex">\( L'(v'^2) = L(v^2 + 2v \cdot \epsilon + \epsilon^2) \)</span>. Memperluas ekspresi ini dalam deret pangkat <span class="arithmatex">\( \epsilon \)</span> dan mengabaikan suku-suku di atas orde pertama, kita peroleh</p>
+<div class="arithmatex">\[
+L(v'^2) = L(v^2) + \frac{\partial L}{\partial v^2} \cdot 2v \cdot \epsilon. \tag{4.1}
+\]</div>
+<p>Suku kedua di ruas kanan persamaan ini adalah turunan total terhadap waktu hanya jika ia merupakan fungsi linear dari kecepatan <span class="arithmatex">\( v \)</span>. Oleh karena itu, <span class="arithmatex">\( \frac{\partial L}{\partial v^2} \)</span> independen dari kecepatan, yaitu Lagrangian dalam kasus ini proporsional dengan kuadrat kecepatan, dan kita tulis sebagai</p>
+<div class="arithmatex">\[
+L = \frac{1}{2}mv^2. \tag{4.2}
+\]</div>
+<p>Dari fakta bahwa Lagrangian berbentuk ini memenuhi prinsip relativitas Galileo untuk kecepatan relatif infinitesimal, langsung disimpulkan bahwa Lagrangian tetap invariant untuk kecepatan relatif finit <span class="arithmatex">\( V \)</span> dari sistem koordinat <span class="arithmatex">\( K \)</span> dan <span class="arithmatex">\( K' \)</span>. Untuk</p>
+<div class="arithmatex">\[
+L' = \frac{1}{2}mv'^2 = \frac{1}{2}m(\mathbf{v} + \mathbf{V})^2 = \frac{1}{2}mv^2 + m\mathbf{v} \cdot \mathbf{V} + \frac{1}{2}mV^2, \tag{4.3}
+\]</div>
+<p>atau</p>
+<div class="arithmatex">\[
+L' = L + \frac{d(m\mathbf{r} \cdot \mathbf{V} + \frac{1}{2}mV^2t)}{dt}. \tag{4.4}
+\]</div>
+<hr />
+<h3 id="terjemahan_1">Terjemahan:</h3>
+<p>Suku kedua adalah turunan total terhadap waktu dan dapat diabaikan.</p>
+<p>Kuantitas <span class="arithmatex">\( m \)</span> yang muncul dalam Lagrangian (4.1) untuk partikel yang bergerak bebas disebut <strong>massa</strong> dari partikel tersebut. Sifat aditif Lagrangian menunjukkan bahwa untuk sistem partikel yang tidak saling berinteraksi, kita memiliki†</p>
+<div class="arithmatex">\[
+L = \sum_a \frac{1}{2} m_a v_a^2. \tag{4.5}
+\]</div>
+<p>Perlu ditekankan bahwa definisi massa di atas hanya menjadi bermakna ketika sifat aditif ini dipertimbangkan. Seperti telah disebutkan di §2, Lagrangian selalu dapat dikalikan dengan konstanta sembarang tanpa memengaruhi persamaan-persamaan gerak. Dalam hal fungsi (4.2), perkalian semacam itu setara dengan perubahan satuan massa; rasio-rasio massa partikel yang berbeda tetap tidak berubah, dan hanya rasio-rasio inilah yang secara fisik bermakna.</p>
+<p>Mudah untuk melihat bahwa massa suatu partikel tidak dapat negatif. Menurut prinsip aksi terkecil, integral</p>
+<div class="arithmatex">\[
+S = \int_1^2 \frac{1}{2}mv^2 \, dt \tag{4.6}
+\]</div>
+<p>memiliki nilai minimum untuk gerakan sebenarnya partikel di ruang dari titik 1 ke titik 2. Jika massa negatif, maka integral aksi akan mengambil nilai negatif yang sangat besar untuk gerakan di mana partikel meninggalkan titik 1 dengan cepat dan mendekati titik 2 dengan cepat, sehingga tidak ada nilai minimum.‡</p>
+<hr />
+<p>† Kita akan menggunakan indeks <span class="arithmatex">\( a, b, c, \ldots \)</span> untuk membedakan partikel-partikel yang berbeda, dan indeks <span class="arithmatex">\( i, k, l, \ldots \)</span> untuk membedakan koordinat-koordinatnya.</p>
+<p>‡ Argumen ini tidak dipengaruhi oleh poin yang disebutkan dalam catatan kaki pertama di §2; untuk <span class="arithmatex">\( m &lt; 0 \)</span>, integral tidak dapat memiliki nilai minimum bahkan untuk segmen lintasan yang pendek.</p>
+<hr />
+<h3 id="terjemahan_2">Terjemahan:</h3>
+<p>Sangat berguna untuk menyadari bahwa</p>
+<div class="arithmatex">\[
+v^2 = \left(\frac{dl}{dt}\right)^2 = \frac{(dl)^2}{(dt)^2}. \tag{4.7}
+\]</div>
+<p>Oleh karena itu, untuk mendapatkan Lagrangian, cukup mencari kuadrat elemen busur <span class="arithmatex">\( dl \)</span> dalam suatu sistem koordinat tertentu. Dalam koordinat Kartesius, misalnya, <span class="arithmatex">\( dl^2 = dx^2 + dy^2 + dz^2 \)</span>, sehingga</p>
+<div class="arithmatex">\[
+L = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2). \tag{4.8}
+\]</div>
+<p>Dalam koordinat silindris, <span class="arithmatex">\( dl^2 = dr^2 + r^2 \, d\phi^2 + dz^2 \)</span>, sehingga</p>
+<div class="arithmatex">\[
+L = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\phi}^2 + \dot{z}^2). \tag{4.9}
+\]</div>
+<p>Dalam koordinat bola, <span class="arithmatex">\( dl^2 = dr^2 + r^2 \, d\theta^2 + r^2 \sin^2\theta \, d\phi^2 \)</span>, dan</p>
+<div class="arithmatex">\[
+L = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2 \dot{\phi}^2 \sin^2\theta). \tag{4.10}
+\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -895,10 +1103,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy", "content.action.edit", "palette.toggle"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy", "content.action.edit", "palette.toggle"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
