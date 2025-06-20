@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://dietrichtarigan.github.io/bagian1/04-free-particle/">
+        <link rel="canonical" href="https://dietrichtarigan.github.io/bagian1/05-system-of-particles/">
       
       
-        <link rel="prev" href="../03-galilean-relativity/">
+        <link rel="prev" href="../04-free-particle/">
       
-      
-        <link rel="next" href="../05-system-of-particles/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>§4. Lagrangian for free particle - Catatan Kuliah Dietrich</title>
+        <title>§5. Lagrangian for system of particles - Catatan Kuliah Dietrich</title>
       
     
     
@@ -108,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              §4. Lagrangian for free particle
+              §5. Lagrangian for system of particles
             
           </span>
         </div>
@@ -458,6 +456,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-free-particle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §4. Lagrangian for free particle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -473,7 +494,7 @@
   
   
   <span class="md-ellipsis">
-    §4. Lagrangian for free particle
+    §5. Lagrangian for system of particles
     
   </span>
   
@@ -486,7 +507,7 @@
   
   
   <span class="md-ellipsis">
-    §4. Lagrangian for free particle
+    §5. Lagrangian for system of particles
     
   </span>
   
@@ -517,9 +538,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#4-lagrangian-untuk-partikel-bebas" class="md-nav__link">
+  <a href="#5-lagrangian-untuk-sistem-partikel" class="md-nav__link">
     <span class="md-ellipsis">
-      §4. Lagrangian untuk Partikel Bebas
+      §5. Lagrangian untuk Sistem Partikel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penutup-bagian-ini" class="md-nav__link">
+    <span class="md-ellipsis">
+      Penutup Bagian Ini
     </span>
   </a>
   
@@ -530,51 +560,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#terjemahan_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Terjemahan:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terjemahan_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Terjemahan:
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-system-of-particles/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    §5. Lagrangian for system of particles
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -952,9 +941,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#4-lagrangian-untuk-partikel-bebas" class="md-nav__link">
+  <a href="#5-lagrangian-untuk-sistem-partikel" class="md-nav__link">
     <span class="md-ellipsis">
-      §4. Lagrangian untuk Partikel Bebas
+      §5. Lagrangian untuk Sistem Partikel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penutup-bagian-ini" class="md-nav__link">
+    <span class="md-ellipsis">
+      Penutup Bagian Ini
     </span>
   </a>
   
@@ -962,24 +960,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terjemahan_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Terjemahan:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terjemahan_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Terjemahan:
-    </span>
-  </a>
   
 </li>
       
@@ -999,64 +979,58 @@
 
 
 
-  <h1>§4. Lagrangian for free particle</h1>
+  <h1>§5. Lagrangian for system of particles</h1>
 
 <h3 id="terjemahan">Terjemahan:</h3>
-<h4 id="4-lagrangian-untuk-partikel-bebas">§4. Lagrangian untuk Partikel Bebas</h4>
-<p>Kini kita akan menentukan bentuk Lagrangian, dan pertama-tama mempertimbangkan kasus yang paling sederhana, yaitu gerakan bebas suatu partikel relatif terhadap sistem koordinat inertial. Seperti telah kita lihat sebelumnya, dalam kasus ini Lagrangian hanya dapat bergantung pada kuadrat kecepatan. Untuk menemukan bentuk ketergantungan ini, kita menggunakan <strong>prinsip relativitas Galileo</strong>. Jika sebuah sistem koordinat inertial <span class="arithmatex">\( K \)</span> bergerak dengan kecepatan infinitesimal <span class="arithmatex">\( \epsilon \)</span> relatif terhadap sistem koordinat inertial lain <span class="arithmatex">\( K' \)</span>, maka <span class="arithmatex">\( v' = v + \epsilon \)</span>. Karena persamaan-persamaan gerak harus memiliki bentuk yang sama di setiap sistem koordinat, maka Lagrangian <span class="arithmatex">\( L(v^2) \)</span> harus diubah melalui transformasi ini menjadi fungsi <span class="arithmatex">\( L' \)</span> yang, jika ada, hanya berbeda dari <span class="arithmatex">\( L(v^2) \)</span> oleh turunan total terhadap waktu dari suatu fungsi koordinat dan waktu (lihat akhir §2).</p>
 <hr />
-<p>† Asumsi ini tidak berlaku dalam mekanika relativistik.</p>
+<h4 id="5-lagrangian-untuk-sistem-partikel">§5. Lagrangian untuk Sistem Partikel</h4>
+<p>Kini mari kita pertimbangkan suatu sistem partikel yang saling berinteraksi tetapi tidak dengan benda lainnya. Sistem ini disebut <strong>sistem tertutup</strong>. Ditemukan bahwa interaksi antara partikel dapat digambarkan dengan menambahkan ke Lagrangian (4.2) untuk partikel yang tidak saling berinteraksi, suatu fungsi koordinat tertentu yang bergantung pada sifat interaksinya.† Menyatakan fungsi ini sebagai <span class="arithmatex">\( -U \)</span>, kita peroleh</p>
+<div class="arithmatex">\[
+L = \sum_a \frac{1}{2} m_a v_a^2 - U(\mathbf{r}_1, \mathbf{r}_2, \ldots), \tag{5.1}
+\]</div>
+<p>di mana <span class="arithmatex">\( \mathbf{r}_a \)</span> adalah vektor radius partikel ke-$ a $. Ini adalah bentuk umum Lagrangian untuk sistem tertutup. Jumlah <span class="arithmatex">\( T = \sum_a \frac{1}{2} m_a v_a^2 \)</span> disebut <strong>energi kinetik</strong>, dan <span class="arithmatex">\( U \)</span> disebut <strong>energi potensial</strong> dari sistem. Arti nama-nama ini dijelaskan dalam §6.</p>
+<p>Fakta bahwa energi potensial hanya bergantung pada posisi partikel pada saat tertentu menunjukkan bahwa perubahan posisi suatu partikel secara instan memengaruhi semua partikel lainnya. Kita dapat mengatakan bahwa interaksi-propagasi tersebut terjadi secara instan. Kebutuhan bagi interaksi dalam mekanika klasik untuk bersifat seperti ini sangat erat kaitannya dengan prinsip-prinsip dasar yang menjadi landasan bidang ini, yaitu sifat absolut waktu dan prinsip relativitas Galileo. Jika propagasi interaksi tidak terjadi secara instan, tetapi terjadi dengan kecepatan tertentu, maka kecepatan itu akan berbeda dalam sistem koordinat acuan yang bergerak relatif, karena sifat absolut waktu secara otomatis menyiratkan bahwa hukum komposisi kecepatan biasa berlaku untuk semua fenomena. Hukum gerak untuk badan-badan yang saling berinteraksi kemudian akan berbeda dalam sistem koordinat inertial yang berbeda, hasil ini bertentangan dengan prinsip relativitas.</p>
+<p>Dalam §3 hanya dibahas homogenitas waktu. Bentuk Lagrangian (5.1) menunjukkan bahwa waktu memiliki sifat baik homogen maupun isotropis, yaitu propertinya sama di kedua arah. Sebab, jika <span class="arithmatex">\( t \)</span> diganti dengan <span class="arithmatex">\( -t \)</span>, Lagrangian tetap tidak berubah, sehingga persamaan-persamaan gerak juga tetap sama. Dengan kata lain, jika suatu gerakan mungkin terjadi dalam suatu sistem, maka gerakan baliknya (yaitu, gerakan di mana sistem melalui keadaan-keadaan yang sama dalam urutan terbalik) juga mungkin terjadi. Dalam arti ini, semua gerakan yang mematuhi hukum-hukum mekanika klasik adalah <strong>reversible</strong> (dapat dibalik).</p>
+<p>Mengetahui Lagrangian, kita dapat turunkan persamaan-persamaan gerak:</p>
+<div class="arithmatex">\[
+\frac{d}{dt} \left( \frac{\partial L}{\partial \mathbf{v}_a} \right) = \frac{\partial L}{\partial \mathbf{r}_a}. \tag{5.2}
+\]</div>
+<p>Substitusi (5.1) memberikan</p>
+<div class="arithmatex">\[
+m_a \frac{d\mathbf{v}_a}{dt} = -\frac{\partial U}{\partial \mathbf{r}_a}. \tag{5.3}
+\]</div>
+<p>Dalam bentuk ini, persamaan-persamaan gerak disebut <strong>persamaan Newton</strong> dan membentuk dasar mekanika sistem partikel yang saling berinteraksi. Vektor</p>
+<div class="arithmatex">\[
+\mathbf{F} = -\frac{\partial U}{\partial \mathbf{r}_a} \tag{5.4}
+\]</div>
+<p>yang muncul di ruas kanan persamaan (5.3) disebut <strong>gaya</strong> pada partikel ke-$ a $. Seperti <span class="arithmatex">\( U \)</span>, gaya ini hanya bergantung pada koordinat partikel, bukan pada kecepatannya. Persamaan (5.3) menunjukkan bahwa vektor percepatan partikel juga merupakan fungsi koordinat saja.</p>
+<p>Energi potensial hanya ditentukan hingga konstanta penambahan, yang tidak memengaruhi persamaan-persamaan gerak. Ini adalah kasus khusus ketidakunikanan Lagrangian yang dibahas di akhir §2. Cara paling alami dan biasa untuk memilih konstanta ini adalah dengan membuat energi potensial mendekati nol ketika jarak-jarak antara partikel mencapai tak hingga.</p>
+<p>Jika kita menggunakan koordinat generalisasi sembarang <span class="arithmatex">\( q_k \)</span> daripada koordinat Kartesius untuk menggambarkan gerakan, transformasi berikut diperlukan untuk memperoleh Lagrangian baru:</p>
+<div class="arithmatex">\[
+x_a = f_a(q_1, q_2, \ldots, q_s), \quad \dot{x}_a = \sum_k \frac{\partial f_a}{\partial q_k} \dot{q}_k, \text{dll.} \tag{5.5}
+\]</div>
+<p>Substitusi ekspresi ini ke dalam fungsi <span class="arithmatex">\( L = \frac{1}{2} \sum m_a (\dot{x}_a^2 + \dot{y}_a^2 + \dot{z}_a^2) - U \)</span>, kita peroleh Lagrangian yang dibutuhkan dalam bentuk</p>
+<div class="arithmatex">\[
+L = \frac{1}{2} \sum_{i,k} a_{ik}(q) \dot{q}_i \dot{q}_k - U(q), \tag{5.6}
+\]</div>
+<p>di mana <span class="arithmatex">\( a_{ik} \)</span> adalah fungsi koordinat saja. Energi kinetik dalam koordinat generalisasi masih merupakan fungsi kuadrat dari kecepatan, tetapi dapat bergantung pada koordinat juga.</p>
+<p>Hingga saat ini, kita hanya membicarakan sistem tertutup. Mari sekarang kita pertimbangkan sistem <span class="arithmatex">\( A \)</span> yang tidak tertutup dan berinteraksi dengan sistem <span class="arithmatex">\( B \)</span> yang melakukan gerakan tertentu. Dalam hal ini, kita katakan bahwa sistem <span class="arithmatex">\( A \)</span> bergerak dalam medan luar (akibat sistem <span class="arithmatex">\( B \)</span>). Sejak persamaan-persamaan gerak diperoleh dari prinsip aksi terkecil dengan cara memvariasikan setiap koordinat secara independen (yaitu, dengan memperlakukan sisanya sebagai kuantitas yang diberikan), kita dapat menemukan Lagrangian <span class="arithmatex">\( L_A \)</span> dari sistem <span class="arithmatex">\( A \)</span> dengan menggunakan Lagrangian <span class="arithmatex">\( L \)</span> dari keseluruhan sistem <span class="arithmatex">\( A + B \)</span> dan mengganti koordinat <span class="arithmatex">\( q_B \)</span> di dalamnya dengan fungsi-fungsi waktu yang diberikan.</p>
+<p>Mengasumsikan bahwa sistem <span class="arithmatex">\( A + B \)</span> tertutup, kita memiliki <span class="arithmatex">\( L = T_A(q_A, \dot{q}_A) + T_B(q_B, \dot{q}_B) - U(q_A, q_B) \)</span>, di mana dua suku pertama adalah energi kinetik sistem <span class="arithmatex">\( A \)</span> dan <span class="arithmatex">\( B \)</span>, serta suku ketiga adalah energi potensial gabungan mereka. Mengganti <span class="arithmatex">\( q_B \)</span> dengan fungsi-fungsi waktu yang diberikan dan mengabaikan suku <span class="arithmatex">\( T[q_B(t), \dot{q}_B(t)] \)</span> yang bergantung hanya pada waktu, sehingga merupakan turunan total terhadap waktu dari suatu fungsi waktu, kita peroleh <span class="arithmatex">\( L_A = T_A(q_A, \dot{q}_A) - U[q_A, q_B(t)] \)</span>. Oleh karena itu, gerakan suatu sistem dalam medan luar digambarkan oleh Lagrangian jenis biasa, dengan satu-satunya perbedaan bahwa energi potensial dapat bergantung eksplisit pada waktu.</p>
+<p>Sebagai contoh, ketika suatu partikel bergerak dalam medan luar, bentuk umum Lagrangian adalah</p>
+<div class="arithmatex">\[
+L = \frac{1}{2}mv^2 - U(\mathbf{r}, t), \tag{5.7}
+\]</div>
+<p>dan persamaan geraknya adalah</p>
+<div class="arithmatex">\[
+m\ddot{\mathbf{r}} = -\frac{\partial U}{\partial \mathbf{r}}. \tag{5.8}
+\]</div>
+<p>Medan yang sama-sama memberikan gaya <span class="arithmatex">\( \mathbf{F} \)</span> pada partikel di setiap titik dalam medan disebut <strong>medan seragam</strong>. Energi potensial dalam medan semacam ini jelas adalah</p>
+<div class="arithmatex">\[
+U = -\mathbf{F} \cdot \mathbf{r}. \tag{5.9}
+\]</div>
 <hr />
-<p>Kita memiliki <span class="arithmatex">\( L'(v'^2) = L(v^2 + 2v \cdot \epsilon + \epsilon^2) \)</span>. Memperluas ekspresi ini dalam deret pangkat <span class="arithmatex">\( \epsilon \)</span> dan mengabaikan suku-suku di atas orde pertama, kita peroleh</p>
-<div class="arithmatex">\[
-L(v'^2) = L(v^2) + \frac{\partial L}{\partial v^2} \cdot 2v \cdot \epsilon. \tag{4.1}
-\]</div>
-<p>Suku kedua di ruas kanan persamaan ini adalah turunan total terhadap waktu hanya jika ia merupakan fungsi linear dari kecepatan <span class="arithmatex">\( v \)</span>. Oleh karena itu, <span class="arithmatex">\( \frac{\partial L}{\partial v^2} \)</span> independen dari kecepatan, yaitu Lagrangian dalam kasus ini proporsional dengan kuadrat kecepatan, dan kita tulis sebagai</p>
-<div class="arithmatex">\[
-L = \frac{1}{2}mv^2. \tag{4.2}
-\]</div>
-<p>Dari fakta bahwa Lagrangian berbentuk ini memenuhi prinsip relativitas Galileo untuk kecepatan relatif infinitesimal, langsung disimpulkan bahwa Lagrangian tetap invariant untuk kecepatan relatif finit <span class="arithmatex">\( V \)</span> dari sistem koordinat <span class="arithmatex">\( K \)</span> dan <span class="arithmatex">\( K' \)</span>. Untuk</p>
-<div class="arithmatex">\[
-L' = \frac{1}{2}mv'^2 = \frac{1}{2}m(\mathbf{v} + \mathbf{V})^2 = \frac{1}{2}mv^2 + m\mathbf{v} \cdot \mathbf{V} + \frac{1}{2}mV^2, \tag{4.3}
-\]</div>
-<p>atau</p>
-<div class="arithmatex">\[
-L' = L + \frac{d(m\mathbf{r} \cdot \mathbf{V} + \frac{1}{2}mV^2t)}{dt}. \tag{4.4}
-\]</div>
-<hr />
-<h3 id="terjemahan_1">Terjemahan:</h3>
-<p>Suku kedua adalah turunan total terhadap waktu dan dapat diabaikan.</p>
-<p>Kuantitas <span class="arithmatex">\( m \)</span> yang muncul dalam Lagrangian (4.1) untuk partikel yang bergerak bebas disebut <strong>massa</strong> dari partikel tersebut. Sifat aditif Lagrangian menunjukkan bahwa untuk sistem partikel yang tidak saling berinteraksi, kita memiliki†</p>
-<div class="arithmatex">\[
-L = \sum_a \frac{1}{2} m_a v_a^2. \tag{4.5}
-\]</div>
-<p>Perlu ditekankan bahwa definisi massa di atas hanya menjadi bermakna ketika sifat aditif ini dipertimbangkan. Seperti telah disebutkan di §2, Lagrangian selalu dapat dikalikan dengan konstanta sembarang tanpa memengaruhi persamaan-persamaan gerak. Dalam hal fungsi (4.2), perkalian semacam itu setara dengan perubahan satuan massa; rasio-rasio massa partikel yang berbeda tetap tidak berubah, dan hanya rasio-rasio inilah yang secara fisik bermakna.</p>
-<p>Mudah untuk melihat bahwa massa suatu partikel tidak dapat negatif. Menurut prinsip aksi terkecil, integral</p>
-<div class="arithmatex">\[
-S = \int_1^2 \frac{1}{2}mv^2 \, dt \tag{4.6}
-\]</div>
-<p>memiliki nilai minimum untuk gerakan sebenarnya partikel di ruang dari titik 1 ke titik 2. Jika massa negatif, maka integral aksi akan mengambil nilai negatif yang sangat besar untuk gerakan di mana partikel meninggalkan titik 1 dengan cepat dan mendekati titik 2 dengan cepat, sehingga tidak ada nilai minimum.‡</p>
-<hr />
-<p>† Kita akan menggunakan indeks <span class="arithmatex">\( a, b, c, \ldots \)</span> untuk membedakan partikel-partikel yang berbeda, dan indeks <span class="arithmatex">\( i, k, l, \ldots \)</span> untuk membedakan koordinat-koordinatnya.</p>
-<p>‡ Argumen ini tidak dipengaruhi oleh poin yang disebutkan dalam catatan kaki pertama di §2; untuk <span class="arithmatex">\( m &lt; 0 \)</span>, integral tidak dapat memiliki nilai minimum bahkan untuk segmen lintasan yang pendek.</p>
-<hr />
-<h3 id="terjemahan_2">Terjemahan:</h3>
-<p>Sangat berguna untuk menyadari bahwa</p>
-<div class="arithmatex">\[
-v^2 = \left(\frac{dl}{dt}\right)^2 = \frac{(dl)^2}{(dt)^2}. \tag{4.7}
-\]</div>
-<p>Oleh karena itu, untuk mendapatkan Lagrangian, cukup mencari kuadrat elemen busur <span class="arithmatex">\( dl \)</span> dalam suatu sistem koordinat tertentu. Dalam koordinat Kartesius, misalnya, <span class="arithmatex">\( dl^2 = dx^2 + dy^2 + dz^2 \)</span>, sehingga</p>
-<div class="arithmatex">\[
-L = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2). \tag{4.8}
-\]</div>
-<p>Dalam koordinat silindris, <span class="arithmatex">\( dl^2 = dr^2 + r^2 \, d\phi^2 + dz^2 \)</span>, sehingga</p>
-<div class="arithmatex">\[
-L = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\phi}^2 + \dot{z}^2). \tag{4.9}
-\]</div>
-<p>Dalam koordinat bola, <span class="arithmatex">\( dl^2 = dr^2 + r^2 \, d\theta^2 + r^2 \sin^2\theta \, d\phi^2 \)</span>, dan</p>
-<div class="arithmatex">\[
-L = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2 \dot{\phi}^2 \sin^2\theta). \tag{4.10}
-\]</div>
+<h4 id="penutup-bagian-ini">Penutup Bagian Ini</h4>
+<p>Untuk menutup bagian ini, kita dapat membuat beberapa catatan tentang aplikasi persamaan Lagrange pada berbagai masalah. Biasanya diperlukan untuk mempertimbangkan sistem mekanik di mana interaksi antara benda-benda (atau partikel) berupa <strong>batasan</strong>, yaitu pembatasan pada posisi relatif mereka. Dalam praktiknya, batasan-batasan ini dilakukan melalui penggunaan batang, tali, engsel, dan sebagainya. Hal ini memperkenalkan faktor baru ke dalam masalah, yaitu gesekan yang timbul pada titik-titik kontak, sehingga masalah umumnya bukan lagi masalah mekanika murni (lihat §25). Namun, dalam banyak kasus, gesekan dalam sistem sangat kecil sehingga dampaknya terhadap gerakan dapat diabaikan. Jika massa elemen-elemen pembatas dalam sistem juga dapat diabaikan, efek batasan hanya mengurangi jumlah derajat kebebasan <span class="arithmatex">\( s \)</span> sistem menjadi nilai kurang dari <span class="arithmatex">\( 3N \)</span>. Untuk menentukan gerakan sistem, Lagrangian (5.5) dapat digunakan kembali, dengan himpunan koordinat generalisasi yang jumlahnya sama dengan derajat kebebasan sebenarnya.</p>
 
 
 
