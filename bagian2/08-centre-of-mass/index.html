@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://dietrichtarigan.github.io/bagian2/08-centre-of-mass/">
       
       
+        <link rel="prev" href="../07-momentum/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../09-angular-momentum/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Catatan Kuliah Dietrich</title>
+        <title>§8. Centre of mass - Catatan Kuliah Dietrich</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#8-pusat-massa" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Catatan Kuliah Dietrich" class="md-header__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+    <a href="../.." title="Catatan Kuliah Dietrich" class="md-header__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -99,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              §8. Centre of mass
             
           </span>
         </div>
@@ -203,7 +214,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Catatan Kuliah Dietrich" class="md-nav__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+    <a href="../.." title="Catatan Kuliah Dietrich" class="md-nav__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -221,7 +232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -240,8 +251,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -252,11 +265,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -272,7 +285,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Mechanics
@@ -326,7 +339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian1/01-generalised-coordinates/" class="md-nav__link">
+      <a href="../../bagian1/01-generalised-coordinates/" class="md-nav__link">
         
   
   
@@ -349,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian1/02-least-action/" class="md-nav__link">
+      <a href="../../bagian1/02-least-action/" class="md-nav__link">
         
   
   
@@ -372,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian1/03-galilean-relativity/" class="md-nav__link">
+      <a href="../../bagian1/03-galilean-relativity/" class="md-nav__link">
         
   
   
@@ -395,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian1/04-free-particle/" class="md-nav__link">
+      <a href="../../bagian1/04-free-particle/" class="md-nav__link">
         
   
   
@@ -418,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian1/05-system-of-particles/" class="md-nav__link">
+      <a href="../../bagian1/05-system-of-particles/" class="md-nav__link">
         
   
   
@@ -441,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian1/problems/" class="md-nav__link">
+      <a href="../../bagian1/problems/" class="md-nav__link">
         
   
   
@@ -469,6 +482,8 @@
                 
   
   
+    
+  
   
   
     
@@ -478,11 +493,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -498,7 +513,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             II. Conservation Laws
@@ -512,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian2/06-energy/" class="md-nav__link">
+      <a href="../06-energy/" class="md-nav__link">
         
   
   
@@ -535,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian2/07-momentum/" class="md-nav__link">
+      <a href="../07-momentum/" class="md-nav__link">
         
   
   
@@ -555,10 +570,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/bagian2/08-centre-of-mass/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    §8. Centre of mass
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -569,6 +604,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#8-pusat-massa" class="md-nav__link">
+    <span class="md-ellipsis">
+      §8. Pusat Massa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soal" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOAL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#penyelesaian-lagrangian-sama-dengan-selisih-antara-energi-kinetik-dan-potensial-dan-jelas-ditransformasikan-sesuai-dengan-rumus-yang-mirip-dengan-85" class="md-nav__link">
+    <span class="md-ellipsis">
+      PENYELESAIAN: Lagrangian sama dengan selisih antara energi kinetik dan potensial, dan jelas ditransformasikan sesuai dengan rumus yang mirip dengan (8.5):
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -581,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian2/09-angular-momentum/" class="md-nav__link">
+      <a href="../09-angular-momentum/" class="md-nav__link">
         
   
   
@@ -604,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian2/10-mechanical-similarity/" class="md-nav__link">
+      <a href="../10-mechanical-similarity/" class="md-nav__link">
         
   
   
@@ -675,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian3/11-one-dimension.md" class="md-nav__link">
+      <a href="../../bagian3/11-one-dimension.md" class="md-nav__link">
         
   
   
@@ -698,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian3/12-potential-from-period.md" class="md-nav__link">
+      <a href="../../bagian3/12-potential-from-period.md" class="md-nav__link">
         
   
   
@@ -721,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian3/13-reduced-mass.md" class="md-nav__link">
+      <a href="../../bagian3/13-reduced-mass.md" class="md-nav__link">
         
   
   
@@ -744,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian3/14-central-field.md" class="md-nav__link">
+      <a href="../../bagian3/14-central-field.md" class="md-nav__link">
         
   
   
@@ -767,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bagian3/15-kepler.md" class="md-nav__link">
+      <a href="../../bagian3/15-kepler.md" class="md-nav__link">
         
   
   
@@ -888,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/01-velocity-of-propagation.md" class="md-nav__link">
+      <a href="../../chapter1/01-velocity-of-propagation.md" class="md-nav__link">
         
   
   
@@ -911,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/02-intervals.md" class="md-nav__link">
+      <a href="../../chapter1/02-intervals.md" class="md-nav__link">
         
   
   
@@ -934,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/03-proper-time.md" class="md-nav__link">
+      <a href="../../chapter1/03-proper-time.md" class="md-nav__link">
         
   
   
@@ -957,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/04-lorentz-transformation.md" class="md-nav__link">
+      <a href="../../chapter1/04-lorentz-transformation.md" class="md-nav__link">
         
   
   
@@ -980,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/05-transformation-of-velocities.md" class="md-nav__link">
+      <a href="../../chapter1/05-transformation-of-velocities.md" class="md-nav__link">
         
   
   
@@ -1003,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/06-four-vectors.md" class="md-nav__link">
+      <a href="../../chapter1/06-four-vectors.md" class="md-nav__link">
         
   
   
@@ -1026,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter1/07-four-dimensional-velocity.md" class="md-nav__link">
+      <a href="../../chapter1/07-four-dimensional-velocity.md" class="md-nav__link">
         
   
   
@@ -1097,7 +1177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/08-principle-of-least-action.md" class="md-nav__link">
+      <a href="../../chapter2/08-principle-of-least-action.md" class="md-nav__link">
         
   
   
@@ -1120,7 +1200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/09-energy-and-momentum.md" class="md-nav__link">
+      <a href="../../chapter2/09-energy-and-momentum.md" class="md-nav__link">
         
   
   
@@ -1143,7 +1223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/10-transformation-of-distribution-functions.md" class="md-nav__link">
+      <a href="../../chapter2/10-transformation-of-distribution-functions.md" class="md-nav__link">
         
   
   
@@ -1166,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/11-decay-of-particles.md" class="md-nav__link">
+      <a href="../../chapter2/11-decay-of-particles.md" class="md-nav__link">
         
   
   
@@ -1189,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/12-invariant-cross-section.md" class="md-nav__link">
+      <a href="../../chapter2/12-invariant-cross-section.md" class="md-nav__link">
         
   
   
@@ -1212,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/13-elastic-collisions.md" class="md-nav__link">
+      <a href="../../chapter2/13-elastic-collisions.md" class="md-nav__link">
         
   
   
@@ -1235,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter2/14-angular-momentum.md" class="md-nav__link">
+      <a href="../../chapter2/14-angular-momentum.md" class="md-nav__link">
         
   
   
@@ -1306,7 +1386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/15-elementary-particles.md" class="md-nav__link">
+      <a href="../../chapter3/15-elementary-particles.md" class="md-nav__link">
         
   
   
@@ -1329,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/16-four-potential.md" class="md-nav__link">
+      <a href="../../chapter3/16-four-potential.md" class="md-nav__link">
         
   
   
@@ -1352,7 +1432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/17-equations-of-motion.md" class="md-nav__link">
+      <a href="../../chapter3/17-equations-of-motion.md" class="md-nav__link">
         
   
   
@@ -1375,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/18-gauge-invariance.md" class="md-nav__link">
+      <a href="../../chapter3/18-gauge-invariance.md" class="md-nav__link">
         
   
   
@@ -1398,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/19-constant-electromagnetic-field.md" class="md-nav__link">
+      <a href="../../chapter3/19-constant-electromagnetic-field.md" class="md-nav__link">
         
   
   
@@ -1421,7 +1501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/20-motion-in-electric-field.md" class="md-nav__link">
+      <a href="../../chapter3/20-motion-in-electric-field.md" class="md-nav__link">
         
   
   
@@ -1444,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/21-motion-in-magnetic-field.md" class="md-nav__link">
+      <a href="../../chapter3/21-motion-in-magnetic-field.md" class="md-nav__link">
         
   
   
@@ -1467,7 +1547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/22-motion-in-electric-magnetic-fields.md" class="md-nav__link">
+      <a href="../../chapter3/22-motion-in-electric-magnetic-fields.md" class="md-nav__link">
         
   
   
@@ -1490,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/23-electromagnetic-field-tensor.md" class="md-nav__link">
+      <a href="../../chapter3/23-electromagnetic-field-tensor.md" class="md-nav__link">
         
   
   
@@ -1513,7 +1593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/24-lorentz-transformation-field.md" class="md-nav__link">
+      <a href="../../chapter3/24-lorentz-transformation-field.md" class="md-nav__link">
         
   
   
@@ -1536,7 +1616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter3/25-invariants-of-field.md" class="md-nav__link">
+      <a href="../../chapter3/25-invariants-of-field.md" class="md-nav__link">
         
   
   
@@ -1607,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/26-maxwells-equations-1.md" class="md-nav__link">
+      <a href="../../chapter4/26-maxwells-equations-1.md" class="md-nav__link">
         
   
   
@@ -1630,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/27-action-function.md" class="md-nav__link">
+      <a href="../../chapter4/27-action-function.md" class="md-nav__link">
         
   
   
@@ -1653,7 +1733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/28-current-vector.md" class="md-nav__link">
+      <a href="../../chapter4/28-current-vector.md" class="md-nav__link">
         
   
   
@@ -1676,7 +1756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/29-equation-of-continuity.md" class="md-nav__link">
+      <a href="../../chapter4/29-equation-of-continuity.md" class="md-nav__link">
         
   
   
@@ -1699,7 +1779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/30-maxwells-equations-2.md" class="md-nav__link">
+      <a href="../../chapter4/30-maxwells-equations-2.md" class="md-nav__link">
         
   
   
@@ -1722,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/31-energy-density.md" class="md-nav__link">
+      <a href="../../chapter4/31-energy-density.md" class="md-nav__link">
         
   
   
@@ -1745,7 +1825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/32-energy-momentum.md" class="md-nav__link">
+      <a href="../../chapter4/32-energy-momentum.md" class="md-nav__link">
         
   
   
@@ -1768,7 +1848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/33-field-energy-momentum.md" class="md-nav__link">
+      <a href="../../chapter4/33-field-energy-momentum.md" class="md-nav__link">
         
   
   
@@ -1791,7 +1871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/34-virial-theorem.md" class="md-nav__link">
+      <a href="../../chapter4/34-virial-theorem.md" class="md-nav__link">
         
   
   
@@ -1814,7 +1894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter4/35-macroscopic-bodies.md" class="md-nav__link">
+      <a href="../../chapter4/35-macroscopic-bodies.md" class="md-nav__link">
         
   
   
@@ -1885,7 +1965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/36-coulombs-law.md" class="md-nav__link">
+      <a href="../../chapter5/36-coulombs-law.md" class="md-nav__link">
         
   
   
@@ -1908,7 +1988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/37-electrostatic-energy.md" class="md-nav__link">
+      <a href="../../chapter5/37-electrostatic-energy.md" class="md-nav__link">
         
   
   
@@ -1931,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/38-moving-charge.md" class="md-nav__link">
+      <a href="../../chapter5/38-moving-charge.md" class="md-nav__link">
         
   
   
@@ -1954,7 +2034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/39-motion-coulomb.md" class="md-nav__link">
+      <a href="../../chapter5/39-motion-coulomb.md" class="md-nav__link">
         
   
   
@@ -1977,7 +2057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/40-dipole-moment.md" class="md-nav__link">
+      <a href="../../chapter5/40-dipole-moment.md" class="md-nav__link">
         
   
   
@@ -2000,7 +2080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/41-multipole-moments.md" class="md-nav__link">
+      <a href="../../chapter5/41-multipole-moments.md" class="md-nav__link">
         
   
   
@@ -2023,7 +2103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/42-system-charges.md" class="md-nav__link">
+      <a href="../../chapter5/42-system-charges.md" class="md-nav__link">
         
   
   
@@ -2046,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/43-constant-magnetic-field.md" class="md-nav__link">
+      <a href="../../chapter5/43-constant-magnetic-field.md" class="md-nav__link">
         
   
   
@@ -2069,7 +2149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/44-magnetic-moments.md" class="md-nav__link">
+      <a href="../../chapter5/44-magnetic-moments.md" class="md-nav__link">
         
   
   
@@ -2092,7 +2172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter5/45-larmors-theorem.md" class="md-nav__link">
+      <a href="../../chapter5/45-larmors-theorem.md" class="md-nav__link">
         
   
   
@@ -2163,7 +2243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/46-wave-equation.md" class="md-nav__link">
+      <a href="../../chapter6/46-wave-equation.md" class="md-nav__link">
         
   
   
@@ -2186,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/47-plane-waves.md" class="md-nav__link">
+      <a href="../../chapter6/47-plane-waves.md" class="md-nav__link">
         
   
   
@@ -2209,7 +2289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/48-monochromatic-waves.md" class="md-nav__link">
+      <a href="../../chapter6/48-monochromatic-waves.md" class="md-nav__link">
         
   
   
@@ -2232,7 +2312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/49-spectral-resolution.md" class="md-nav__link">
+      <a href="../../chapter6/49-spectral-resolution.md" class="md-nav__link">
         
   
   
@@ -2255,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/50-partial-light.md" class="md-nav__link">
+      <a href="../../chapter6/50-partial-light.md" class="md-nav__link">
         
   
   
@@ -2278,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/51-fourier-resolution.md" class="md-nav__link">
+      <a href="../../chapter6/51-fourier-resolution.md" class="md-nav__link">
         
   
   
@@ -2301,7 +2381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter6/52-characteristic-vibrations.md" class="md-nav__link">
+      <a href="../../chapter6/52-characteristic-vibrations.md" class="md-nav__link">
         
   
   
@@ -2372,7 +2452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/53-geometrical-optics.md" class="md-nav__link">
+      <a href="../../chapter7/53-geometrical-optics.md" class="md-nav__link">
         
   
   
@@ -2395,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/54-intensity.md" class="md-nav__link">
+      <a href="../../chapter7/54-intensity.md" class="md-nav__link">
         
   
   
@@ -2418,7 +2498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/55-angular-eikonal.md" class="md-nav__link">
+      <a href="../../chapter7/55-angular-eikonal.md" class="md-nav__link">
         
   
   
@@ -2441,7 +2521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/56-narrow-bundles.md" class="md-nav__link">
+      <a href="../../chapter7/56-narrow-bundles.md" class="md-nav__link">
         
   
   
@@ -2464,7 +2544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/57-image-formation.md" class="md-nav__link">
+      <a href="../../chapter7/57-image-formation.md" class="md-nav__link">
         
   
   
@@ -2487,7 +2567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/58-limits-optics.md" class="md-nav__link">
+      <a href="../../chapter7/58-limits-optics.md" class="md-nav__link">
         
   
   
@@ -2510,7 +2590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/59-diffraction.md" class="md-nav__link">
+      <a href="../../chapter7/59-diffraction.md" class="md-nav__link">
         
   
   
@@ -2533,7 +2613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/60-fresnel-diffraction.md" class="md-nav__link">
+      <a href="../../chapter7/60-fresnel-diffraction.md" class="md-nav__link">
         
   
   
@@ -2556,7 +2636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter7/61-fraunhofer-diffraction.md" class="md-nav__link">
+      <a href="../../chapter7/61-fraunhofer-diffraction.md" class="md-nav__link">
         
   
   
@@ -2627,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter8/62-retarded-potentials.md" class="md-nav__link">
+      <a href="../../chapter8/62-retarded-potentials.md" class="md-nav__link">
         
   
   
@@ -2650,7 +2730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter8/63-lienard-wiechert.md" class="md-nav__link">
+      <a href="../../chapter8/63-lienard-wiechert.md" class="md-nav__link">
         
   
   
@@ -2673,7 +2753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter8/64-spectral-resolution.md" class="md-nav__link">
+      <a href="../../chapter8/64-spectral-resolution.md" class="md-nav__link">
         
   
   
@@ -2696,7 +2776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter8/65-lagrangian-second-order.md" class="md-nav__link">
+      <a href="../../chapter8/65-lagrangian-second-order.md" class="md-nav__link">
         
   
   
@@ -2767,7 +2847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/66-charges-large-distances.md" class="md-nav__link">
+      <a href="../../chapter9/66-charges-large-distances.md" class="md-nav__link">
         
   
   
@@ -2790,7 +2870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/67-dipole-radiation.md" class="md-nav__link">
+      <a href="../../chapter9/67-dipole-radiation.md" class="md-nav__link">
         
   
   
@@ -2813,7 +2893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/68-dipole-collisions.md" class="md-nav__link">
+      <a href="../../chapter9/68-dipole-collisions.md" class="md-nav__link">
         
   
   
@@ -2836,7 +2916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/69-low-frequency-radiation.md" class="md-nav__link">
+      <a href="../../chapter9/69-low-frequency-radiation.md" class="md-nav__link">
         
   
   
@@ -2859,7 +2939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/70-coulomb-interaction.md" class="md-nav__link">
+      <a href="../../chapter9/70-coulomb-interaction.md" class="md-nav__link">
         
   
   
@@ -2882,7 +2962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/71-quadrupole-dipole.md" class="md-nav__link">
+      <a href="../../chapter9/71-quadrupole-dipole.md" class="md-nav__link">
         
   
   
@@ -2905,7 +2985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/72-radiation-near-distances.md" class="md-nav__link">
+      <a href="../../chapter9/72-radiation-near-distances.md" class="md-nav__link">
         
   
   
@@ -2928,7 +3008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/73-radiation-rapid-charge.md" class="md-nav__link">
+      <a href="../../chapter9/73-radiation-rapid-charge.md" class="md-nav__link">
         
   
   
@@ -2951,7 +3031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/74-synchrotron-radiation.md" class="md-nav__link">
+      <a href="../../chapter9/74-synchrotron-radiation.md" class="md-nav__link">
         
   
   
@@ -2974,7 +3054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/75-radiation-damping.md" class="md-nav__link">
+      <a href="../../chapter9/75-radiation-damping.md" class="md-nav__link">
         
   
   
@@ -2997,7 +3077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/76-radiation-relativistic.md" class="md-nav__link">
+      <a href="../../chapter9/76-radiation-relativistic.md" class="md-nav__link">
         
   
   
@@ -3020,7 +3100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/77-ultrarelativistic-radiation.md" class="md-nav__link">
+      <a href="../../chapter9/77-ultrarelativistic-radiation.md" class="md-nav__link">
         
   
   
@@ -3043,7 +3123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/78-scattering-free-charges.md" class="md-nav__link">
+      <a href="../../chapter9/78-scattering-free-charges.md" class="md-nav__link">
         
   
   
@@ -3066,7 +3146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/79-scattering-low-frequency.md" class="md-nav__link">
+      <a href="../../chapter9/79-scattering-low-frequency.md" class="md-nav__link">
         
   
   
@@ -3089,7 +3169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter9/80-scattering-high-frequency.md" class="md-nav__link">
+      <a href="../../chapter9/80-scattering-high-frequency.md" class="md-nav__link">
         
   
   
@@ -3160,7 +3240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/81-nonrelativistic-mechanics.md" class="md-nav__link">
+      <a href="../../chapter10/81-nonrelativistic-mechanics.md" class="md-nav__link">
         
   
   
@@ -3183,7 +3263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/82-relativistic-mechanics.md" class="md-nav__link">
+      <a href="../../chapter10/82-relativistic-mechanics.md" class="md-nav__link">
         
   
   
@@ -3206,7 +3286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/83-curvilinear-coordinates.md" class="md-nav__link">
+      <a href="../../chapter10/83-curvilinear-coordinates.md" class="md-nav__link">
         
   
   
@@ -3229,7 +3309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/84-distances-intervals.md" class="md-nav__link">
+      <a href="../../chapter10/84-distances-intervals.md" class="md-nav__link">
         
   
   
@@ -3252,7 +3332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/85-covariant-differentiation.md" class="md-nav__link">
+      <a href="../../chapter10/85-covariant-differentiation.md" class="md-nav__link">
         
   
   
@@ -3275,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/86-christoffel-symbols.md" class="md-nav__link">
+      <a href="../../chapter10/86-christoffel-symbols.md" class="md-nav__link">
         
   
   
@@ -3298,7 +3378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/87-particle-motion.md" class="md-nav__link">
+      <a href="../../chapter10/87-particle-motion.md" class="md-nav__link">
         
   
   
@@ -3321,7 +3401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/88-constant-gravitational-field.md" class="md-nav__link">
+      <a href="../../chapter10/88-constant-gravitational-field.md" class="md-nav__link">
         
   
   
@@ -3344,7 +3424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/89-rotation.md" class="md-nav__link">
+      <a href="../../chapter10/89-rotation.md" class="md-nav__link">
         
   
   
@@ -3367,7 +3447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter10/90-electrodynamics-gravitational-field.md" class="md-nav__link">
+      <a href="../../chapter10/90-electrodynamics-gravitational-field.md" class="md-nav__link">
         
   
   
@@ -3438,7 +3518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/91-curvature-tensor.md" class="md-nav__link">
+      <a href="../../chapter11/91-curvature-tensor.md" class="md-nav__link">
         
   
   
@@ -3461,7 +3541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/92-properties-curvature-tensor.md" class="md-nav__link">
+      <a href="../../chapter11/92-properties-curvature-tensor.md" class="md-nav__link">
         
   
   
@@ -3484,7 +3564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/93-action-function.md" class="md-nav__link">
+      <a href="../../chapter11/93-action-function.md" class="md-nav__link">
         
   
   
@@ -3507,7 +3587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/94-energy-momentum-tensor.md" class="md-nav__link">
+      <a href="../../chapter11/94-energy-momentum-tensor.md" class="md-nav__link">
         
   
   
@@ -3530,7 +3610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/95-einstein-equations.md" class="md-nav__link">
+      <a href="../../chapter11/95-einstein-equations.md" class="md-nav__link">
         
   
   
@@ -3553,7 +3633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/96-pseudotensor.md" class="md-nav__link">
+      <a href="../../chapter11/96-pseudotensor.md" class="md-nav__link">
         
   
   
@@ -3576,7 +3656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/97-synchronous-reference.md" class="md-nav__link">
+      <a href="../../chapter11/97-synchronous-reference.md" class="md-nav__link">
         
   
   
@@ -3599,7 +3679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter11/98-tetrad-representation.md" class="md-nav__link">
+      <a href="../../chapter11/98-tetrad-representation.md" class="md-nav__link">
         
   
   
@@ -3670,7 +3750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/99-newtons-law.md" class="md-nav__link">
+      <a href="../../chapter12/99-newtons-law.md" class="md-nav__link">
         
   
   
@@ -3693,7 +3773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/100-central-symmetric-field.md" class="md-nav__link">
+      <a href="../../chapter12/100-central-symmetric-field.md" class="md-nav__link">
         
   
   
@@ -3716,7 +3796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/101-motion-central-symmetric.md" class="md-nav__link">
+      <a href="../../chapter12/101-motion-central-symmetric.md" class="md-nav__link">
         
   
   
@@ -3739,7 +3819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/102-gravitational-collapse-spherical.md" class="md-nav__link">
+      <a href="../../chapter12/102-gravitational-collapse-spherical.md" class="md-nav__link">
         
   
   
@@ -3762,7 +3842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/103-gravitational-collapse-dustlike.md" class="md-nav__link">
+      <a href="../../chapter12/103-gravitational-collapse-dustlike.md" class="md-nav__link">
         
   
   
@@ -3785,7 +3865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/104-gravitational-collapse-rotating.md" class="md-nav__link">
+      <a href="../../chapter12/104-gravitational-collapse-rotating.md" class="md-nav__link">
         
   
   
@@ -3808,7 +3888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/105-gravitational-fields-large.md" class="md-nav__link">
+      <a href="../../chapter12/105-gravitational-fields-large.md" class="md-nav__link">
         
   
   
@@ -3831,7 +3911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter12/106-equations-motion-systems.md" class="md-nav__link">
+      <a href="../../chapter12/106-equations-motion-systems.md" class="md-nav__link">
         
   
   
@@ -3902,7 +3982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter13/107-weak-gravitational-waves.md" class="md-nav__link">
+      <a href="../../chapter13/107-weak-gravitational-waves.md" class="md-nav__link">
         
   
   
@@ -3925,7 +4005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter13/108-gravitational-waves-curved.md" class="md-nav__link">
+      <a href="../../chapter13/108-gravitational-waves-curved.md" class="md-nav__link">
         
   
   
@@ -3948,7 +4028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter13/109-strong-gravitational-waves.md" class="md-nav__link">
+      <a href="../../chapter13/109-strong-gravitational-waves.md" class="md-nav__link">
         
   
   
@@ -3971,7 +4051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter13/110-radiation-gravitational-waves.md" class="md-nav__link">
+      <a href="../../chapter13/110-radiation-gravitational-waves.md" class="md-nav__link">
         
   
   
@@ -4042,7 +4122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/111-isotropic-space.md" class="md-nav__link">
+      <a href="../../chapter14/111-isotropic-space.md" class="md-nav__link">
         
   
   
@@ -4065,7 +4145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/112-closed-isotropic-model.md" class="md-nav__link">
+      <a href="../../chapter14/112-closed-isotropic-model.md" class="md-nav__link">
         
   
   
@@ -4088,7 +4168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/113-open-isotropic-model.md" class="md-nav__link">
+      <a href="../../chapter14/113-open-isotropic-model.md" class="md-nav__link">
         
   
   
@@ -4111,7 +4191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/114-red-shift.md" class="md-nav__link">
+      <a href="../../chapter14/114-red-shift.md" class="md-nav__link">
         
   
   
@@ -4134,7 +4214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/115-gravitational-stability.md" class="md-nav__link">
+      <a href="../../chapter14/115-gravitational-stability.md" class="md-nav__link">
         
   
   
@@ -4157,7 +4237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/116-homogeneous-spaces.md" class="md-nav__link">
+      <a href="../../chapter14/116-homogeneous-spaces.md" class="md-nav__link">
         
   
   
@@ -4180,7 +4260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/117-flat-anisotropic-model.md" class="md-nav__link">
+      <a href="../../chapter14/117-flat-anisotropic-model.md" class="md-nav__link">
         
   
   
@@ -4203,7 +4283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/118-oscillating-regime.md" class="md-nav__link">
+      <a href="../../chapter14/118-oscillating-regime.md" class="md-nav__link">
         
   
   
@@ -4226,7 +4306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/chapter14/119-time-singularity.md" class="md-nav__link">
+      <a href="../../chapter14/119-time-singularity.md" class="md-nav__link">
         
   
   
@@ -4275,6 +4355,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#8-pusat-massa" class="md-nav__link">
+    <span class="md-ellipsis">
+      §8. Pusat Massa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soal" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOAL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#penyelesaian-lagrangian-sama-dengan-selisih-antara-energi-kinetik-dan-potensial-dan-jelas-ditransformasikan-sesuai-dengan-rumus-yang-mirip-dengan-85" class="md-nav__link">
+    <span class="md-ellipsis">
+      PENYELESAIAN: Lagrangian sama dengan selisih antara energi kinetik dan potensial, dan jelas ditransformasikan sesuai dengan rumus yang mirip dengan (8.5):
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4285,8 +4400,79 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+  <h1>§8. Centre of mass</h1>
+
+<h4 id="8-pusat-massa">§8. Pusat Massa</h4>
+<p>Momentum suatu sistem mekanik tertutup memiliki nilai yang berbeda dalam bingkai acuan (inertial) yang berbeda. Jika sebuah bingkai <span class="arithmatex">\( K' \)</span> bergerak dengan kecepatan <span class="arithmatex">\( \mathbf{V} \)</span> relatif terhadap bingkai <span class="arithmatex">\( K \)</span>, maka kecepatan partikel <span class="arithmatex">\( \mathbf{v}_a' \)</span> dan <span class="arithmatex">\( \mathbf{v}_a \)</span> relatif terhadap kedua bingkai adalah sedemikian sehingga <span class="arithmatex">\( \mathbf{v}_a = \mathbf{v}_a' + \mathbf{V} \)</span>. Momentum <span class="arithmatex">\( \mathbf{P} \)</span> dan <span class="arithmatex">\( \mathbf{P}' \)</span> dalam kedua bingkai tersebut, oleh karena itu, berhubungan sebagai berikut:</p>
+<div class="arithmatex">\[
+\mathbf{P} = \sum_a m_a \mathbf{v}_a = \sum_a m_a \mathbf{v}_a' + \mathbf{V} \sum_a m_a, \tag{8.1}
+\]</div>
+<p>atau</p>
+<div class="arithmatex">\[
+\mathbf{P} = \mathbf{P}' + \mathbf{V} \sum_a m_a. \tag{8.2}
+\]</div>
+<p>Secara khusus, selalu ada bingkai acuan <span class="arithmatex">\( K' \)</span> di mana momentum total bernilai nol. Dengan memasukkan <span class="arithmatex">\( \mathbf{P}' = 0 \)</span> ke dalam Persamaan (8.1), kita menemukan kecepatan bingkai ini:</p>
+<div class="arithmatex">\[
+\mathbf{V} = \frac{\mathbf{P}}{\sum_a m_a} = \frac{\sum_a m_a \mathbf{v}_a}{\sum_a m_a}. \tag{8.3}
+\]</div>
+<p>Jika momentum total suatu sistem mekanik dalam suatu bingkai acuan adalah nol, sistem tersebut dikatakan <strong>berhenti</strong> relatif terhadap bingkai tersebut. Ini merupakan generalisasi alami dari istilah "berhenti" yang diterapkan pada partikel tunggal. Secara serupa, kecepatan <span class="arithmatex">\( \mathbf{V} \)</span> yang diberikan oleh Persamaan (8.2) adalah kecepatan "gerakan keseluruhan" suatu sistem mekanik yang momentumnya tidak nol. Oleh karena itu, kita melihat bahwa hukum konservasi momentum memungkinkan definisi alami dari istilah "berhenti" dan "kecepatan", ketika diterapkan pada sistem mekanik secara keseluruhan.</p>
+<p>Rumus (8.2) menunjukkan bahwa hubungan antara momentum <span class="arithmatex">\( \mathbf{P} \)</span> dan kecepatan <span class="arithmatex">\( \mathbf{V} \)</span> sistem sama dengan hubungan antara momentum dan kecepatan suatu partikel tunggal dengan massa <span class="arithmatex">\( \mu = \sum_a m_a \)</span>, yaitu jumlah massa partikel dalam sistem. Hasil ini dapat dipandang sebagai penyataan <strong>penjumlahan massa</strong>.</p>
+<p>Sisi kanan rumus (8.2) dapat ditulis sebagai turunan waktu total dari ekspresi</p>
+<div class="arithmatex">\[
+\mathbf{R} \equiv \frac{\sum_a m_a \mathbf{r}_a}{\sum_a m_a}. \tag{8.4}
+\]</div>
+<hr />
+<p>Kita dapat mengatakan bahwa kecepatan sistem secara keseluruhan adalah laju pergerakan titik di ruang yang vektornya radius adalah (8.3). Titik ini disebut <strong>pusat massa</strong> sistem.</p>
+<p>Hukum konservasi momentum untuk suatu sistem tertutup dapat dirumuskan sebagai menyatakan bahwa pusat massa sistem bergerak secara seragam sepanjang garis lurus. Dalam bentuk ini, hukum tersebut menggeneralisasi hukum inersia yang dinyatakan dalam §3 untuk partikel bebas tunggal, di mana "pusat massa" identik dengan partikel itu sendiri.</p>
+<p>Dalam mempertimbangkan sifat-sifat mekanik suatu sistem tertutup, alami untuk menggunakan bingkai acuan di mana pusat massa berhenti. Hal ini menghilangkan gerakan linier seragam sistem secara keseluruhan, tetapi gerakan semacam itu tidak penting.</p>
+<p>Energi suatu sistem mekanik yang berhenti secara keseluruhan biasanya disebut <strong>energi internal</strong> <span class="arithmatex">\( E_i \)</span>. Ini mencakup energi kinetik gerakan relatif partikel dalam sistem dan energi potensial interaksi mereka. Total energi suatu sistem yang bergerak secara keseluruhan dengan kecepatan <span class="arithmatex">\( V \)</span> dapat ditulis sebagai</p>
+<div class="arithmatex">\[
+E = \frac{1}{2}\mu V^2 + E_i. \tag{8.5}
+\]</div>
+<hr />
+<p>Meskipun rumus ini cukup jelas, kita dapat memberikan bukti langsung atasnya. Energi <span class="arithmatex">\( E \)</span> dan <span class="arithmatex">\( E' \)</span> suatu sistem mekanik dalam dua bingkai acuan <span class="arithmatex">\( K \)</span> dan <span class="arithmatex">\( K' \)</span> berhubungan sebagai berikut:</p>
+<div class="arithmatex">\[
+E = \frac{1}{2} \sum_a m_a v_a^2 + U
+$$
+$$
+= \frac{1}{2} \sum_a m_a (\mathbf{v}_a' + \mathbf{V})^2 + U
+$$
+$$
+= \frac{1}{2}\mu V^2 + \mathbf{V} \cdot \sum_a m_a \mathbf{v}_a' + \frac{1}{2} \sum_a m_a v_a'^2 + U
+$$
+$$
+= E' + \mathbf{V} \cdot \mathbf{P}' + \frac{1}{2}\mu V^2. \tag{8.6}
+\]</div>
+<p>Rumus ini memberikan hukum transformasi energi dari satu bingkai ke bingkai lainnya, yang sesuai dengan Persamaan (8.1) untuk momentum. Jika pusat massa diam di <span class="arithmatex">\( K' \)</span>, maka <span class="arithmatex">\( \mathbf{P}' = 0 \)</span>, <span class="arithmatex">\( E' = E_i \)</span>, dan kita mendapatkan Persamaan (8.5).</p>
+<hr />
+<h4 id="soal">SOAL</h4>
+<p>Tentukan hukum transformasi tindakan <span class="arithmatex">\( S \)</span> dari satu bingkai inertial ke bingkai inertial lainnya.</p>
+<h4 id="penyelesaian-lagrangian-sama-dengan-selisih-antara-energi-kinetik-dan-potensial-dan-jelas-ditransformasikan-sesuai-dengan-rumus-yang-mirip-dengan-85">PENYELESAIAN: Lagrangian sama dengan selisih antara energi kinetik dan potensial, dan jelas ditransformasikan sesuai dengan rumus yang mirip dengan (8.5):</h4>
+<div class="arithmatex">\[
+L = L' + \mathbf{V} \cdot \mathbf{P}' + \frac{1}{2}\mu V^2. \tag{8.7}
+\]</div>
+<p>Dengan mengintegralkan ini terhadap waktu, kita memperoleh hukum transformasi tindakan yang dibutuhkan:</p>
+<div class="arithmatex">\[
+S = S' + \mu \mathbf{V} \cdot \mathbf{R}' + \frac{1}{2}\mu V^2 t, \tag{8.8}
+\]</div>
+<p>di mana <span class="arithmatex">\( \mathbf{R}' \)</span> adalah vektor radius pusat massa dalam bingkai <span class="arithmatex">\( K' \)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -4322,10 +4508,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["navigation.sections", "content.code.copy", "content.action.edit", "palette.toggle"], "search": "/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "content.code.copy", "content.action.edit", "palette.toggle"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
