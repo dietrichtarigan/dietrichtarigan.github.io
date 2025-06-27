@@ -1,0 +1,1709 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dietrichtarigan.github.io/finance/course1/Introduction%20to%20Probability%20Part%20I/">
+      
+      
+        <link rel="prev" href="../module2/">
+      
+      
+        <link rel="next" href="../../../random/diskusi_1/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Introduction to Probability Part I - Catatan Kuliah Dietrich</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lesson-resources" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Catatan Kuliah Dietrich" class="md-header__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Catatan Kuliah Dietrich
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to Probability Part I
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Catatan Kuliah Dietrich" class="md-nav__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Catatan Kuliah Dietrich
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Beranda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Financial Engineering and Risk Management Specialization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Financial Engineering and Risk Management Specialization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Course1_Introduction to Financial Engineering and Risk Management
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Course1_Introduction to Financial Engineering and Risk Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Module 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to Probability Part I
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    I. Lomba Nuklirr
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            I. Lomba Nuklirr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../random/diskusi_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dsikusi Pertama
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NuclearCompaniesDash.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dashboard Nuklir
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../random/Dennis%20Whyte_Nuclear%20Fusion%20and%20the%20Future%20of%20Energy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dennis Whyte_Nuclear Fusion and the Future of Energy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mechanics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Mechanics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    I. The Equations of Motion
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            I. The Equations of Motion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian1/01-generalised-coordinates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §1. Generalised coordinates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian1/02-least-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §2. Principle of least action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian1/03-galilean-relativity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §3. Galilean relativity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian1/04-free-particle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §4. Lagrangian for free particle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian1/05-system-of-particles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §5. Lagrangian for system of particles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian1/problems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Problems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    II. Conservation Laws
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            II. Conservation Laws
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian2/06-energy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §6. Energy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian2/07-momentum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §7. Momentum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian2/08-centre-of-mass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §8. Centre of mass
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian2/09-angular-momentum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §9. Angular momentum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian2/10-mechanical-similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §10. Mechanical similarity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    III. Integration of the Equations of Motion
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            III. Integration of the Equations of Motion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian3/11-one-dimension.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §11. One-dimensional motion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian3/12-potential-from-period.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §12. Potential from oscillation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian3/13-reduced-mass.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §13. Reduced mass
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian3/14-central-field.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §14. Central field
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagian3/15-kepler.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §15. Kepler's problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>![[Introduction to Probability Part I (2).pdf]]</p>
+<h1 id="lesson-resources">Lesson Resources</h1>
+<p><strong>Recommended Resources on Prerequisite Knowledge</strong></p>
+<ol>
+<li><a href="https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/video_galleries/video-lectures/">https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/video_galleries/video-lectures/</a></li>
+<li><a href="https://dlsun.github.io/probability/index.html">https://dlsun.github.io/probability/index.html</a></li>
+<li><a href="https://ocw.mit.edu/courses/sloan-school-of-management/15-093j-optimization-methods-fall-2009/">https://ocw.mit.edu/courses/sloan-school-of-management/15-093j-optimization-methods-fall-2009/</a></li>
+</ol>
+<h1 id="a-discrete-random-variable-and-distribution">A. Discrete Random Variable and Distribution</h1>
+<h3 id="subtopik">Subtopik:</h3>
+<ol>
+<li>Fungsi Distribusi Kumulatif (CDF)</li>
+<li>Probability Mass Function (PMF)</li>
+<li>Nilai Harapan (Expected Value) &amp; Varians</li>
+<li>Distribusi Binomial</li>
+<li>Distribusi Poisson</li>
+</ol>
+<hr />
+<h2 id="1-fungsi-distribusi-kumulatif-cdf">1. Fungsi Distribusi Kumulatif (CDF)</h2>
+<h3 id="definisi">Definisi:</h3>
+<p>CDF dari suatu variabel acak <span class="arithmatex">\(X\)</span> didefinisikan sebagai:
+$$
+F(x) = P(X \leq x)
+$$
+Fungsi ini memberikan probabilitas bahwa variabel acak <span class="arithmatex">\(X\)</span> tidak melebihi nilai tertentu <span class="arithmatex">\(x\)</span>.</p>
+<hr />
+<h2 id="2-probability-mass-function-pmf">2. Probability Mass Function (PMF)</h2>
+<h3 id="untuk-variabel-acak-diskret">Untuk Variabel Acak Diskret:</h3>
+<p>PMF adalah fungsi <span class="arithmatex">\(p(x)\)</span> yang memenuhi:
+$$
+p(x) \geq 0 \quad \text{dan} \quad \sum_x p(x) = 1
+$$</p>
+<h3 id="probabilitas-untuk-kejadian-a">Probabilitas untuk kejadian <span class="arithmatex">\(A\)</span>:</h3>
+<div class="arithmatex">\[
+P(X \in A) = \sum_{x \in A} p(x)
+\]</div>
+<hr />
+<h2 id="3-nilai-harapan-expected-value-dan-varians">3. Nilai Harapan (Expected Value) dan Varians</h2>
+<h3 id="nilai-harapan">Nilai Harapan:</h3>
+<p>Untuk variabel acak diskret <span class="arithmatex">\(X\)</span> dengan nilai-nilai <span class="arithmatex">\(x_1, x_2, ..., x_n\)</span> dan probabilitas <span class="arithmatex">\(p(x_i)\)</span>:
+$$
+\mathbb{E}[X] = \sum_i x_i \cdot p(x_i)
+$$</p>
+<h4 id="contoh-dadu-seimbang">Contoh: Dadu Seimbang</h4>
+<div class="arithmatex">\[
+\mathbb{E}[X] = \frac{1}{6}(1 + 2 + 3 + 4 + 5 + 6) = 3.5
+\]</div>
+<hr />
+<h3 id="varians">Varians:</h3>
+<p>Varians mengukur penyebaran distribusi dari rata-ratanya:
+$$
+\mathrm{Var}(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]
+$$</p>
+<p>Alternatif rumus:
+$$
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+$$</p>
+<hr />
+<h2 id="4-distribusi-binomial">4. Distribusi Binomial</h2>
+<h3 id="notasi">Notasi:</h3>
+<div class="arithmatex">\[
+X \sim \text{Bin}(n, p)
+\]</div>
+<h3 id="pmf">PMF:</h3>
+<div class="arithmatex">\[
+P(X = r) = \binom{n}{r} p^r (1-p)^{n-r}
+$$
+dengan:
+$$
+\binom{n}{r} = \frac{n!}{r!(n - r)!}
+\]</div>
+<h3 id="rata-rata-dan-varians">Rata-Rata dan Varians:</h3>
+<div class="arithmatex">\[
+\mathbb{E}[X] = np,\quad \mathrm{Var}(X) = np(1 - p)
+\]</div>
+<hr />
+<h3 id="contoh-aplikasi-performa-manajer-investasi">Contoh Aplikasi: Performa Manajer Investasi</h3>
+<p>Seorang manajer investasi memiliki track record 10 tahun dan berhasil outperform pasar sebanyak 8 kali. Jika kita asumsikan tidak ada skill (artinya peluang outperform = 0.5), maka jumlah outperformance mengikuti distribusi:
+$$
+X \sim \text{Bin}(10, 0.5)
+$$</p>
+<p>Kita ingin menghitung:
+$$
+P(X \geq 8) = P(X=8) + P(X=9) + P(X=10)
+$$</p>
+<p>Dengan menggunakan PMF binomial:
+$$
+P(X \geq 8) = \sum_{r=8}^{10} \binom{10}{r} (0.5)^r (0.5)^{10 - r}
+$$</p>
+<p>Jika hasilnya sangat kecil, bisa disimpulkan bahwa kemungkinan besar performa tersebut bukan hanya karena keberuntungan.</p>
+<hr />
+<h2 id="5-distribusi-poisson">5. Distribusi Poisson</h2>
+<h3 id="notasi_1">Notasi:</h3>
+<div class="arithmatex">\[
+X \sim \text{Poisson}(\lambda)
+\]</div>
+<h3 id="pmf_1">PMF:</h3>
+<div class="arithmatex">\[
+P(X = r) = \frac{\lambda^r e^{-\lambda}}{r!},\quad r = 0, 1, 2, ...
+\]</div>
+<h3 id="rata-rata-dan-varians_1">Rata-Rata dan Varians:</h3>
+<div class="arithmatex">\[
+\mathbb{E}[X] = \mathrm{Var}(X) = \lambda
+\]</div>
+<hr />
+<h3 id="bukti-singkat-untuk-rata-rata">Bukti Singkat untuk Rata-Rata:</h3>
+<div class="arithmatex">\[
+\mathbb{E}[X] = \sum_{r=0}^\infty r \cdot \frac{\lambda^r e^{-\lambda}}{r!}
+$$
+Karena pada  $r = 0$, suku pertama bernilai nol, kita mulai dari $r = 1$:
+$$
+\mathbb{E}[X] = \sum_{r=1}^\infty \frac{r \cdot \lambda^r e^{-\lambda}}{r!}
+= \lambda \sum_{r=1}^\infty \frac{\lambda^{r-1} e^{-\lambda}}{(r-1)!}
+= \lambda \sum_{k=0}^\infty \frac{\lambda^k e^{-\lambda}}{k!}
+= \lambda \cdot 1 = \lambda
+\]</div>
+<hr />
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<table>
+<thead>
+<tr>
+<th>Topik</th>
+<th>Ringkasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDF</td>
+<td>Menggambarkan probabilitas kumulatif <span class="arithmatex">\(P(X \leq x)\)</span></td>
+</tr>
+<tr>
+<td>PMF</td>
+<td>Untuk variabel acak diskret, menunjukkan probabilitas tiap nilai</td>
+</tr>
+<tr>
+<td>E[X] &amp; Var(X)</td>
+<td>Nilai harapan dan varians membantu mengukur tendensi sentral dan dispersi</td>
+</tr>
+<tr>
+<td>Distribusi Binomial</td>
+<td>Digunakan untuk model percobaan Bernoulli berulang</td>
+</tr>
+<tr>
+<td>Aplikasi Binomial</td>
+<td>Evaluasi performa manajer investasi vs keberuntungan</td>
+</tr>
+<tr>
+<td>Distribusi Poisson</td>
+<td>Cocok untuk peristiwa langka dalam interval waktu tetap</td>
+</tr>
+<tr>
+<td>Kesamaan Mean &amp; Varians</td>
+<td>Dalam distribusi Poisson, mean = varians</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="insight-tambahan">🧠 Insight Tambahan</h2>
+<ul>
+<li><strong>Binomial</strong> cocok digunakan saat ada jumlah percobaan tetap, dengan dua hasil (sukses/gagal).</li>
+<li><strong>Poisson</strong> berguna untuk memodelkan frekuensi kejadian langka dalam periode tertentu.</li>
+<li>Keduanya sering digunakan dalam <strong>risk management</strong>, <strong>credit scoring</strong>, dan <strong>market behavior modeling</strong> dalam financial engineering.</li>
+</ul>
+<h1 id="b-bayes-theorem-continuous-random-variable-and-distribution">B. Bayes' Theorem, Continuous Random Variable and Distribution</h1>
+<h3 id="subtopik_1">Subtopik:</h3>
+<ol>
+<li>Teorema Bayes</li>
+<li>Variabel Acak Kontinu</li>
+<li>Fungsi Densitas Probabilitas (PDF)</li>
+<li>Distribusi Normal</li>
+<li>Distribusi Log-Normal</li>
+</ol>
+<hr />
+<h2 id="1-teorema-bayes">1. Teorema Bayes</h2>
+<h3 id="definisi_1">Definisi:</h3>
+<p>Jika <span class="arithmatex">\(A\)</span> dan <span class="arithmatex">\(B\)</span> adalah dua kejadian dengan <span class="arithmatex">\(P(B) &gt; 0\)</span>, maka probabilitas bersyarat <span class="arithmatex">\(P(A|B)\)</span> didefinisikan sebagai:
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+$$</p>
+<p>Atau dapat ditulis ulang dalam bentuk Bayes:
+$$
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+$$</p>
+<p>Jika kita memiliki partisi dari ruang sampel <span class="arithmatex">\(\{A_1, A_2, ..., A_n\}\)</span>, maka:
+$$
+P(A_i|B) = \frac{P(B|A_i) \cdot P(A_i)}{\sum_{j=1}^n P(B|A_j) \cdot P(A_j)}
+$$</p>
+<hr />
+<h3 id="contoh-dadu-dua-kali-lemparan">Contoh: Dadu Dua Kali Lemparan</h3>
+<p>Misalnya kita melempar dua dadu seimbang:</p>
+<ul>
+<li><span class="arithmatex">\(Y_1\)</span>: hasil lemparan pertama  </li>
+<li><span class="arithmatex">\(Y_2\)</span>: hasil lemparan kedua  </li>
+<li><span class="arithmatex">\(X = Y_1 + Y_2\)</span>: jumlah kedua hasil</li>
+</ul>
+<p><strong>Pertanyaan</strong>:<br />
+Berapa <span class="arithmatex">\(P(Y_1 \geq 4 \mid X \geq 8)\)</span>?</p>
+<h4 id="jawab">Jawab:</h4>
+<p>Gunakan rumus Bayes:
+$$
+P(Y_1 \geq 4 \mid X \geq 8) = \frac{P(Y_1 \geq 4 \cap X \geq 8)}{P(X \geq 8)}
+$$</p>
+<p>Dari tabel kemungkinan hasil:
+- Jumlah total sel = 36
+- Jumlah sel dengan <span class="arithmatex">\(X \geq 8\)</span>: 15 → <span class="arithmatex">\(P(X \geq 8) = \frac{15}{36}\)</span>
+- Jumlah sel dengan <span class="arithmatex">\(Y_1 \geq 4\)</span> dan <span class="arithmatex">\(X \geq 8\)</span>: 12 → <span class="arithmatex">\(P(Y_1 \geq 4 \cap X \geq 8) = \frac{12}{36}\)</span></p>
+<p>Maka:
+$$
+P(Y_1 \geq 4 \mid X \geq 8) = \frac{12/36}{15/36} = \frac{12}{15} = \frac{4}{5}
+$$</p>
+<hr />
+<h2 id="2-variabel-acak-kontinu">2. Variabel Acak Kontinu</h2>
+<h3 id="definisi_2">Definisi:</h3>
+<p>Variabel acak kontinu <span class="arithmatex">\(X\)</span> memiliki <strong>Fungsi Densitas Probabilitas (PDF)</strong> <span class="arithmatex">\(f(x)\)</span> yang memenuhi:</p>
+<ul>
+<li><span class="arithmatex">\(f(x) \geq 0\)</span></li>
+<li><span class="arithmatex">\(\int_{-\infty}^{\infty} f(x) dx = 1\)</span></li>
+<li>Untuk setiap interval <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(P(X \in A) = \int_A f(x) dx\)</span></li>
+</ul>
+<h3 id="hubungan-pdf-dan-cdf">Hubungan PDF dan CDF:</h3>
+<p>Fungsi distribusi kumulatif (CDF):
+$$
+F(x) = P(X \leq x) = \int_{-\infty}^{x} f(y) dy
+$$</p>
+<p>Sebaliknya:
+$$
+f(x) = \frac{d}{dx} F(x)
+$$</p>
+<hr />
+<h3 id="interpretasi-intuitif">Interpretasi Intuitif:</h3>
+<p>Untuk <span class="arithmatex">\(\epsilon\)</span> sangat kecil:
+$$
+P(x - \tfrac{\epsilon}{2} \leq X \leq x + \tfrac{\epsilon}{2}) \approx f(x) \cdot \epsilon
+$$</p>
+<hr />
+<h2 id="3-distribusi-normal">3. Distribusi Normal</h2>
+<h3 id="notasi_2">Notasi:</h3>
+<div class="arithmatex">\[
+X \sim N(\mu, \sigma^2)
+\]</div>
+<h3 id="pdf">PDF:</h3>
+<div class="arithmatex">\[
+f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\]</div>
+<h3 id="rata-rata-dan-varians_2">Rata-Rata dan Varians:</h3>
+<div class="arithmatex">\[
+\mathbb{E}[X] = \mu,\quad \mathrm{Var}(X) = \sigma^2
+\]</div>
+<h3 id="sifat-penting">Sifat Penting:</h3>
+<ul>
+<li>Simetris di sekitar <span class="arithmatex">\(\mu\)</span></li>
+<li>Titik tertinggi PDF terjadi pada <span class="arithmatex">\(x = \mu\)</span></li>
+<li>~95% dari nilai berada dalam rentang <span class="arithmatex">\(\mu \pm 2\sigma\)</span></li>
+</ul>
+<hr />
+<h2 id="4-distribusi-log-normal">4. Distribusi Log-Normal</h2>
+<h3 id="definisi_3">Definisi:</h3>
+<p>Variabel acak <span class="arithmatex">\(X\)</span> mengikuti distribusi log-normal jika <span class="arithmatex">\(\ln(X)\)</span> berdistribusi normal:
+$$
+\ln(X) \sim N(\mu, \sigma^2)
+$$</p>
+<h3 id="pdf_1">PDF:</h3>
+<div class="arithmatex">\[
+f(x) = \frac{1}{x \sigma \sqrt{2\pi}} e^{-\frac{(\ln x - \mu)^2}{2\sigma^2}},\quad x &gt; 0
+\]</div>
+<h3 id="rata-rata-dan-varians_3">Rata-Rata dan Varians:</h3>
+<div class="arithmatex">\[
+\mathbb{E}[X] = e^{\mu + \frac{\sigma^2}{2}},\quad \mathrm{Var}(X) = \left(e^{\sigma^2} - 1\right)e^{2\mu + \sigma^2}
+\]</div>
+<h3 id="penggunaan">Penggunaan:</h3>
+<ul>
+<li>Digunakan untuk memodelkan harga aset (misalnya saham)</li>
+<li>Cocok karena tidak mungkin bernilai negatif</li>
+</ul>
+<hr />
+<h2 id="key-takeaways_1">🔑 Key Takeaways</h2>
+<table>
+<thead>
+<tr>
+<th>Konsep</th>
+<th>Rumus / Informasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teorema Bayes</td>
+<td><span class="arithmatex">\(P(A\|B) = \frac{P(B\|A)P(A)}{P(B)}\)</span></td>
+</tr>
+<tr>
+<td>Partisi Ruang Sampel</td>
+<td><span class="arithmatex">\(P(B) = \sum_j P(BA_j)P(A_j)\)</span></td>
+</tr>
+<tr>
+<td>PDF</td>
+<td><span class="arithmatex">\(f(x) \geq 0\)</span>, <span class="arithmatex">\(\int f(x) dx = 1\)</span></td>
+</tr>
+<tr>
+<td>Probabilitas Interval</td>
+<td><span class="arithmatex">\(P(a \leq X \leq b) = \int_a^b f(x) dx\)</span></td>
+</tr>
+<tr>
+<td>CDF</td>
+<td><span class="arithmatex">\(F(x) = \int_{-\infty}^x f(y) dy\)</span></td>
+</tr>
+<tr>
+<td>Distribusi Normal</td>
+<td><span class="arithmatex">\(X \sim N(\mu, \sigma^2)\)</span>, simetris, 95% dalam ±2σ</td>
+</tr>
+<tr>
+<td>Distribusi Log-Normal</td>
+<td><span class="arithmatex">\(\ln(X) \sim N(\mu, \sigma^2)\)</span>, digunakan untuk model harga</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="insight-tambahan_1">🧠 Insight Tambahan</h2>
+<ul>
+<li><strong>Bayes' Theorem</strong> berguna dalam <strong>risk assessment</strong>, <strong>credit scoring</strong>, dan <strong>market signal analysis</strong></li>
+<li><strong>Distribusi Normal</strong> banyak digunakan dalam <strong>Black-Scholes Model</strong>, meskipun memiliki keterbatasan (misalnya kurang menangkap ekor tebal / <em>fat tails</em>)</li>
+<li><strong>Distribusi Log-Normal</strong> lebih realistis untuk <strong>harga aset finansial</strong> karena sifatnya yang positif dan skewness alami</li>
+</ul>
+<p><em>Stochastic Processes, Brownian Motion, atau Geometric Brownian Motion</em></p>
+<h1 id="c-conditional-expectation-and-variance">C. Conditional Expectation and Variance</h1>
+<h2 id="1-identitas-harapan-bersyarat-conditional-expectation-identity">1. Identitas Harapan Bersyarat (Conditional Expectation Identity)</h2>
+<h3 id="rumus">Rumus:</h3>
+<div class="arithmatex">\[
+\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X|Y]]
+\]</div>
+<h3 id="interpretasi">Interpretasi:</h3>
+<p>Untuk menghitung nilai harapan dari <span class="arithmatex">\(X\)</span>, kita bisa terlebih dahulu menghitung nilai harapan bersyarat <span class="arithmatex">\(\mathbb{E}[X|Y]\)</span>, lalu mengambil rata-ratanya atas semua kemungkinan <span class="arithmatex">\(Y\)</span>.</p>
+<hr />
+<h2 id="2-identitas-varians-bersyarat-conditional-variance-identity">2. Identitas Varians Bersyarat (Conditional Variance Identity)</h2>
+<h3 id="rumus_1">Rumus:</h3>
+<div class="arithmatex">\[
+\mathrm{Var}(X) = \mathbb{E}[\mathrm{Var}(X|Y)] + \mathrm{Var}(\mathbb{E}[X|Y])
+\]</div>
+<h3 id="interpretasi_1">Interpretasi:</h3>
+<p>Varians total dari <span class="arithmatex">\(X\)</span> adalah jumlah dari:
+- Rata-rata varians lokal (<span class="arithmatex">\(\mathrm{Var}(X|Y)\)</span>)
+- Varians dari harapan bersyarat (<span class="arithmatex">\(\mathrm{Var}(\mathbb{E}[X|Y])\)</span>)</p>
+<hr />
+<h2 id="3-contoh-jumlah-acak-dari-variabel-acak-iid">3. Contoh: Jumlah Acak dari Variabel Acak IID</h2>
+<h3 id="definisi_4">Definisi:</h3>
+<p>Misalkan:
+- <span class="arithmatex">\(W = X_1 + X_2 + \cdots + X_N\)</span>
+- <span class="arithmatex">\(X_i \sim \text{i.i.d.}\)</span> dengan <span class="arithmatex">\(\mathbb{E}[X_i] = \mu_X\)</span>, <span class="arithmatex">\(\mathrm{Var}(X_i) = \sigma_X^2\)</span>
+- <span class="arithmatex">\(N\)</span> adalah variabel acak yang <strong>independen</strong> dari <span class="arithmatex">\(X_i\)</span></p>
+<h3 id="tujuan">Tujuan:</h3>
+<p>Hitung:
+- <span class="arithmatex">\(\mathbb{E}[W]\)</span>
+- <span class="arithmatex">\(\mathrm{Var}(W)\)</span></p>
+<hr />
+<h3 id="a-menghitung-nilai-harapan-mathbbew">a. Menghitung Nilai Harapan <span class="arithmatex">\(\mathbb{E}[W]\)</span></h3>
+<p>Gunakan identitas harapan bersyarat:
+$$
+\mathbb{E}[W] = \mathbb{E}[\mathbb{E}[W|N]]
+$$</p>
+<p>Diberikan <span class="arithmatex">\(N\)</span>, maka:
+$$
+\mathbb{E}[W|N] = \sum_{i=1}^{N} \mathbb{E}[X_i] = N \cdot \mu_X
+$$</p>
+<p>Jadi:
+$$
+\mathbb{E}[W] = \mathbb{E}[N \cdot \mu_X] = \mu_X \cdot \mathbb{E}[N]
+$$</p>
+<hr />
+<h3 id="b-menghitung-varians-mathrmvarw">b. Menghitung Varians <span class="arithmatex">\(\mathrm{Var}(W)\)</span></h3>
+<p>Gunakan identitas varians bersyarat:
+$$
+\mathrm{Var}(W) = \mathbb{E}[\mathrm{Var}(W|N)] + \mathrm{Var}(\mathbb{E}[W|N])
+$$</p>
+<h4 id="hitung-bagian-pertama">Hitung bagian pertama:</h4>
+<p>$$
+\mathrm{Var}(W|N) = \mathrm{Var}\left( \sum_{i=1}^{N} X_i \right) = N \cdot \sigma_X^2
+$$
+Karena <span class="arithmatex">\(X_i\)</span> i.i.d.</p>
+<p>Maka:
+$$
+\mathbb{E}[\mathrm{Var}(W|N)] = \mathbb{E}[N \cdot \sigma_X^2] = \sigma_X^2 \cdot \mathbb{E}[N]
+$$</p>
+<h4 id="hitung-bagian-kedua">Hitung bagian kedua:</h4>
+<div class="arithmatex">\[
+\mathrm{Var}(\mathbb{E}[W|N]) = \mathrm{Var}(N \cdot \mu_X) = \mu_X^2 \cdot \mathrm{Var}(N)
+\]</div>
+<h4 id="gabungkan">Gabungkan:</h4>
+<div class="arithmatex">\[
+\mathrm{Var}(W) = \sigma_X^2 \cdot \mathbb{E}[N] + \mu_X^2 \cdot \mathrm{Var}(N)
+\]</div>
+<hr />
+<h2 id="4-aplikasi-ayam-dan-telur-chickens-and-eggs">4. Aplikasi: Ayam dan Telur (Chickens and Eggs)</h2>
+<h3 id="model">Model:</h3>
+<ul>
+<li>Seekor ayam bertelur sebanyak <span class="arithmatex">\(N \sim \text{Poisson}(\lambda)\)</span></li>
+<li>Setiap telur menetas menjadi ayam dengan probabilitas <span class="arithmatex">\(p\)</span> secara independen</li>
+<li>Misal <span class="arithmatex">\(K\)</span>: jumlah ayam yang menetas</li>
+</ul>
+<h3 id="gunakan-fungsi-indikator">Gunakan Fungsi Indikator:</h3>
+<p>$$
+K = \sum_{i=1}^{N} \mathbf{1}_{H_i}
+$$
+di mana:
+- <span class="arithmatex">\(H_i\)</span>: kejadian telur ke-<span class="arithmatex">\(i\)</span> menetas
+- <span class="arithmatex">\(\mathbf{1}_{H_i} = 1\)</span> jika menetas, <span class="arithmatex">\(0\)</span> jika tidak</p>
+<h3 id="a-hitung-mathbbekn">a. Hitung <span class="arithmatex">\(\mathbb{E}[K|N]\)</span></h3>
+<div class="arithmatex">\[
+\mathbb{E}[K|N] = \sum_{i=1}^{N} \mathbb{E}[\mathbf{1}_{H_i}] = N \cdot p
+\]</div>
+<h3 id="b-hitung-mathbbek">b. Hitung <span class="arithmatex">\(\mathbb{E}[K]\)</span></h3>
+<p>Gunakan identitas harapan bersyarat:
+$$
+\mathbb{E}[K] = \mathbb{E}[\mathbb{E}[K|N]] = \mathbb{E}[N \cdot p] = p \cdot \mathbb{E}[N]
+$$</p>
+<p>Karena <span class="arithmatex">\(N \sim \text{Poisson}(\lambda)\)</span>, maka <span class="arithmatex">\(\mathbb{E}[N] = \lambda\)</span>, sehingga:
+$$
+\mathbb{E}[K] = p \cdot \lambda
+$$</p>
+<hr />
+<h2 id="key-takeaways_2">🔑 Key Takeaways</h2>
+<table>
+<thead>
+<tr>
+<th>Konsep</th>
+<th>Rumus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Harapan Bersyarat</td>
+<td><span class="arithmatex">\(\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[XY]]\)</span></td>
+</tr>
+<tr>
+<td>Varians Bersyarat</td>
+<td><span class="arithmatex">\(\mathrm{Var}(X) = \mathbb{E}[\mathrm{Var}(XY)] + \mathrm{Var}(\mathbb{E}[XY])\)</span></td>
+</tr>
+<tr>
+<td>Harapan dari jumlah acak</td>
+<td><span class="arithmatex">\(\mathbb{E}[W] = \mu_X \cdot \mathbb{E}[N]\)</span></td>
+</tr>
+<tr>
+<td>Varians dari jumlah acak</td>
+<td><span class="arithmatex">\(\mathrm{Var}(W) = \sigma_X^2 \cdot \mathbb{E}[N] + \mu_X^2 \cdot \mathrm{Var}(N)\)</span></td>
+</tr>
+<tr>
+<td>Harapan jumlah ayam</td>
+<td><span class="arithmatex">\(\mathbb{E}[K] = p \cdot \lambda\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ringkasan">✅ Ringkasan</h2>
+<table>
+<thead>
+<tr>
+<th>Topik</th>
+<th>Informasi Utama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conditional Expectation</td>
+<td>Memungkinkan menghitung nilai harapan secara bertahap</td>
+</tr>
+<tr>
+<td>Conditional Variance</td>
+<td>Menguraikan varians menjadi komponen lokal dan global</td>
+</tr>
+<tr>
+<td>Random Sum</td>
+<td>Digunakan untuk model agregasi risiko atau hasil acak</td>
+</tr>
+<tr>
+<td>Fungsi Indikator</td>
+<td>Berguna untuk representasi event biner (terjadi/tidak)</td>
+</tr>
+<tr>
+<td>Aplikasi Finansial</td>
+<td>Risk modeling, credit risk, Monte Carlo simulation</td>
+</tr>
+</tbody>
+</table>
+<p>![[screencapture-coursera-org-learn-financial-engineering-intro-assignment-submission-ptjoy-prerequisite-qualification-1-probability-i-view-feedback-2025-06-24-10_01_45.pdf]]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "content.code.copy", "content.action.edit", "palette.toggle"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

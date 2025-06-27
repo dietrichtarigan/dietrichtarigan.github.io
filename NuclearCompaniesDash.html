@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Global Nuclear Industry: An Interactive Dashboard</title>
+    <!-- Chosen Palette: Calm Harmony - A base of warm neutrals (amber-50, slate-700) with complementary accents of teal, sky blue, and a subtle orange for highlights. -->
+    <!-- Application Structure Plan: The SPA is designed around an interactive, non-linear exploration model instead of a linear report format. The core is an interactive diagram of the Nuclear Fuel Cycle, allowing users to dive into specific stages. This is complemented by dedicated sections for Power Generation technologies and a filterable Company Explorer. This task-oriented structure (explore a process, compare technologies, find a company) was chosen for usability, enabling users to access complex, interrelated information from multiple entry points without being overwhelmed by the report's density. A sticky navigation bar ensures easy movement between these high-level thematic sections. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Uranium Production by Company (Table 2.1). Goal: Compare market share. Viz: Doughnut Chart (Chart.js). Interaction: Hover for details. Justification: Instantly shows market concentration and leaders.
+        - Report Info: Top Nuclear Operators by Capacity (Table 3.2). Goal: Rank and compare. Viz: Horizontal Bar Chart (Chart.js). Interaction: Hover for exact MW. Justification: Clearly displays ranking and scale differences.
+        - Report Info: Nuclear Fuel Cycle Process. Goal: Organize and Inform. Viz: Interactive Diagram (HTML/CSS/JS). Interaction: Click on a stage to display detailed text, charts, and company lists in a separate panel. Justification: Transforms a linear process into an explorable map, connecting process stages with the companies and data relevant to them.
+        - Report Info: Reactor Technologies. Goal: Organize and Compare. Viz: Tabbed content with info cards (HTML/CSS/JS). Interaction: Click tabs for Gen III+, SMRs, Gen IV. Justification: Segments complex technical info into manageable categories.
+        - Report Info: List of all companies. Goal: Organize and Inform. Viz: Searchable/Filterable List (HTML/JS). Interaction: Text search and category filtering. Justification: Provides a direct lookup tool for users interested in specific corporate players.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefce8; /* amber-50 */
+            color: #334155; /* slate-700 */
+        }
+        .nav-link {
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #0d9488; /* teal-600 */
+            border-bottom-color: #0d9488;
+        }
+        .cycle-stage {
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .cycle-stage:hover, .cycle-stage.active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #0ea5e9; /* sky-500 */
+        }
+        .company-card, .tech-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .company-card:hover, .tech-card:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .hidden-section {
+            display: none;
+        }
+        .tab-button.active {
+            background-color: #0d9488; /* teal-600 */
+            color: white;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-teal-700">Nuclear Industry Dashboard</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#overview" class="nav-link px-3 py-2 text-sm font-medium border-b-2 border-transparent">Overview</a>
+                        <a href="#fuel-cycle" class="nav-link px-3 py-2 text-sm font-medium border-b-2 border-transparent">Fuel Cycle</a>
+                        <a href="#power-generation" class="nav-link px-3 py-2 text-sm font-medium border-b-2 border-transparent">Power Generation</a>
+                        <a href="#companies" class="nav-link px-3 py-2 text-sm font-medium border-b-2 border-transparent">Company Explorer</a>
+                        <a href="#analysis" class="nav-link px-3 py-2 text-sm font-medium border-b-2 border-transparent">Strategic Analysis</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <section id="overview" class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">A Resurgence in Nuclear Energy</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mb-6">
+                The global nuclear industry is undergoing a profound transformation. Driven by the critical needs for decarbonization and enhanced energy security, nuclear power is experiencing a renaissance. This dashboard provides an interactive guide to the complex ecosystem of companies, technologies, and processes that define this vital sector.
+            </p>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="text-2xl font-semibold text-slate-800 mb-4">The Two Lifecycles of Nuclear Power</h3>
+                <p class="text-slate-600 mb-6">To understand the industry, we must look at two interconnected lifecycles. The **Nuclear Fuel Cycle** covers everything from mining uranium to managing waste. The **Power Plant Lifecycle** spans from a plant's design and construction to its final decommissioning. A company's role in the industry is defined by where it operates within these value chains.</p>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-1 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                        <h4 class="font-bold text-lg text-amber-800 mb-2">☢️ Nuclear Fuel Cycle</h4>
+                        <p class="text-sm text-amber-700">The journey of nuclear fuel. It starts with mining raw uranium and ends with the long-term management of used fuel and waste. This cycle is divided into a "Front End" (fuel creation) and a "Back End" (waste management).</p>
+                    </div>
+                    <div class="flex-1 p-4 bg-sky-50 rounded-lg border border-sky-200">
+                        <h4 class="font-bold text-lg text-sky-800 mb-2">🏭 Power Plant Lifecycle</h4>
+                        <p class="text-sm text-sky-700">The life of a nuclear power plant. It begins with selecting a site and designing the facility, moves through decades of operation, and concludes with the careful process of decommissioning and site remediation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="fuel-cycle" class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Interactive Nuclear Fuel Cycle</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mb-8">
+                This section allows you to explore the entire nuclear fuel cycle. Click on any stage in the diagram below to see a detailed explanation, key market data, and the leading companies involved in that specific segment. This interactive tool helps connect the processes with the corporate players that drive the industry.
+            </p>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <div id="fuel-cycle-diagram" class="space-y-4">
+                        <div>
+                            <p class="text-center font-semibold text-teal-700 mb-2">FRONT END: Creating Fuel</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div id="stage-mining" class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                                    <span class="text-3xl">⛏️</span>
+                                    <p class="font-semibold mt-2">Uranium Mining & Milling</p>
+                                </div>
+                                <div id="stage-conversion" class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                                    <span class="text-3xl">⚗️</span>
+                                    <p class="font-semibold mt-2">Conversion</p>
+                                </div>
+                                <div id="stage-enrichment" class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                                    <span class="text-3xl">🌀</span>
+                                    <p class="font-semibold mt-2">Enrichment</p>
+                                </div>
+                                <div id="stage-fabrication" class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                                    <span class="text-3xl">🛠️</span>
+                                    <p class="font-semibold mt-2">Fuel Fabrication</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center text-2xl text-slate-400">↓</div>
+                        <div class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                            <span class="text-3xl">⚡</span>
+                            <p class="font-semibold mt-2">Power Generation (Reactor)</p>
+                        </div>
+                        <div class="text-center text-2xl text-slate-400">↓</div>
+                         <div>
+                            <p class="text-center font-semibold text-rose-700 mb-2">BACK END: Managing Waste</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                 <div id="stage-management" class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                                    <span class="text-3xl">📦</span>
+                                    <p class="font-semibold mt-2">Spent Fuel Management</p>
+                                </div>
+                                 <div id="stage-decommissioning" class="cycle-stage bg-white p-4 rounded-lg border-2 border-slate-200 text-center">
+                                    <span class="text-3xl">🏗️</span>
+                                    <p class="font-semibold mt-2">Decommissioning & Disposal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                    <div id="fuel-cycle-details">
+                        <h3 class="text-2xl font-semibold text-slate-800">Select a Stage</h3>
+                        <p class="text-slate-600 mt-4">Click on a stage in the diagram to the left to learn more about the process, see market leaders, and understand its role in the nuclear industry.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="power-generation" class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Power Generation: Reactors & Operators</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mb-8">
+                At the heart of the industry are the nuclear reactors that generate electricity and the companies that operate them. This section explores the key reactor technologies, from today's workhorses to the innovative designs of tomorrow, and highlights the largest nuclear power plant operators in the world.
+            </p>
+            
+            <div class="mb-12 bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="text-2xl font-semibold text-slate-800 mb-4">Reactor Technology Showcase</h3>
+                <div class="mb-4 border-b border-slate-200">
+                    <nav class="-mb-px flex space-x-4" aria-label="Tabs">
+                        <button class="tab-button whitespace-nowrap py-3 px-4 border-b-2 border-transparent font-medium text-sm rounded-t-md" data-tab="gen3">Gen III/III+</button>
+                        <button class="tab-button whitespace-nowrap py-3 px-4 border-b-2 border-transparent font-medium text-sm rounded-t-md" data-tab="smr">Small Modular Reactors (SMRs)</button>
+                        <button class="tab-button whitespace-nowrap py-3 px-4 border-b-2 border-transparent font-medium text-sm rounded-t-md" data-tab="gen4">Generation IV</button>
+                    </nav>
+                </div>
+                <div id="reactor-content">
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                 <h3 class="text-2xl font-semibold text-slate-800 mb-4">Top 10 Global Nuclear Operators by Capacity</h3>
+                 <p class="text-slate-600 mb-6">These are the titans of the nuclear generation world. This chart shows the companies with the largest fleets of active nuclear reactors, measured by their total electricity generating capacity (in Megawatts). State-owned enterprises from France, Russia, South Korea, and China dominate the top ranks.</p>
+                 <div class="chart-container h-96 md:h-[500px] max-h-[60vh]">
+                    <canvas id="operatorsChart"></canvas>
+                 </div>
+            </div>
+        </section>
+        
+        <section id="companies" class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Company Explorer</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mb-8">
+                Discover the key corporate players shaping the global nuclear industry. Use the search bar to find a specific company or use the filters to see which companies are active in different parts of the fuel cycle or in reactor development. This tool helps you map the corporate landscape of the nuclear sector.
+            </p>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <div class="flex flex-col md:flex-row gap-4 mb-6">
+                    <input type="text" id="company-search" placeholder="Search for a company..." class="w-full md:w-1/2 p-2 border border-slate-300 rounded-md">
+                    <select id="company-filter" class="w-full md:w-1/2 p-2 border border-slate-300 rounded-md bg-white">
+                        <option value="all">Filter by Sector</option>
+                        <option value="mining">Uranium Mining</option>
+                        <option value="conversion">Conversion</option>
+                        <option value="enrichment">Enrichment</option>
+                        <option value="fabrication">Fuel Fabrication</option>
+                        <option value="reactor">Reactor Technology</option>
+                        <option value="operator">Power Plant Operator</option>
+                        <option value="epc">EPC & Services</option>
+                        <option value="backend">Back End & Waste</option>
+                    </select>
+                </div>
+                <div id="company-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="mb-16">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Strategic Analysis & Outlook</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mb-8">
+                The global nuclear industry is at a critical inflection point, shaped by powerful strategic forces. This section summarizes the key trends redefining corporate structures, supply chains, and technological pathways, from geopolitical shifts to the disruptive potential of new reactor designs.
+            </p>
+             <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-3">Vertical Integration vs. Specialization</h3>
+                    <p class="text-slate-600">A key strategic battle is underway. State-owned giants like Russia's Rosatom are "vertically integrated," controlling every step from mine to reactor. This allows them to offer all-in-one deals. In response, Western companies are consolidating, like Cameco (mining) buying a stake in Westinghouse (reactors), to create a competing integrated champion. At the same time, highly specialized companies like Urenco (enrichment) or Holtec (waste storage) prove that being the best in a critical niche remains a powerful business model.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-3">Geopolitical Realignment of Supply Chains</h3>
+                    <p class="text-slate-600">Geopolitics is dramatically reshaping the industry. Historic reliance on low-cost Russian nuclear fuel services is now seen as a major strategic risk. This has triggered a massive push by Western nations to "friend-shore" and build their own independent fuel supply chains. Companies like Urenco and Orano are expanding enrichment capacity in Europe and the U.S. to reduce this dependency and ensure energy security.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-3">The Disruptive Force of Advanced Technology</h3>
+                    <p class="text-slate-600">Innovation is unlocking new markets. Small Modular Reactors (SMRs) are changing who buys nuclear power. Instead of just giant utilities, SMR developers like X-Energy and TerraPower are targeting industrial customers (Dow) and tech giants (Amazon, Microsoft) who need 24/7 clean power for factories and data centers. This entire future market depends on a new type of fuel: HALEU. The companies that can produce HALEU and perfect these new reactor designs will define the next era of nuclear energy.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const data = {
+        companies: [
+            { name: "Kazatomprom", country: "Kazakhstan", sectors: ["mining"], desc: "The world's largest producer of natural uranium." },
+            { name: "Cameco", country: "Canada", sectors: ["mining", "conversion", "enrichment"], desc: "A leading supplier of uranium, conversion services, and now a major shareholder in Westinghouse." },
+            { name: "Orano", country: "France", sectors: ["mining", "conversion", "enrichment", "fabrication", "backend"], desc: "French state-owned giant with activities across the entire fuel cycle, and a world leader in reprocessing." },
+            { name: "CGN", country: "China", sectors: ["mining", "reactor", "operator"], desc: "China General Nuclear, a major state-owned enterprise for reactor construction and operation." },
+            { name: "Uranium One", country: "Russia/Canada", sectors: ["mining"], desc: "The international mining arm of Rosatom." },
+            { name: "CNNC", country: "China", sectors: ["mining", "conversion", "enrichment", "fabrication", "reactor", "operator"], desc: "China National Nuclear Corporation, a massive, vertically integrated state-owned enterprise." },
+            { name: "BHP", country: "Australia", sectors: ["mining"], desc: "Diversified mining giant, a significant uranium producer from its Olympic Dam mine." },
+            { name: "Rosatom", country: "Russia", sectors: ["mining", "conversion", "enrichment", "fabrication", "reactor", "operator", "backend"], desc: "Russia's state atomic energy corporation, a fully integrated global leader across all sectors." },
+            { name: "ConverDyn", country: "USA", sectors: ["conversion"], desc: "A General Atomics/Honeywell JV, operates the only conversion facility in the U.S." },
+            { name: "Urenco", country: "UK/NL/DE", sectors: ["enrichment"], desc: "A European consortium and a global leader in enrichment, operating the only commercial enrichment plant in the U.S." },
+            { name: "TENEX", country: "Russia", sectors: ["enrichment"], desc: "Rosatom's subsidiary and the world's leading exporter of enrichment services." },
+            { name: "Centrus Energy", country: "USA", sectors: ["enrichment"], desc: "Strategically vital U.S. company, pioneering the production of HALEU fuel for advanced reactors." },
+            { name: "Global Laser Enrichment", country: "USA/Australia", sectors: ["enrichment"], desc: "Developing next-generation laser enrichment technology." },
+            { name: "Westinghouse", country: "USA/Canada", sectors: ["fabrication", "reactor", "backend"], desc: "A historic leader in reactor design (AP1000) and fuel fabrication, now partnered with Cameco." },
+            { name: "Framatome", country: "France", sectors: ["fabrication", "reactor"], desc: "Major fuel manufacturer and designer of the EPR reactor, primarily serving EDF." },
+            { name: "TVEL", country: "Russia", sectors: ["fabrication"], desc: "Rosatom's fuel company, dominating the market for Russian-designed reactors." },
+            { name: "Global Nuclear Fuel (GNF)", country: "USA/Japan", sectors: ["fabrication"], desc: "A GE-Hitachi venture, a world-leading supplier of BWR fuel." },
+            { name: "KEPCO Nuclear Fuel (KNF)", country: "South Korea", sectors: ["fabrication"], desc: "Sole fuel fabricator for South Korea's large nuclear fleet and the Barakah plant in the UAE." },
+            { name: "EDF", country: "France", sectors: ["operator", "reactor"], desc: "Électricité de France, the world's largest operator of nuclear power plants." },
+            { name: "KEPCO / KHNP", country: "South Korea", sectors: ["operator", "reactor"], desc: "Korea's state utility, a top global operator and developer of the APR1400 reactor." },
+            { name: "Constellation Energy", country: "USA", sectors: ["operator"], desc: "The largest nuclear operator in the United States." },
+            { name: "GE Hitachi (GEH)", country: "USA/Japan", sectors: ["reactor", "fabrication"], desc: "Leader in BWR technology, developing the BWRX-300 SMR." },
+            { name: "NuScale Power", country: "USA", sectors: ["reactor"], desc: "Pioneer in SMRs, with the first design approved by the U.S. NRC." },
+            { name: "Holtec International", country: "USA", sectors: ["reactor", "backend"], desc: "Dominant in used fuel storage, now a major decommissioning player and SMR developer." },
+            { name: "X-Energy", country: "USA", sectors: ["reactor"], desc: "Developer of the Xe-100 high-temperature gas-cooled SMR for industrial heat and power." },
+            { name: "TerraPower", country: "USA", sectors: ["reactor"], desc: "Founded by Bill Gates, developing the Natrium sodium fast reactor (a Gen IV design)." },
+            { name: "Rolls-Royce SMR", country: "UK", sectors: ["reactor"], desc: "Developing a 470 MWe PWR design for the UK market." },
+            { name: "Bechtel", country: "USA", sectors: ["epc", "backend"], desc: "A world-leading EPC firm with extensive history in nuclear plant construction." },
+            { name: "Fluor Corporation", country: "USA", sectors: ["epc", "backend"], desc: "Major EPC contractor with a strong focus on nuclear services and government cleanup projects." },
+            { name: "EnergySolutions", country: "USA", sectors: ["backend"], desc: "A premier company focused on decommissioning and low-level waste disposal." },
+            { name: "Posiva Oy", country: "Finland", sectors: ["backend"], desc: "A world pioneer, building ONKALO, the first deep geological repository for spent fuel." },
+            { name: "SKB", country: "Sweden", sectors: ["backend"], desc: "The Swedish counterpart to Posiva, developing a near-identical repository." },
+        ],
+        fuelCycleStages: {
+            mining: {
+                title: "⛏️ Uranium Mining & Milling",
+                description: "The fuel cycle begins with mining uranium ore, either from open pits, underground mines, or through in-situ recovery (ISR). The ore is then milled and processed into uranium oxide concentrate (U3O8), a powder known as 'yellowcake'. This market is highly concentrated, with a few countries and state-owned companies dominating global production.",
+                chartType: 'doughnut',
+                chartData: {
+                    labels: ['Kazatomprom', 'Cameco', 'Orano', 'CGN', 'Uranium One', 'CNNC', 'Other'],
+                    datasets: [{
+                        label: 'World Uranium Production (2022)',
+                        data: [23, 12, 11, 10, 9, 7, 28],
+                        backgroundColor: ['#f59e0b', '#10b981', '#0ea5e9', '#ef4444', '#8b5cf6', '#ec4899', '#64748b'],
+                    }]
+                },
+                companies: ["Kazatomprom", "Cameco", "Orano", "CGN", "Uranium One", "CNNC", "BHP"]
+            },
+            conversion: {
+                title: "⚗️ Conversion",
+                description: "In this critical chemical processing step, the stable 'yellowcake' powder is converted into uranium hexafluoride (UF6) gas. This is the form necessary for most enrichment processes. The Western world has very few conversion facilities, making this a strategic bottleneck in the fuel supply chain.",
+                companies: ["Orano", "Rosatom", "Cameco", "ConverDyn", "CNNC"]
+            },
+            enrichment: {
+                title: "🌀 Enrichment",
+                description: "Natural uranium contains only 0.7% of the fissile U-235 isotope. Enrichment is a high-tech process that increases this concentration to between 3% and 5% for use in most reactors. The market is an oligopoly controlled by a few state-backed entities. A key emerging area is the production of High-Assay, Low-Enriched Uranium (HALEU, up to 20% enriched) for advanced reactors.",
+                companies: ["Rosatom", "TENEX", "Urenco", "Orano", "CNNC", "Centrus Energy", "Global Laser Enrichment"]
+            },
+            fabrication: {
+                title: "🛠️ Fuel Fabrication",
+                description: "In the final step, enriched UF6 is converted back into uranium dioxide (UO2) powder, pressed into ceramic pellets, and sealed in long metal tubes (fuel rods). These rods are bundled into precise fuel assemblies, custom-engineered for specific reactor designs. This creates a strong link between reactor vendors and fuel suppliers.",
+                companies: ["Westinghouse", "Framatome", "TVEL", "Global Nuclear Fuel (GNF)", "KEPCO Nuclear Fuel (KNF)", "CNNC"]
+            },
+            management: {
+                title: "📦 Spent Fuel Management",
+                description: "After use in a reactor, spent fuel is highly radioactive and must be carefully managed. In an 'open' cycle, it's stored securely for eventual permanent disposal. In a 'closed' cycle, it's sent to a reprocessing facility where reusable uranium and plutonium are extracted to make new fuel (like MOX fuel).",
+                companies: ["Orano", "Holtec International", "Rosatom", "Westinghouse", "Bechtel", "Fluor"]
+            },
+            decommissioning: {
+                title: "🏗️ Decommissioning & Disposal",
+                description: "This is the final stage of a power plant's life. It involves safely dismantling the facility and cleaning the site for other uses—a complex, multi-decade project. The ultimate goal is the permanent disposal of high-level waste deep underground in geological repositories, a solution pioneered by Finland and Sweden.",
+                companies: ["EnergySolutions", "Holtec International", "Posiva Oy", "SKB", "Bechtel", "Fluor"]
+            }
+        },
+        reactorTabs: {
+            gen3: {
+                title: "Generation III/III+ Reactors",
+                description: "These are the current-generation, large-scale workhorses of the nuclear industry. Gen III+ designs feature major improvements in safety (including passive systems that rely on natural forces like gravity) and economic performance over older reactors. They form the basis of new nuclear build projects around the world.",
+                items: [
+                    { name: "AP1000", developer: "Westinghouse", type: "PWR", size: "1250 MWe", status: "Operating in USA & China. Chosen for Poland." },
+                    { name: "EPR", developer: "Framatome / EDF", type: "PWR", size: "1750 MWe", status: "Operating in Finland & China. Under construction in UK & France." },
+                    { name: "VVER-1200", developer: "Rosatom", type: "PWR", size: "1200 MWe", status: "Russia's flagship export model. Operating and under construction globally." },
+                    { name: "APR1400", developer: "KEPCO / KHNP", type: "PWR", size: "1450 MWe", status: "Major export success, with 4 units operating in the UAE." },
+                    { name: "Hualong One", developer: "CNNC & CGN", type: "PWR", size: "1170 MWe", status: "China's standardized design for domestic build-out and export." },
+                    { name: "ESBWR", developer: "GE Hitachi", type: "BWR", size: "1600 MWe", status: "Advanced Boiling Water Reactor with passive safety features." },
+                ]
+            },
+            smr: {
+                title: "Small Modular Reactors (SMRs)",
+                description: "SMRs represent a paradigm shift. Typically under 300 MWe, they are designed for factory production to reduce costs and construction times. Their smaller size and advanced safety features open up new markets, such as powering industrial sites, remote communities, and large data centers.",
+                items: [
+                    { name: "VOYGR (NuScale)", developer: "NuScale Power", type: "PWR", size: "77 MWe per module", status: "First SMR design approved by U.S. NRC." },
+                    { name: "BWRX-300", developer: "GE Hitachi", type: "BWR", size: "300 MWe", status: "Leading contender for deployment in Canada, Poland, and UK." },
+                    { name: "SMR-300", developer: "Holtec International", type: "PWR", size: "300 MWe", status: "Planned for deployment at sites of decommissioned plants." },
+                    { name: "Xe-100", developer: "X-Energy", type: "HTGR", size: "80 MWe per module", status: "High-temp design for industrial heat; backed by Dow & Amazon." },
+                    { name: "Natrium", developer: "TerraPower", type: "SFR (Gen IV)", size: "345 MWe", status: "Fast reactor with molten salt storage for flexible power output." },
+                    { name: "Rolls-Royce SMR", developer: "Rolls-Royce", type: "PWR", size: "470 MWe", status: "A larger SMR designed to be a cornerstone of the UK's grid." },
+                ]
+            },
+            gen4: {
+                title: "Generation IV Reactors",
+                description: "Gen IV designs are the future, aiming for transformative gains in sustainability, safety, and efficiency. Many are 'fast' reactors designed to 'close' the fuel cycle by using nuclear waste from current reactors as their fuel. This could dramatically reduce the volume and long-term hazard of nuclear waste.",
+                items: [
+                    { name: "Sodium-Cooled Fast Reactor (SFR)", developer: "e.g., TerraPower, Rosatom", type: "Fast Reactor", status: "Natrium (US) demo under development; BN-series (Russia) operating." },
+                    { name: "Very-High-Temp. Reactor (VHTR)", developer: "e.g., X-Energy, Tsinghua Univ.", type: "Thermal Reactor", status: "World's first Gen IV (HTR-PM) now on grid in China." },
+                    { name: "Molten Salt Reactor (MSR)", developer: "e.g., Terrestrial Energy, Kairos Power", type: "Fast or Thermal", status: "Multiple designs under development, promising enhanced safety." },
+                    { name: "Lead-Cooled Fast Reactor (LFR)", developer: "e.g., Newcleo, Rosatom", type: "Fast Reactor", status: "Seen as promising for its safety and compact size." },
+                    { name: "Gas-Cooled Fast Reactor (GFR)", developer: "Various", type: "Fast Reactor", status: "Conceptual stage, offers high efficiency." },
+                    { name: "Supercritical-Water-Cooled (SCWR)", developer: "Various", type: "Fast or Thermal", status: "Conceptual, builds on existing water-cooled reactor tech." },
+                ]
+            }
+        }
+    };
+
+    let currentChart = null;
+    const detailsContainer = document.getElementById('fuel-cycle-details');
+
+    function displayFuelCycleStage(stageKey) {
+        const stageData = data.fuelCycleStages[stageKey];
+        if (!stageData) return;
+
+        let companiesHtml = '<p class="font-semibold text-slate-700 mt-6 mb-2">Key Companies:</p><div class="flex flex-wrap gap-2">';
+        stageData.companies.forEach(compName => {
+            companiesHtml += `<span class="bg-slate-100 text-slate-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${compName}</span>`;
+        });
+        companiesHtml += '</div>';
+        
+        let chartHtml = '';
+        if(stageData.chartData) {
+            chartHtml = `<div class="chart-container mt-4"><canvas id="stageChart"></canvas></div>`;
+        }
+
+        detailsContainer.innerHTML = `
+            <h3 class="text-2xl font-bold text-teal-700">${stageData.title}</h3>
+            <p class="text-slate-600 mt-2">${stageData.description}</p>
+            ${chartHtml}
+            ${companiesHtml}
+        `;
+
+        if (currentChart) {
+            currentChart.destroy();
+        }
+
+        if (stageData.chartData) {
+            const ctx = document.getElementById('stageChart').getContext('2d');
+            currentChart = new Chart(ctx, {
+                type: stageData.chartType,
+                data: stageData.chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    document.querySelectorAll('.cycle-stage').forEach(el => {
+        el.addEventListener('click', () => {
+            document.querySelectorAll('.cycle-stage').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
+            const stageKey = el.id.replace('stage-', '');
+            displayFuelCycleStage(stageKey);
+        });
+    });
+
+    const operatorsCtx = document.getElementById('operatorsChart').getContext('2d');
+    new Chart(operatorsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['EDF', 'Rosatom', 'KEPCO', 'Constellation', 'CGN', 'CNNC', 'OPG', 'Duke Energy', 'TVA', 'Energoatom'],
+            datasets: [{
+                label: 'Active Capacity (MW)',
+                data: [62821, 28511, 24210, 21788, 18170, 14370, 11364, 10798, 7100, 5100],
+                backgroundColor: '#14b8a6', // teal-500
+                borderColor: '#0f766e', // teal-700
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ` ${context.raw.toLocaleString()} MW`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                         callback: function(value, index, ticks) {
+                            return value / 1000 + 'k';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const companyList = document.getElementById('company-list');
+    const companySearch = document.getElementById('company-search');
+    const companyFilter = document.getElementById('company-filter');
+
+    function renderCompanies(filteredCompanies) {
+        companyList.innerHTML = '';
+        if (filteredCompanies.length === 0) {
+            companyList.innerHTML = `<p class="text-slate-500 col-span-full text-center">No companies found.</p>`;
+            return;
+        }
+        filteredCompanies.forEach(company => {
+            const card = document.createElement('div');
+            card.className = 'company-card bg-amber-50 p-4 rounded-lg border border-amber-200';
+            let sectorsHtml = company.sectors.map(s => `<span class="bg-white text-teal-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">${s.toUpperCase()}</span>`).join('');
+            card.innerHTML = `
+                <h4 class="font-bold text-lg text-slate-800">${company.name}</h4>
+                <p class="text-sm font-medium text-slate-500 mb-2">${company.country}</p>
+                <p class="text-sm text-slate-600 mb-3">${company.desc}</p>
+                <div class="flex flex-wrap gap-y-2">${sectorsHtml}</div>
+            `;
+            companyList.appendChild(card);
+        });
+    }
+
+    function filterAndRenderCompanies() {
+        const searchTerm = companySearch.value.toLowerCase();
+        const filterTerm = companyFilter.value;
+        const filtered = data.companies.filter(company => {
+            const matchesSearch = company.name.toLowerCase().includes(searchTerm) || company.desc.toLowerCase().includes(searchTerm);
+            const matchesFilter = filterTerm === 'all' || company.sectors.includes(filterTerm);
+            return matchesSearch && matchesFilter;
+        });
+        renderCompanies(filtered);
+    }
+    
+    companySearch.addEventListener('input', filterAndRenderCompanies);
+    companyFilter.addEventListener('change', filterAndRenderCompanies);
+    
+    const reactorContent = document.getElementById('reactor-content');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    
+    function displayReactorTab(tabKey) {
+        const tabData = data.reactorTabs[tabKey];
+        if (!tabData) return;
+
+        let itemsHtml = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
+        tabData.items.forEach(item => {
+            itemsHtml += `
+            <div class="tech-card bg-sky-50 p-4 rounded-lg border border-sky-200">
+                <h4 class="font-bold text-lg text-slate-800">${item.name}</h4>
+                <p class="text-sm font-medium text-slate-600 mb-2">${item.developer}</p>
+                <div class="text-xs space-y-1">
+                    <p><span class="font-semibold">Type:</span> ${item.type}</p>
+                    <p><span class="font-semibold">Size:</span> ${item.size}</p>
+                    <p><span class="font-semibold">Status:</span> ${item.status}</p>
+                </div>
+            </div>
+            `;
+        });
+        itemsHtml += '</div>';
+
+        reactorContent.innerHTML = `
+            <h4 class="text-xl font-semibold text-slate-800 mb-2">${tabData.title}</h4>
+            <p class="text-slate-600 mb-6 max-w-3xl">${tabData.description}</p>
+            ${itemsHtml}
+        `;
+    }
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            displayReactorTab(button.dataset.tab);
+        });
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 80) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    renderCompanies(data.companies);
+    document.querySelector('.tab-button[data-tab="gen3"]').click();
+    document.querySelector('.cycle-stage').click();
+    document.querySelector('.nav-link[href="#overview"]').classList.add('active');
+});
+</script>
+
+</body>
+</html>
