@@ -1,0 +1,2263 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dietrichtarigan.github.io/plan3/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Detailed Implementation Plan for SimuLearn - Catatan Kuliah Dietrich</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#detailed-implementation-plan-for-simulearn" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Catatan Kuliah Dietrich" class="md-header__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Catatan Kuliah Dietrich
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Detailed Implementation Plan for SimuLearn
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Catatan Kuliah Dietrich" class="md-nav__button md-logo" aria-label="Catatan Kuliah Dietrich" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Catatan Kuliah Dietrich
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Beranda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Financial Engineering and Risk Management Specialization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Financial Engineering and Risk Management Specialization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Course1_Introduction to Financial Engineering and Risk Management
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Course1_Introduction to Financial Engineering and Risk Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finance/course1/module2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Module 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finance/course1/Introduction%20to%20Probability%20Part%20I/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to Probability Part I
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    I. Lomba Nuklirr
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            I. Lomba Nuklirr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../random/diskusi_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dsikusi Pertama
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../random/NuclearCompaniesDash.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dashboard Nuklir
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../random/Dennis%20Whyte_Nuclear%20Fusion%20and%20the%20Future%20of%20Energy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dennis Whyte_Nuclear Fusion and the Future of Energy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mechanics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Mechanics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    I. The Equations of Motion
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            I. The Equations of Motion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian1/01-generalised-coordinates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §1. Generalised coordinates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian1/02-least-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §2. Principle of least action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian1/03-galilean-relativity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §3. Galilean relativity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian1/04-free-particle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §4. Lagrangian for free particle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian1/05-system-of-particles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §5. Lagrangian for system of particles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian1/problems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Problems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    II. Conservation Laws
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            II. Conservation Laws
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian2/06-energy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §6. Energy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian2/07-momentum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §7. Momentum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian2/08-centre-of-mass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §8. Centre of mass
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian2/09-angular-momentum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §9. Angular momentum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian2/10-mechanical-similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §10. Mechanical similarity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    III. Integration of the Equations of Motion
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            III. Integration of the Equations of Motion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian3/11-one-dimension.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §11. One-dimensional motion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian3/12-potential-from-period.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §12. Potential from oscillation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian3/13-reduced-mass.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §13. Reduced mass
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian3/14-central-field.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §14. Central field
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bagian3/15-kepler.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    §15. Kepler's problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-project-structure-and-dependent-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Project Structure and Dependent Files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-frontend-page-and-component-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Frontend – Page and Component Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Frontend – Page and Component Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-homepage-pagesindexjsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Homepage (pages/index.jsx)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-user-dashboard-pagesdashboardjsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. User Dashboard (pages/dashboard.jsx)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-materialtopic-page-pagesmaterislugjsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Material/Topic Page (pages/materi/[slug].jsx)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-admin-editor-panel-pagesadminjsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Admin &amp; Editor Panel (pages/admin.jsx)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-backend-api-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Backend API Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Backend API Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-ai-tutor-chat-api-pagesapitutorjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. AI Tutor Chat API (pages/api/tutor.js)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-user-progress-api-pagesapiuser-progressjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. User Progress API (pages/api/user-progress.js)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-payment-integration-api-pagesapipaymentsjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Payment Integration API (pages/api/payments.js)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-admin-topic-addition-api-pagesapiadmintambah-topikjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Admin Topic Addition API (pages/api/admin/tambah-topik.js)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-common-library-and-middleware-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Common Library and Middleware (lib/)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Common Library and Middleware (lib/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-supabase-client-libsupabaseclientjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Supabase Client (lib/supabaseClient.js)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-subscription-middleware-libsubscriptionmiddlewarejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Subscription Middleware (lib/subscriptionMiddleware.js)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-uiux-and-visual-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. UI/UX and Visual Elements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. UI/UX and Visual Elements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-modern-stylish-ui-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Modern, Stylish UI Considerations:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-simulasi-visual-simulation-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Simulasi Visual (Simulation Components)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-step-by-step-outline-of-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Step-by-Step Outline of Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Step-by-Step Outline of Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-initial-setup-read-existing-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Initial Setup &amp; Read Existing Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-update-frontend-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create &amp; Update Frontend Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-build-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Build Pages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-implement-api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Implement API Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-integrate-supabase-authentication-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Integrate Supabase Authentication &amp; DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-testing-error-handling-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Testing, Error Handling &amp; Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-final-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Final Considerations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="detailed-implementation-plan-for-simulearn">Detailed Implementation Plan for SimuLearn</h1>
+<p>SimuLearn is an interactive education website for high school students, featuring AI Tutor Personal, visualization simulations, and a subscription-based content system. The solution is built on a Next.js (React) front end and a Node.js backend (using Express.js or Next.js API Routes). The plan below outlines the step-by-step changes needed for each dependent file, ensuring best practices and robust error handling throughout.</p>
+<p>─────────────────────────────</p>
+<h2 id="1-project-structure-and-dependent-files">1. Project Structure and Dependent Files</h2>
+<p>Create or update the following directory structure (if not already set up):</p>
+<pre><code class="language-javascript">/components
+
+├── HeroSection.jsx         // Homepage hero &amp; CTA component
+  ├── FeatureList.jsx         // Explains AI tutor, simulasi, pricing info, etc.
+  ├── TestimonialSlider.jsx   // Show testimonials &amp; review cards
+  ├── PricingPlan.jsx         // Pricing plan cards &amp; subscription details
+  ├── TutorChatBox.jsx        // AI Tutor Chat window component
+  ├── SoalCard.jsx            // Quiz &amp; exercise display
+  ├── ExplainBox.jsx          // Explanation/learning content section
+  ├── SimulasiPlayer.jsx      // For pre-rendered simulation videos (Manim)
+  ├── SimulasiVisual.jsx      // For client-side interactive simulation (using p5.js or Three.js)
+  └── DashboardComponents.jsx // Consolidated file (or separate files for Progress, Notifications, etc.)
+
+/layouts
+  └── MainLayout.jsx          // Global layout with navbar, footer, and error boundaries
+
+/pages
+  ├── index.jsx               // Homepage (with hero, feature list, testimonials, pricing, login/register)
+  ├── dashboard.jsx           // User Dashboard page (list of topics, progress, notifications)
+  ├── materi
+  │     └── [slug].jsx        // Dynamic material page per topic (e.g., &quot;Gerak Lurus&quot;, &quot;Vektor&quot;, etc.)
+  ├── admin.jsx               // Admin/Editor Panel (restricted route)
+  └── api
+        ├── tutor.js         // API route for OpenAI tutor chat
+        ├── user-progress.js // API route for saving user progress
+        └── payments.js      // API route for Stripe/Tripay integration
+        └── admin
+            └── tambah-topik.js  // API endpoint to add new topics (admin only)
+
+/lib
+  ├── supabaseClient.js        // Setup for Supabase (or Firebase) Auth &amp; DB connections
+  └── subscriptionMiddleware.js // Middleware to validate subscription access for premium content
+
+/public
+  └── images
+       └── hero-bg.jpg        // Hero section image (from Pexels)
+</code></pre>
+<p><strong>Note:</strong><br />
+If any of these files (especially under /components or /lib) already exist, read them first and then update the implementation steps accordingly.</p>
+<p>─────────────────────────────</p>
+<h2 id="2-frontend-page-and-component-changes">2. Frontend – Page and Component Changes</h2>
+<h3 id="21-homepage-pagesindexjsx">2.1. Homepage (pages/index.jsx)</h3>
+<ul>
+<li><strong>Goal:</strong> Introduce SimuLearn with a modern, attractive design.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Hero Section:</strong><ul>
+<li>Use the new component <code>&lt;HeroSection /&gt;</code>.</li>
+<li>Integrate a CTA button (“Mulai Belajar”) that directs to registration or material overview.</li>
+<li>Use a Pexels image (e.g., “<a href="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg%E2%80%9D"></a><a href="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg%E2%80%9D">https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg”</a>) for a vibrant background.</li>
+</ul>
+</li>
+<li><strong>Feature List &amp; Explanation:</strong><ul>
+<li>Insert <code>&lt;FeatureList /&gt;</code> that describes the AI Tutor, simulasi visual, and subscription packages.</li>
+</ul>
+</li>
+<li><strong>Testimonials &amp; Pricing:</strong><ul>
+<li>Integrate <code>&lt;TestimonialSlider /&gt;</code> and <code>&lt;PricingPlan /&gt;</code> components.</li>
+<li>Use responsive card layouts with Tailwind CSS classes.</li>
+</ul>
+</li>
+<li><strong>Header &amp; Footer:</strong><ul>
+<li>Wrap the page with <code>&lt;MainLayout /&gt;</code> for consistency.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Include fallback UI using React error boundaries from MainLayout.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="22-user-dashboard-pagesdashboardjsx">2.2. User Dashboard (pages/dashboard.jsx)</h3>
+<ul>
+<li><strong>Goal:</strong> Provide a central hub for students, including subject navigation, progress tracking, and notifications.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Display Subject Menu:</strong><ul>
+<li>Import and use dedicated components (or parts of <code>&lt;DashboardComponents /&gt;</code>) for Mathematics and Physics chapters.</li>
+</ul>
+</li>
+<li><strong>Progress &amp; Notifications:</strong><ul>
+<li>Integrate graphs or cards that retrieve daily progress.</li>
+<li>Utilize localized state (or global context) for notifications.</li>
+</ul>
+</li>
+<li><strong>Authentication Check:</strong><ul>
+<li>Use Supabase/Firebase Auth – if the user is not authenticated, perform a redirect to login.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Gracefully display a “Unable to fetch progress” error message if API data retrieval fails.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="23-materialtopic-page-pagesmaterislugjsx">2.3. Material/Topic Page (pages/materi/[slug].jsx)</h3>
+<ul>
+<li><strong>Goal:</strong> Present lesson content covering explanation, quizzes, simulation, and interactive AI tutor.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Dynamic Routing:</strong><ul>
+<li>Use Next.js dynamic route ([slug].jsx) to load topic-specific content.</li>
+</ul>
+</li>
+<li><strong>Components Integration:</strong><ul>
+<li><code>ExplainBox.jsx</code> for explanation text and images.</li>
+<li><code>SoalCard.jsx</code> for quiz/exercise interactions.</li>
+<li><code>SimulasiPlayer.jsx</code> or <code>SimulasiVisual.jsx</code> for simulation – decide based on mode (pre-rendered video vs. interactive canvas).</li>
+<li><code>TutorChatBox.jsx</code> positioned as a side panel or bottom chat overlay for interacting with the AI tutor.</li>
+</ul>
+</li>
+<li><strong>UI/UX Considerations:</strong><ul>
+<li>Modern design with clear typography, ample whitespace, and mobile responsiveness.</li>
+<li>Use Tailwind CSS for styling and ensure that quiz interactions and simulation controls (e.g., play, pause, replay) are highly visible.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Wrap each major component in try-catch blocks with user-friendly error messages (e.g., “Unable to load simulation. Please try again later.”).</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="24-admin-editor-panel-pagesadminjsx">2.4. Admin &amp; Editor Panel (pages/admin.jsx)</h3>
+<ul>
+<li><strong>Goal:</strong> Enable administrators to add new topics, view student statistics, and export AI tutor sessions.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>UI Layout:</strong><ul>
+<li>Use a sidebar (with navigation for “Tambah Topik”, “Statistik”, “Export Data”).</li>
+<li>Modern and clean dashboard design using Tailwind CSS and DaisyUI components.</li>
+</ul>
+</li>
+<li><strong>Functional Components:</strong><ul>
+<li>Create a form component to add a new topic, including fields for title, subject, slug, content, and media links.</li>
+<li>Integrate a charting library (e.g., Chart.js) to show usage statistics.</li>
+</ul>
+</li>
+<li><strong>API Integration:</strong><ul>
+<li>Connect form submission to <code>/api/admin/tambah-topik.js</code> for server-side processing.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Display form validations and error messages on invalid submission or server errors.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>─────────────────────────────</p>
+<h2 id="3-backend-api-changes">3. Backend API Changes</h2>
+<h3 id="31-ai-tutor-chat-api-pagesapitutorjs">3.1. AI Tutor Chat API (pages/api/tutor.js)</h3>
+<ul>
+<li><strong>Goal:</strong> Pass chat context with topic, student level, and intent to the OpenAI GPT-4-turbo API.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Request Handling:</strong><ul>
+<li>Accept POST requests with data payload (topic, level, style, and previous context).</li>
+<li>Validate required fields using a middleware.</li>
+</ul>
+</li>
+<li><strong>Service Integration:</strong><ul>
+<li>Use server-side secrets (via environment variables) for the OpenAI API key.</li>
+<li>Format the prompt modularly (split into context and question).</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Use try-catch blocks to catch network errors, malformed data, or API errors.</li>
+<li>Return clear error responses (HTTP status codes and messages).</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="32-user-progress-api-pagesapiuser-progressjs">3.2. User Progress API (pages/api/user-progress.js)</h3>
+<ul>
+<li><strong>Goal:</strong> Save and update student progress data.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Security &amp; Data Validation:</strong><ul>
+<li>Check user authentication via Supabase/Firebase tokens.</li>
+<li>Validate incoming progress data (chapter, time spent, etc.).</li>
+</ul>
+</li>
+<li><strong>Database Integration:</strong><ul>
+<li>Use the connection established in <code>/lib/supabaseClient.js</code> to update the <code>user_progress</code> table.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Return errors if data cannot be saved. Use catch blocks to guard against DB exceptions.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="33-payment-integration-api-pagesapipaymentsjs">3.3. Payment Integration API (pages/api/payments.js)</h3>
+<ul>
+<li><strong>Goal:</strong> Manage subscription payments using Stripe (or Tripay for Indonesia).</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Endpoint Setup:</strong><ul>
+<li>Handle POST requests for initiating payments, and webhooks for payment confirmations.</li>
+</ul>
+</li>
+<li><strong>Security:</strong><ul>
+<li>Validate Stripe signatures (or Tripay/Midtrans webhooks) to prevent fraudulent requests.</li>
+</ul>
+</li>
+<li><strong>Subscription Logic:</strong><ul>
+<li>On successful payment, update user subscription status in the database.</li>
+<li>Use a middleware (in <code>/lib/subscriptionMiddleware.js</code>) to ensure premium features are only accessible to subscribed users.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Return error responses for invalid or declined payments.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="34-admin-topic-addition-api-pagesapiadmintambah-topikjs">3.4. Admin Topic Addition API (pages/api/admin/tambah-topik.js)</h3>
+<ul>
+<li><strong>Goal:</strong> Allow admin users to add new topics.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Authentication:</strong><ul>
+<li>Verify that the requester is an admin using a token or role-check.</li>
+</ul>
+</li>
+<li><strong>Data Validation:</strong><ul>
+<li>Validate topic fields: title, slug, subject, explanation, and resource links.</li>
+</ul>
+</li>
+<li><strong>Database Operation:</strong><ul>
+<li>Insert a new record into the <code>topics</code> table.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Provide clear error messages if insertion fails or required fields are missing.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>─────────────────────────────</p>
+<h2 id="4-common-library-and-middleware-lib">4. Common Library and Middleware (lib/)</h2>
+<h3 id="41-supabase-client-libsupabaseclientjs">4.1. Supabase Client (lib/supabaseClient.js)</h3>
+<ul>
+<li><strong>Goal:</strong> Centralize connection settings for authentication and database operations.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Setup Client:</strong><ul>
+<li>Integrate Supabase client initialization using environment variables.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Handle connection errors gracefully and log them.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="42-subscription-middleware-libsubscriptionmiddlewarejs">4.2. Subscription Middleware (lib/subscriptionMiddleware.js)</h3>
+<ul>
+<li><strong>Goal:</strong> Validate if a user has the proper subscription before rendering premium content.</li>
+<li><strong>Changes &amp; Steps:</strong><ol>
+<li><strong>Middleware Function:</strong><ul>
+<li>Check user subscription status.</li>
+<li>Allow fallback or redirect if the subscription is invalid.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>Return a 403 Forbidden response with an explanation when needed.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>─────────────────────────────</p>
+<h2 id="5-uiux-and-visual-elements">5. UI/UX and Visual Elements</h2>
+<h3 id="51-modern-stylish-ui-considerations">5.1. Modern, Stylish UI Considerations:</h3>
+<ul>
+<li><strong>Tailwind CSS &amp; Component Libraries:</strong><ul>
+<li>Use utility classes from Tailwind CSS for responsive layout and spacing.</li>
+<li>Leverage DaisyUI/Shadcn UI for pre-built components (buttons, cards, modal dialogs).</li>
+</ul>
+</li>
+<li><strong>Images:</strong><ul>
+<li>For the hero section and any background images, use direct public links from Pexels.<br />
+    For example:<ul>
+<li>Hero background:<br />
+<a href="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg"></a><a href="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg">https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Interactivity:</strong><ul>
+<li>Ensure interactive components (like quizzes, simulation players, chat boxes) have intuitive controls (e.g., record, pause, play, stop buttons for simulation videos if needed).</li>
+</ul>
+</li>
+<li><strong>Responsiveness:</strong><ul>
+<li>Design all pages to be mobile-friendly. Use breakpoints in Tailwind CSS to adjust layouts (e.g., sidebar collapse in dashboard).</li>
+</ul>
+</li>
+</ul>
+<h3 id="52-simulasi-visual-simulation-components">5.2. Simulasi Visual (Simulation Components)</h3>
+<ul>
+<li><strong>Two Modes:</strong><ol>
+<li><strong>Client-side (SimulasiVisual.jsx):</strong><ul>
+<li>Use p5.js (or Three.js) integrated in a React component.</li>
+<li>Provide standard controls (start, pause, reset) for interactive simulations.</li>
+</ul>
+</li>
+<li><strong>Backend-rendered (SimulasiPlayer.jsx):</strong><ul>
+<li>Use pre-rendered videos from Manim processed via ffmpeg.</li>
+<li>Include standard video player controls (play, pause, seek, download).</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>Error Handling:</strong><ul>
+<li>If the simulation fails to load (e.g., script error), display a user-friendly error notification and a “Retry” button.</li>
+</ul>
+</li>
+</ul>
+<p>─────────────────────────────</p>
+<h2 id="6-step-by-step-outline-of-changes">6. Step-by-Step Outline of Changes</h2>
+<h3 id="step-1-initial-setup-read-existing-files">Step 1: Initial Setup &amp; Read Existing Files</h3>
+<ul>
+<li>Verify the current Next.js project configuration.</li>
+<li>Review authentication files (Supabase/Firebase) and existing API endpoints.</li>
+<li>Check tailwind.config.js and global CSS for any styling conventions.</li>
+</ul>
+<h3 id="step-2-create-update-frontend-components">Step 2: Create &amp; Update Frontend Components</h3>
+<ol>
+<li>In /components, create/modify:<ul>
+<li>HeroSection.jsx: Set up a full-screen hero with background image and CTA.</li>
+<li>FeatureList.jsx: Add feature explanations with icons and short descriptions.</li>
+<li>TestimonialSlider.jsx: Implement slider carousel for reviews.</li>
+<li>PricingPlan.jsx: Create pricing cards with subscription details.</li>
+<li>TutorChatBox.jsx, SoalCard.jsx, ExplainBox.jsx, SimulasiPlayer.jsx, SimulasiVisual.jsx: Implement these with appropriate props, state management, and error boundaries.</li>
+</ul>
+</li>
+<li>In /layouts, update MainLayout.jsx with a global navbar, error boundaries, and footer.</li>
+</ol>
+<h3 id="step-3-build-pages">Step 3: Build Pages</h3>
+<ol>
+<li>pages/index.jsx:<ul>
+<li>Import and compose HeroSection, FeatureList, TestimonialSlider, and PricingPlan.</li>
+<li>Ensure responsive design and include links to login/register.</li>
+</ul>
+</li>
+<li>pages/dashboard.jsx:<ul>
+<li>Check user authentication status before rendering the dashboard.</li>
+<li>Integrate dashboard components (progress tracker, menu, notifications).</li>
+</ul>
+</li>
+<li>pages/materi/[slug].jsx:<ul>
+<li>Load topic data based on slug.</li>
+<li>Render ExplainBox and interactive components (quiz, simulation, AI tutor chat).</li>
+</ul>
+</li>
+<li>pages/admin.jsx:<ul>
+<li>Secure this admin route with an admin-check and present the editor panel and statistics.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-4-implement-api-endpoints">Step 4: Implement API Endpoints</h3>
+<ol>
+<li>pages/api/tutor.js:<ul>
+<li>Handle POST calls, authenticate request, and call OpenAI.</li>
+<li>Return a composite response (markdown + JSON blocks) to the TutorChatBox.</li>
+</ul>
+</li>
+<li>pages/api/user-progress.js:<ul>
+<li>Update user progress with PUT/POST methods.</li>
+</ul>
+</li>
+<li>pages/api/payments.js:<ul>
+<li>Integrate Stripe’s sandbox environment with webhook endpoints.</li>
+</ul>
+</li>
+<li>pages/api/admin/tambah-topik.js:<ul>
+<li>Validate admin credentials and process new topic creation.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-5-integrate-supabase-authentication-db">Step 5: Integrate Supabase Authentication &amp; DB</h3>
+<ul>
+<li>In /lib/supabaseClient.js, initialize the client using environment credentials.</li>
+<li>In all authenticated endpoints (dashboard, payments, user-progress), validate user tokens.</li>
+<li>Use the subscriptionMiddleware.js to guard premium content.</li>
+</ul>
+<h3 id="step-6-testing-error-handling-deployment">Step 6: Testing, Error Handling &amp; Deployment</h3>
+<ol>
+<li>Write unit tests (or use integration tests) for API endpoints.</li>
+<li>Test form validations in admin panel and simulate error conditions.</li>
+<li>Verify responsiveness and cross-device compatibility.</li>
+<li>Set up logging for API errors and monitor using a tool (e.g., Sentry).</li>
+</ol>
+<p>─────────────────────────────</p>
+<h2 id="7-final-considerations">7. Final Considerations</h2>
+<ul>
+<li><strong>Security:</strong><ul>
+<li>Protect endpoints with proper authentication and subscription validations.</li>
+<li>Store secrets using environment variables.</li>
+</ul>
+</li>
+<li><strong>Performance:</strong><ul>
+<li>Utilize Next.js SSG/SSR as needed.</li>
+<li>Optimize simulations and images for faster load times.</li>
+</ul>
+</li>
+<li><strong>UX Enhancements:</strong><ul>
+<li>Provide inline help tips (especially in simulations).</li>
+<li>Use smooth transitions and animations for interactive components.</li>
+</ul>
+</li>
+<li><strong>Documentation:</strong><ul>
+<li>Document endpoints and components for future maintainability.</li>
+<li>Maintain a changelog for all API modifications and UI improvements.</li>
+</ul>
+</li>
+</ul>
+<p>By following this plan, you will integrate all essential features—from modern, visually pleasing UI elements to robust backend API endpoints—ensuring a comprehensive user experience for students, educators, and administrators.</p>
+<p>blackbox has a question:</p>
+<p>Please confirm if I can proceed with this plan? Let me know if you have any feedback</p>
+<p>Dokumen rencana implementasi SimuLearn kamu sudah sangat lengkap, terstruktur rapi, dan matang secara teknis maupun bisnis. Namun, agar benar-benar production-ready, berikut adalah review menyeluruh yang mencakup: ✅ Yang SUDAH BAIK ✔️ Struktur direktori modular dan scalable ✔️ Komponen React jelas &amp; reusable ✔️ Pembagian API per fitur (tutor, progress, payment, admin) sudah sesuai best practice ✔️ Pendekatan subscription middleware &amp; Supabase sangat tepat ✔️ UI/UX modern (Tailwind, DaisyUI/Shadcn UI) ✔️ Dukungan visualisasi interaktif &amp; pre-rendered video (p5.js + Manim) ✔️ Error handling dirinci secara eksplisit ✔️ Langkah langkahnya urut, feasible, dan lengkap ❗ Poin yang Kurang atau Perlu Diperbaiki / Diperjelas 🔐 1. Belum Ada Penanganan Role-based Auth secara jelas Problem: Admin panel (pages/admin.jsx) dan endpoint /api/admin/tambah-topik.js hanya disebut “verifikasi admin dengan token atau role-check”, tapi tidak dijelaskan cara mengelola role. Solusi: Tambahkan tabel user_roles di Supabase, atau simpan role di kolom metadata Supabase Auth. Gunakan middleware checkAdminRole(). js Copy Edit // lib/checkAdminRole.js export function checkAdminRole(user) { return user?.role === "admin"; // atau dari metadata } 💳 2. Payment Endpoint Perlu Callback Success Page Problem: Hanya menyebut webhook dan middleware subscription, tapi tidak disebutkan adanya halaman /payment-success atau /payment-failed. Solusi: Tambahkan: pages/payment-success.jsx → menampilkan status sukses + aktivasi akun premium pages/payment-failed.jsx → pesan error + ajakan coba lagi 🧠 3. Tutor API Belum Dukung Session atau Conversation Context Problem: pages/api/tutor.js hanya menerima 1 request konteks (topik, level, intent), tapi AI biasanya lebih powerful dengan chat memory. Solusi: Tambahkan: Penyimpanan history chat AI (ai_sessions table: user_id, topic, message, timestamp) Fungsi untuk menyimpan dan mengirim kembali N pesan terakhir sebagai messages di OpenAI Chat API 🧪 4. Tidak Ada Testing Plan (Jest/Cypress) Problem: Hanya disebut “unit test”, tapi belum jelas tooling-nya. Solusi: Tambahkan Jest + React Testing Library untuk komponen UI Tambahkan Cypress untuk e2e test (user belajar, langganan, interaksi AI) 📱 5. Responsiveness Check Bagian Simulasi Belum Dijelaskan Problem: Simulasi visual p5.js atau Manim mungkin tidak otomatis responsif (misal: canvas fixed width). Solusi: Gunakan resizeCanvas() di p5.js Bungkus <SimulasiVisual /> dengan container yang ukurannya adaptif 🛡️ 6. Belum Ada Rate Limiting atau Abuse Protection Problem: Tutor AI bisa disalahgunakan (misal: spam call ke OpenAI API). Solusi: Tambahkan middleware rate limit (express-rate-limit, Redis, atau Vercel Edge Middleware) Atau batasi jumlah chat per hari untuk user free 💾 7. Manajemen Topik Masih Manual Problem: Admin tambah topik manual via panel. Tapi skala banyak topik (ratusan bab/quiz) akan sulit. Solusi: Tambahkan kemampuan import CSV atau Markdown Tambahkan fitur re-order dan kategori per topik 📌 Saran Tambahan untuk Penguatan Area Saran SEO Tambahkan next-seo dan sitemap.xml untuk optimasi pencarian Blog/Edukasi Tambahkan blog section (pages/blog/[slug].jsx) untuk tips belajar Mobile PWA Tambahkan manifest.json dan service worker agar bisa digunakan offline Analytics Integrasikan Google Analytics atau PostHog untuk tracking Notifikasi Tambahkan notifikasi belajar (via email, atau OneSignal Push jika memungkinkan) ✅ Kesimpulan Akhir Dokumenmu: 💯 Sudah siap sebagai dokumen teknis untuk tim engineering/implementasi 📈 Cocok untuk dijadikan bagian dari pitch deck ke investor (roadmap &amp; arsitektur jelas) 🚀 Hanya butuh penyempurnaan minor agar benar-benar solid untuk production dan scaling</p>
+<p>BLACKBOXAI</p>
+<p>I'll revise the implementation plan to address all the points mentioned in the review. Let me create an improved, production-ready version that incorporates these crucial additions.</p>
+<p>BLACKBOXAI</p>
+<p>Below is a production-ready, detailed implementation plan for SimuLearn. This plan refines our previous design by incorporating role‐based authentication, payment callback pages, chat session memory, automated testing, enhanced responsiveness, rate limiting, improved topic management, and additional features (SEO, blog, PWA, analytics, notifications). Before you begin implementation, review any existing files (e.g. package.json, tailwind.config.js, existing API routes) so you can re-read and re-plan if anything is missing. The plan is organized by directory and file with step-by-step changes.</p>
+<p>─────────────────────────────</p>
+<h1 id="1-project-structure-and-dependent-files_1">1. Project Structure and Dependent Files</h1>
+<p>Ensure the project directories (or files to be created/updated) are as follows:</p>
+<pre><code class="language-javascript">/components
+
+├── HeroSection.jsx           // Homepage hero with background image and CTA
+  ├── FeatureList.jsx           // List key features (AI tutor, simulasi, pricing packages)
+  ├── TestimonialSlider.jsx     // Carousel for testimonials and reviews
+  ├── PricingPlan.jsx           // Pricing plan cards with subscription details
+  ├── TutorChatBox.jsx          // Chat component for AI tutor (with session history)
+  ├── SoalCard.jsx              // Quiz &amp; exercise card
+  ├── ExplainBox.jsx            // Explanation and theory section for topic
+  ├── SimulasiVisual.jsx        // Client-side interactive simulation (using p5.js/Three.js)
+  ├── SimulasiPlayer.jsx        // For pre-rendered simulation videos (Manim embed)
+  ├── CSVImport.jsx             // (Admin) Import topics via CSV/Markdown
+  └── DashboardComponents.jsx   // Components for progress tracker, notifications, etc.
+
+/layouts
+  ├── MainLayout.jsx            // Global layout including Navbar, Footer, and ErrorBoundaries
+  └── AdminLayout.jsx           // Layout for admin panel with sidebar and component placeholders
+
+/pages
+  ├── index.jsx                 // Homepage with HeroSection, FeatureList, Testimonials, PricingPlan, etc.
+  ├── dashboard.jsx             // User dashboard page (subject menu, progress, notifications)
+  ├── materi
+  │     └── [slug].jsx          // Dynamic single topic page (explanation, quiz, simulation, tutor)
+  ├── admin.jsx                 // Admin &amp; Editor Panel (protected using role-based auth)
+  ├── payment-success.jsx       // Shows payment success message and premium activation
+  ├── payment-failed.jsx        // Shows error message with option to try again
+  ├── blog                     
+  │     └── [slug].jsx          // New blog section for learning tips and insights
+  └── manifest.json             // PWA manifest for mobile offline use
+
+/next-seo.config.js              // SEO configuration: title, meta tags, sitemap settings
+
+/pages/api
+  ├── tutor.js                // AI Tutor API with chat session context (supports conversation history)
+  ├── user-progress.js        // API to record user progress (with validations)
+  ├── payments.js             // Payment processing and webhook callbacks (Stripe/Tripay)
+  └── admin
+         └── tambah-topik.js  // API endpoint to add topics (with role-check &amp; CSV support)
+
+/lib
+  ├── supabaseClient.js         // Supabase initialization file (DB/Auth)
+  ├── subscriptionMiddleware.js // Middleware to validate subscription before premium access
+  ├── checkAdminRole.js         // New middleware to check for admin role
+  └── rateLimiter.js            // Rate-limiting middleware (using express-rate-limit or similar)
+
+/public
+  └── images
+       ├── hero-bg.jpg        // Hero background image from Pexels
+       └── ...                // Other public assets (e.g., icons)
+
+/tests
+  ├── unit                       // Jest and React Testing Library tests for UI components
+  └── e2e                        // Cypress integration tests for user flows (learning, subscription)
+
+service-worker.js              // Offline support service worker (if using PWA)
+</code></pre>
+<p>─────────────────────────────</p>
+<h1 id="2-frontend-component-page-changes">2. Frontend Component &amp; Page Changes</h1>
+<p>Below is a step-by-step plan for changes needed in each file or group of files:</p>
+<h2 id="21-homepage-pagesindexjsx_1">2.1. Homepage – pages/index.jsx</h2>
+<p><strong>Goal:</strong> Create a modern, visually appealing landing page.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Import and use <code>&lt;MainLayout /&gt;</code> to wrap the content.</li>
+<li>Insert the <code>&lt;HeroSection /&gt;</code> component configured with a full-screen background image.<ul>
+<li>Example background:<br />
+<a href="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg"></a><a href="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg">https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg</a></li>
+</ul>
+</li>
+<li>Add <code>&lt;FeatureList /&gt;</code> that explains the key benefits (AI Tutor, simulasi visual interaktif, paket langganan).</li>
+<li>Render <code>&lt;TestimonialSlider /&gt;</code> for social proof.</li>
+<li>Render <code>&lt;PricingPlan /&gt;</code>, ensuring that the details for Free, Premium Basic, Premium Plus, and B2B plans are clear.</li>
+<li>Provide prominent CTA buttons (“Mulai Belajar” and “Daftar Sekarang”) that lead to registration/pages.</li>
+<li>Include error boundaries to display fallback UI in case of component failure.</li>
+</ol>
+<h2 id="22-user-dashboard-pagesdashboardjsx_1">2.2. User Dashboard – pages/dashboard.jsx</h2>
+<p><strong>Goal:</strong> Centralized hub for students.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Ensure the dashboard page is protected by authentication (check Supabase/Firebase token).</li>
+<li>Display subject menu using <code>&lt;DashboardComponents /&gt;</code>.</li>
+<li>Show progress reports, notifications, and recommended topics.</li>
+<li>Render responsive graphs (charts) for progress data.</li>
+<li>Implement error handling: if progress fails to load, show an informative error message.</li>
+<li>Add responsiveness checks (using Tailwind breakpoints).</li>
+</ol>
+<h2 id="23-materialtopic-page-pagesmaterislugjsx_1">2.3. Material/Topic Page – pages/materi/[slug].jsx</h2>
+<p><strong>Goal:</strong> Present detailed lesson content with integrated quiz, simulation, and AI tutor.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Use dynamic routing to load the topic based on slug.</li>
+<li>Render <code>&lt;ExplainBox /&gt;</code> with detailed explanations and supporting media.</li>
+<li>Display <code>&lt;SoalCard /&gt;</code> for quizzes.</li>
+<li>Integrate simulations:<ul>
+<li>Use <code>&lt;SimulasiVisual /&gt;</code> wrapping the canvas in an adaptive container.</li>
+<li>For p5.js, add a call to resizeCanvas() on window resize events.</li>
+<li>Alternatively, use <code>&lt;SimulasiPlayer /&gt;</code> to embed a pre-rendered video.</li>
+</ul>
+</li>
+<li>Display <code>&lt;TutorChatBox /&gt;</code> that now supports conversation context.<ul>
+<li>Ensure previous conversation history is loaded (see API details below).</li>
+</ul>
+</li>
+<li>Implement error handling on each component:<ul>
+<li>For simulation, display “Failed to load simulation” fallback.</li>
+</ul>
+</li>
+</ol>
+<h2 id="24-admin-panel-pagesadminjsx">2.4. Admin Panel – pages/admin.jsx</h2>
+<p><strong>Goal:</strong> Provide an admin UI to manage topik, statistics, and import large data.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p>Protect the route using an authentication check and a role-check (using our new middleware from /lib/checkAdminRole.js).</p>
+<ul>
+<li>Example code snippet:</li>
+</ul>
+<p><code>javascript
+import { checkAdminRole } from '../lib/checkAdminRole';
+// In getServerSideProps or API middleware, verify: if (!checkAdminRole(user)) redirect to login</code></p>
+</li>
+<li>
+<p>Use <code>&lt;AdminLayout /&gt;</code> which features a sidebar with links to “Tambah Topik”, “Statistik”, “Export Data” and “Import Topik”.</p>
+</li>
+<li>Create a form for manual addition of topics (fields: title, slug, subject, explanation, media links).</li>
+<li>Integrate <code>&lt;CSVImport /&gt;</code> component to allow CSV/Markdown upload.</li>
+<li>Implement charts (using Chart.js) on statistics with proper error handling.</li>
+<li>Validate administrator input and display user-friendly error messages.</li>
+</ol>
+<h2 id="25-payment-status-pages">2.5. Payment Status Pages</h2>
+<p><strong>Goal:</strong> Inform users about the payment process outcomes.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create pages/payment-success.jsx:<ul>
+<li>Display a modern confirmation message, activation details, and a CTA to “Mulai Belajar”.</li>
+<li>Use Tailwind CSS classes to achieve a professional look.</li>
+</ul>
+</li>
+<li>Create pages/payment-failed.jsx:<ul>
+<li>Show a clear error message with suggestions to retry payment.</li>
+<li>Include error details (if available) and a “Coba Lagi” button.</li>
+</ul>
+</li>
+<li>Both pages should be accessible after processing callbacks from the payment API.</li>
+</ol>
+<h2 id="26-blog-section-pagesblogslugjsx">2.6. Blog Section – pages/blog/[slug].jsx</h2>
+<p><strong>Goal:</strong> Provide additional content for SEO and educational tips.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Create a blog listing page and individual article pages.</li>
+<li>Use Next.js dynamic routing for blog articles.</li>
+<li>Style using Tailwind CSS together with next-seo for meta tags.</li>
+<li>Ensure articles are responsive and include proper images from Pexels (embed public links).</li>
+</ol>
+<p>─────────────────────────────</p>
+<h1 id="3-backend-api-and-middleware-enhancements">3. Backend API and Middleware Enhancements</h1>
+<h2 id="31-ai-tutor-api-pagesapitutorjs">3.1. AI Tutor API – pages/api/tutor.js</h2>
+<p><strong>Goal:</strong> Process chat requests for AI tutor with conversation history.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Modify POST handler to accept an additional field (e.g., conversation_history as an array of previous messages).</li>
+<li>Use the conversation context:<ul>
+<li>Append the N last messages (from the new table ai_sessions) to maintain context.</li>
+<li>Save new messages into the ai_sessions table (fields: user_id, topic, message, timestamp).</li>
+</ul>
+</li>
+<li>Validate incoming data.</li>
+<li>Use try-catch blocks and return proper HTTP status codes upon errors.</li>
+<li>
+<p>Code Example (pseudo-code):</p>
+<p><code>javascript
+try {
+  const { topic, level, intent, conversation_history } = req.body;
+  if (!topic || !intent) { return res.status(400).json({ error: 'Missing fields' }); }
+  // Call OpenAI API with conversation_history included
+  const response = await callOpenAI({ topic, level, intent, messages: conversation_history });
+  // Save the conversation to ai_sessions
+  await saveToAISessions(req.user.id, topic, conversation_history, response);
+  return res.status(200).json(response);
+} catch (error) {
+  console.error(error);
+  return res.status(500).json({ error: 'Internal Server Error' });
+}</code></p>
+</li>
+</ol>
+<h2 id="32-user-progress-api-pagesapiuser-progressjs_1">3.2. User Progress API – pages/api/user-progress.js</h2>
+<p><strong>Goal:</strong> Record and update student progress.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Authenticate user based on token (using supabaseClient.js).</li>
+<li>Validate the incoming progress data (which chapter, time spent, etc.).</li>
+<li>Update the <code>user_progress</code> table accordingly.</li>
+<li>Handle database errors and return informative messages.</li>
+</ol>
+<h2 id="33-payment-api-pagesapipaymentsjs">3.3. Payment API – pages/api/payments.js</h2>
+<p><strong>Goal:</strong> Process subscriptions and handle callbacks.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>For payment initiation, handle POST requests:<ul>
+<li>Validate payment details.</li>
+<li>Create a payment session with Stripe (or Tripay) in sandbox mode.</li>
+</ul>
+</li>
+<li>Implement webhook endpoints to listen for payment confirmations.<ul>
+<li>Validate webhook signatures.</li>
+<li>After confirmation, update the user’s subscription status in the database.</li>
+</ul>
+</li>
+<li>Chain in subscriptionMiddleware.js to check access to premium pages.</li>
+<li>Include additional logic to redirect users to /payment-success or /payment-failed after payment is processed.</li>
+</ol>
+<h2 id="34-admin-topic-addition-api-pagesapiadmintambah-topikjs_1">3.4. Admin Topic Addition API – pages/api/admin/tambah-topik.js</h2>
+<p><strong>Goal:</strong> Allow admins to add new topics manually or via CSV.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Require an admin role check:<ul>
+<li>Import and use middleware from /lib/checkAdminRole.js.</li>
+</ul>
+</li>
+<li>Validate all required topic fields and support file uploads (CSV/Markdown import).</li>
+<li>Save topic data to the <code>topics</code> table; if CSV, process multiple entries.</li>
+<li>Handle errors in parsing and record insertion, with detailed messages.</li>
+</ol>
+<p>─────────────────────────────</p>
+<h1 id="4-shared-library-and-middleware-updates">4. Shared Library and Middleware Updates</h1>
+<h2 id="41-role-based-auth-libcheckadminrolejs">4.1. Role-based Auth – /lib/checkAdminRole.js</h2>
+<p><strong>File:</strong> /lib/checkAdminRole.js</p>
+<h2 id="content-example"><strong>Content Example:</strong></h2>
+<h2 id="checkadminrolejs-export-function-checkadminroleuser-assuming-the-user-object-includes-role-from-supabase-metadata-return-userrole-admin">/<em> checkAdminRole.js </em>/ export function checkAdminRole(user) { // Assuming the user object includes role from Supabase metadata return user?.role === 'admin'; }</h2>
+<p><strong>Integration:</strong><br />
+Use in admin API endpoints and admin page getServerSideProps to gate admin-only content.</p>
+<h2 id="42-subscription-middleware-libsubscriptionmiddlewarejs_1">4.2. Subscription Middleware – /lib/subscriptionMiddleware.js</h2>
+<p><strong>Goal:</strong> Check premium access before content render.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Read user subscription data.</li>
+<li>If a user is free and is trying to access premium content, redirect to a subscription popup/page.</li>
+</ol>
+<h2 id="43-rate-limiting-libratelimiterjs">4.3. Rate Limiting – /lib/rateLimiter.js</h2>
+<p><strong>Goal:</strong> Prevent abuse of the AI Tutor API.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Implement a rate limiter (e.g., using express-rate-limit package, or Vercel Edge Middleware) on API routes such as /api/tutor.</li>
+<li>Configure limits based on user tier:<ul>
+<li>Free users: Limit daily chat count</li>
+<li>Premium users: Higher limits</li>
+</ul>
+</li>
+<li>Return HTTP 429 status code when limits are exceeded.</li>
+</ol>
+<p>─────────────────────────────</p>
+<h1 id="5-testing-and-quality-assurance">5. Testing and Quality Assurance</h1>
+<h2 id="51-unit-testing-jest-react-testing-library">5.1. Unit Testing (Jest + React Testing Library)</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Set up Jest in your package.json along with React Testing Library.</li>
+<li>Write tests for individual components:<ul>
+<li>Status, responsiveness, error handling in HeroSection, TutorChatBox, etc.</li>
+</ul>
+</li>
+<li>For API endpoints, use mocks (jest.mock) to simulate DB and external API responses.</li>
+</ol>
+<h2 id="52-end-to-end-testing-cypress">5.2. End-to-End Testing (Cypress)</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Configure Cypress for testing critical user flows:<ul>
+<li>Registration, login, learning session, payment processing, and admin actions.</li>
+</ul>
+</li>
+<li>Write tests to simulate the entire journey including:<ul>
+<li>Chat interactions with context,</li>
+<li>Form submission in the admin panel,</li>
+<li>Payment flow redirecting to success/failure pages.</li>
+</ul>
+</li>
+<li>Ensure tests cover both mobile and desktop scenarios.</li>
+</ol>
+<p>─────────────────────────────</p>
+<h1 id="6-additional-enhancements-for-production">6. Additional Enhancements for Production</h1>
+<h2 id="61-seo-analytics">6.1. SEO &amp; Analytics</h2>
+<ul>
+<li>Install next-seo and configure next-seo.config.js with meta tags and open-graph settings.</li>
+<li>Generate sitemap.xml using an SEO plugin and update robots.txt.</li>
+<li>Integrate Google Analytics or PostHog for real-time user behavior tracking.</li>
+</ul>
+<h2 id="62-mobile-pwa-offline-support">6.2. Mobile PWA &amp; Offline Support</h2>
+<ul>
+<li>Create manifest.json (in the /pages or /public folder) with details like icons, theme, and display mode.</li>
+<li>Register service-worker.js for caching assets and offline support.</li>
+</ul>
+<h2 id="63-notifications">6.3. Notifications</h2>
+<ul>
+<li>Integrate an email notification service (or a push solution like OneSignal) to remind users to continue learning.</li>
+<li>Add backend endpoints to trigger notifications based on user activity or progress logs.</li>
+</ul>
+<p>─────────────────────────────</p>
+<h1 id="7-step-by-step-implementation-timeline">7. Step-by-Step Implementation Timeline</h1>
+<ol>
+<li>
+<p><strong>Initial Setup &amp; Dependency Check:</strong></p>
+<ul>
+<li>Verify package.json, Tailwind &amp; Next.js configuration.</li>
+<li>Install necessary npm packages (express-rate-limit, next-seo, Chart.js, jest, cypress, etc.)</li>
+<li>
+<p><strong>Frontend Component Development:</strong></p>
+</li>
+<li>
+<p>Develop and style new components (HeroSection, FeatureList, etc.)</p>
+</li>
+<li>Update layouts (MainLayout, AdminLayout) and add error boundaries.</li>
+<li>Create new pages: payment-success, payment-failed, blog pages.</li>
+<li>Test responsiveness of simulation components using p5.js resizeCanvas() and container queries.</li>
+<li>
+<p><strong>Backend API Enhancements:</strong></p>
+</li>
+<li>
+<p>Update API endpoints: tutor.js (with conversation context), payments.js (with callback and webhook validation), admin tambah-topik.js (with CSV support).</p>
+</li>
+<li>Integrate role-based middleware (checkAdminRole) and rateLimiter.js in the tutor endpoint.</li>
+<li>Ensure error handling with try-catch on all endpoints.</li>
+<li>
+<p><strong>Authentication &amp; DB:</strong></p>
+</li>
+<li>
+<p>Confirm integration with Supabase (or Firebase Auth) and extract role data.</p>
+</li>
+<li>Update DB tables: add ai_sessions, user_roles (or store role in metadata) and ensure proper constraints.</li>
+<li>
+<p><strong>Testing &amp; QA:</strong></p>
+</li>
+<li>
+<p>Write unit tests using Jest and React Testing Library.</p>
+</li>
+<li>Implement Cypress tests for critical user flows.</li>
+<li>Debug and iterate based on test failures.</li>
+<li>
+<p><strong>SEO, PWA, and Analytics:</strong></p>
+</li>
+<li>
+<p>Set up next-seo, manifest.json, and service-worker.</p>
+</li>
+<li>Confirm Google Analytics/PostHog integration.</li>
+<li>
+<p><strong>Deployment &amp; Monitoring:</strong></p>
+</li>
+<li>
+<p>Deploy to a staging environment.</p>
+</li>
+<li>Monitor API endpoints (with logging tools such as Sentry) and rate limiting metrics.</li>
+<li>Collect user feedback before full-scale production deployment.</li>
+</ul>
+</li>
+</ol>
+<p>─────────────────────────────</p>
+<h1 id="8-conclusion">8. Conclusion</h1>
+<p>This detailed plan covers all dependent files, step-by-step changes, robust error handling, best practices, and realistic feature sets. It incorporates enhancements such as role-based authorization, payment callbacks, chat session history, thorough testing, responsiveness improvements, rate limiting, and additional SEO/PWA features to make SimuLearn production-ready. Review all files (frontend, backend, configuration, testing) before implementing and adjust as needed during integration.</p>
+<p>Following this plan will ensure a scalable, secure, and modern platform for high school education with a great user experience for students, parents, educators, and administrators.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.copy", "content.action.edit", "palette.toggle"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

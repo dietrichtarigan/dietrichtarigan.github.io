@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Perusahaan Minyak & Gas Indonesia & Global</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Style untuk scrollbar agar lebih modern */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937; /* bg-gray-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563; /* bg-gray-600 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* bg-gray-500 */
+        }
+        /* Animasi fade-in untuk kartu */
+        .card-enter {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .card-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header -->
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-2">Dashboard Perusahaan Minyak & Gas</h1>
+            <p class="text-gray-400 text-lg">Jelajahi daftar perusahaan migas yang beroperasi di Indonesia dan dunia.</p>
+        </header>
+
+        <!-- Kontrol Filter dan Pencarian -->
+        <div class="mb-8 flex flex-col md:flex-row gap-4 sticky top-4 z-10 bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-gray-700/50 shadow-lg">
+            <div class="relative flex-grow">
+                <input type="text" id="search-input"
+                    class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    placeholder="Cari nama perusahaan...">
+                <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <div class="relative">
+                 <select id="type-filter" class="w-full md:w-auto bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 appearance-none focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    <!-- Opsi filter akan diisi oleh JavaScript -->
+                </select>
+                <svg class="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Grid untuk Kartu Perusahaan -->
+        <main id="company-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Kartu perusahaan akan di-render di sini oleh JavaScript -->
+        </main>
+        
+        <!-- Pesan jika tidak ada hasil -->
+        <div id="no-results" class="hidden text-center py-16">
+            <h3 class="text-xl font-semibold text-white">Tidak ada hasil ditemukan</h3>
+            <p class="text-gray-400 mt-2">Coba ubah kata kunci pencarian atau filter Anda.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Data perusahaan yang diperluas dari PDF dan sumber sebelumnya
+        const companies = [
+            // Perusahaan di Indonesia (dari list awal)
+            {nama: "PT Pertamina (Persero)", jenis: "BUMN", situs: "https://www.pertamina.com/", kantor: "Jakarta, Indonesia", catatan: "Induk perusahaan migas negara (Hulu & Hilir)"},
+            {nama: "PT Pertamina Hulu Energi (PHE)", jenis: "BUMN (Anak Usaha)", situs: "https://phe.pertamina.com/", kantor: "Jakarta, Indonesia", catatan: "Subholding Upstream Pertamina, mengelola blok-blok migas domestik & internasional"},
+            {nama: "PT Pertamina Gas Negara (PGN)", jenis: "BUMN (Anak Usaha)", situs: "https://www.pgn.co.id/", kantor: "Jakarta, Indonesia", catatan: "Subholding Gas, fokus pada transmisi dan distribusi gas bumi"},
+            {nama: "SKK Migas", jenis: "Pemerintah", situs: "https://skkmigas.go.id/", kantor: "Jakarta, Indonesia", catatan: "Badan Pengawas Kegiatan Usaha Hulu Minyak dan Gas Bumi"},
+            {nama: "Medco Energi Internasional Tbk", jenis: "Swasta Nasional", situs: "https://www.medcoenergi.com/", kantor: "Jakarta, Indonesia", catatan: "Perusahaan energi swasta nasional terbesar di Indonesia"},
+            {nama: "Saka Energi Indonesia", jenis: "Swasta Nasional", situs: "https://www.sakaenergi.com/", kantor: "Jakarta, Indonesia", catatan: "Anak usaha PGN, bergerak di sektor hulu migas"},
+            
+            // Perusahaan E&P Global (dari list awal)
+            {nama: "Saudi Aramco", jenis: "Multinasional (E&P Global)", situs: "https://www.aramco.com/", kantor: "Dhahran, Saudi Arabia", catatan: "Perusahaan minyak dan gas nasional Arab Saudi, salah satu yang terbesar di dunia."},
+            {nama: "ExxonMobil", jenis: "Multinasional (E&P Global)", situs: "https://corporate.exxonmobil.com/", kantor: "Irving, USA", catatan: "Salah satu perusahaan energi terintegrasi terbesar di dunia."},
+            {nama: "Sinopec", jenis: "Multinasional (E&P Global)", situs: "http://www.sinopec.com/", kantor: "Beijing, China", catatan: "Perusahaan energi dan kimia milik negara Tiongkok."},
+            {nama: "Chevron Corporation", jenis: "Multinasional (E&P Global)", situs: "https://www.chevron.com/", kantor: "San Ramon, USA", catatan: "Perusahaan energi terintegrasi multinasional, aktif di Indonesia."},
+            {nama: "TotalEnergies", jenis: "Multinasional (E&P Global)", situs: "https://totalenergies.com/", kantor: "Paris, France", catatan: "Perusahaan energi terintegrasi multi-nasional dari Prancis, aktif di Indonesia."},
+            {nama: "Shell plc", jenis: "Multinasional (E&P Global)", situs: "https://www.shell.com/", kantor: "London, UK", catatan: "Perusahaan minyak dan gas multinasional Inggris-Belanda."},
+            {nama: "BP (British Petroleum)", jenis: "Multinasional (E&P Global)", situs: "https://www.bp.com/", kantor: "London, UK", catatan: "Operator Proyek Tangguh LNG di Papua Barat, Indonesia."},
+            {nama: "ConocoPhillips", jenis: "Multinasional (E&P Global)", situs: "https://www.conocophillips.com/", kantor: "Houston, USA", catatan: "Operator Blok Corridor di Sumatera Selatan, Indonesia."},
+            
+            // Perusahaan dari PDF
+            {nama: "Abraxas Petroleum Corp.", jenis: "Independent E&P", situs: "http://www.abraxaspetroleum.com/", kantor: "San Antonio, USA", catatan: "Perusahaan eksploitasi dan produksi gas alam dan minyak mentah independen."},
+            {nama: "Abu Dhabi National Oil Co. (ADNOC)", jenis: "National Oil Company", situs: "https://www.adnoc.ae/", kantor: "Abu Dhabi, UAE", catatan: "Mengoperasikan semua bidang industri minyak dan gas di Abu Dhabi."},
+            {nama: "Aladdin Middle East Ltd.", jenis: "Independent E&P", situs: "https://www.ame-turkey.com/", kantor: "Wichita, USA", catatan: "Perusahaan eksplorasi dan produksi minyak dan gas independen Amerika yang beroperasi di Turki."},
+            {nama: "Anadarko Petroleum Corporation", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Anadarko+Petroleum", kantor: "The Woodlands, USA", catatan: "Diakuisisi oleh Occidental Petroleum. Salah satu perusahaan eksplorasi dan produksi minyak dan gas independen terbesar."},
+            {nama: "Antero Resources", jenis: "Independent E&P", situs: "https://www.anteroresources.com/", kantor: "Denver, USA", catatan: "Terlibat dalam eksploitasi, pengembangan, dan akuisisi properti gas alam, NGL, dan minyak di Appalachia Basin."},
+            {nama: "Apache Corp.", jenis: "Independent E&P", situs: "https://www.apacorp.com/", kantor: "Houston, USA", catatan: "Perusahaan energi independen yang mengeksplorasi, mengembangkan, dan memproduksi gas alam dan minyak mentah."},
+            {nama: "Approach Resources Inc.", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Approach+Resources", kantor: "Fort Worth, USA", catatan: "Fokus pada pengeboran minyak dan gas alam di Permian Basin."},
+            {nama: "ARC Resources Ltd.", jenis: "Canadian E&P", situs: "https://www.arcresources.com/", kantor: "Calgary, Canada", catatan: "Perusahaan minyak dan gas yang beroperasi sebagai trust energi."},
+            {nama: "Artex Oil Company", jenis: "Independent E&P", situs: "https://www.artexoil.com/", kantor: "Marietta, USA", catatan: "Salah satu produsen minyak dan gas terbesar di Ohio."},
+            {nama: "Bankers Petroleum", jenis: "Canadian E&P", situs: "https://www.google.com/search?q=Bankers+Petroleum", kantor: "Calgary, Canada", catatan: "Perusahaan eksplorasi dan produksi minyak dan gas yang fokus di Albania."},
+            {nama: "Baytex Energy Ltd.", jenis: "Canadian E&P", situs: "https://www.baytexenergy.com/", kantor: "Calgary, Canada", catatan: "Trust minyak dan gas konvensional yang bergerak di Western Canadian Sedimentary Basin."},
+            {nama: "Bellatrix Exploration", jenis: "Canadian E&P", situs: "https://www.google.com/search?q=Bellatrix+Exploration", kantor: "Calgary, Canada", catatan: "Produsen energi menengah yang fokus pada peluang minyak ringan dan gas kaya cairan."},
+            {nama: "Berry Petroleum Co.", jenis: "Independent E&P", situs: "https://www.bry.com/", kantor: "Dallas, USA", catatan: "Berpengalaman dalam eksplorasi, pengeboran, dan aktivitas produksi."},
+            {nama: "BHP", jenis: "Multinational Mining & Gas", situs: "https://www.bhp.com/", kantor: "Melbourne, Australia", catatan: "Perusahaan sumber daya global terkemuka."},
+            {nama: "Birchcliff Energy Ltd.", jenis: "Canadian E&P", situs: "https://www.birchcliffenergy.com/", kantor: "Calgary, Canada", catatan: "Perusahaan eksplorasi, pengembangan, dan produksi minyak dan gas menengah."},
+            {nama: "Black Hills Corp.", jenis: "Diversified Energy", situs: "https://www.blackhillscorp.com/", kantor: "Rapid City, USA", catatan: "Perusahaan energi terdiversifikasi dengan grup bisnis Utilitas dan Energi Non-regulasi."},
+            {nama: "Bonavista Energy", jenis: "Canadian E&P", situs: "https://www.bonavistaenergy.com/", kantor: "Calgary, Canada", catatan: "Produsen minyak dan gas alam Kanada menengah yang membayar dividen."},
+            {nama: "Cabot Oil & Gas Corp.", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Cabot+Oil+%26+Gas+Corp.", kantor: "Houston, USA", catatan: "Sekarang bagian dari Coterra Energy. Fokus pada pengembangan Marcellus Shale."},
+            {nama: "Cairn Energy Plc", jenis: "Independent E&P", situs: "https://www. Capricornenergy.com/", kantor: "Edinburgh, UK", catatan: "Telah mengeksplorasi, menemukan, mengembangkan, dan memproduksi minyak dan gas di berbagai lokasi."},
+            {nama: "Callon Petroleum Co.", jenis: "Independent E&P", situs: "https://www.callon.com/", kantor: "Houston, USA", catatan: "Fokus pada akuisisi, eksplorasi, dan pengembangan aset berkualitas tinggi di Permian Basin."},
+            {nama: "Canadian Natural Resources Corp.", jenis: "Canadian E&P", situs: "https://www.cnrl.com/", kantor: "Calgary, Canada", catatan: "Operator efektif dan efisien dengan portofolio aset yang terdiversifikasi di Amerika Utara, Laut Utara Inggris, dan Lepas Pantai Afrika."},
+            {nama: "Carrizo Oil & Gas", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Carrizo+Oil+%26+Gas", kantor: "Houston, USA", catatan: "Diakuisisi oleh Callon Petroleum. Pemimpin industri dalam pengeboran pengembangan horizontal."},
+            {nama: "Cenovus Energy", jenis: "Canadian Integrated", situs: "https://www.cenovus.com/", kantor: "Calgary, Canada", catatan: "Perusahaan minyak dan gas alam terintegrasi Kanada."},
+            {nama: "Centrica", jenis: "Multinational Utility", situs: "https://www.centrica.com/", kantor: "Windsor, UK", catatan: "Divisi global yang berhadapan dengan pelanggan, Centrica Business, dirancang untuk mendukung kebutuhan pelanggan bisnis."},
+            {nama: "CEPSA", jenis: "Multinational Integrated", situs: "https://www.cepsa.com/", kantor: "Madrid, Spain", catatan: "Perusahaan global terintegrasi yang beroperasi di seluruh rantai nilai minyak dan gas."},
+            {nama: "CGX Energy", jenis: "Canadian E&P", situs: "https://www.cgxenergy.com/", kantor: "Toronto, Canada", catatan: "Perusahaan eksplorasi minyak dan gas Kanada yang memegang tiga lisensi di Guyana-Suriname Basin."},
+            {nama: "Chaparral Energy", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Chaparral+Energy", kantor: "Oklahoma City, USA", catatan: "Operasi membentang di STACK Play Oklahoma yang tumbuh cepat dan sangat ekonomis."},
+            {nama: "Chesapeake Energy Corp.", jenis: "Independent E&P", situs: "https://www.chk.com/", kantor: "Oklahoma City, USA", catatan: "Portofolio mencakup aset minyak dan gas alam non-konvensional berkualitas tinggi di ladang utama AS."},
+            {nama: "Cimarex Energy", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Cimarex+Energy", kantor: "Denver, USA", catatan: "Sekarang bagian dari Coterra Energy. Perusahaan eksplorasi dan produksi dengan operasi di Oklahoma, Texas, dan New Mexico."},
+            {nama: "CNOOC", jenis: "National Oil Company", situs: "https://www.cnooc.com.cn/en", kantor: "Beijing, China", catatan: "Produsen minyak mentah dan gas alam lepas pantai terbesar di China."},
+            {nama: "Comstock Resources", jenis: "Independent E&P", situs: "https://www.comstockresources.com/", kantor: "Frisco, USA", catatan: "Terlibat dalam akuisisi, pengembangan, produksi, dan eksplorasi minyak dan gas alam."},
+            {nama: "Concho Resources", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Concho+Resources", kantor: "Midland, USA", catatan: "Diakuisisi oleh ConocoPhillips. Fokus pada aset berkualitas tinggi di Permian Basin."},
+            {nama: "Continental Resources", jenis: "Independent E&P", situs: "https://www.clr.com/", kantor: "Oklahoma City, USA", catatan: "Perusahaan eksplorasi dan produksi minyak dan gas alam independen dengan operasi di berbagai wilayah AS."},
+            {nama: "Crescent Point Energy", jenis: "Canadian E&P", situs: "https://www.crescentpointenergy.com/", kantor: "Calgary, Canada", catatan: "Produsen minyak Amerika Utara terkemuka yang fokus pada pengembangan ladang sumber daya dengan pengembalian tinggi."},
+            {nama: "Crew Energy Inc.", jenis: "Canadian E&P", situs: "https://www.crewenergy.com/", kantor: "Calgary, Canada", catatan: "Produsen minyak dan gas alam yang berorientasi pada pertumbuhan."},
+            {nama: "Dana Petroleum plc", jenis: "Independent E&P", situs: "https://www.dana-petroleum.com/", kantor: "Aberdeen, UK", catatan: "Perusahaan minyak independen Inggris terkemuka."},
+            {nama: "Devon Energy", jenis: "Independent E&P", situs: "https://www.devonenergy.com/", kantor: "Oklahoma City, USA", catatan: "Perusahaan eksplorasi dan produksi minyak dan gas alam independen terkemuka."},
+            {nama: "Diamondback Energy", jenis: "Independent E&P", situs: "https://www.diamondbackenergy.com/", kantor: "Midland, USA", catatan: "Fokus pada akuisisi dan pengembangan cadangan minyak dan gas non-konvensional di Permian Basin."},
+            {nama: "Gazprom", jenis: "National Oil Company", situs: "https://www.gazprom.com/", kantor: "St. Petersburg, Russia", catatan: "Perusahaan energi global yang fokus pada eksplorasi, produksi, dan penjualan gas."},
+            {nama: "Genel Energy", jenis: "Independent E&P", situs: "https://www.genelenergy.com/", kantor: "London, UK", catatan: "Pemegang cadangan dan sumber daya terbesar di Wilayah Kurdistan Irak."},
+            {nama: "Goodrich Petroleum Corp.", jenis: "Independent E&P", situs: "https://www.goodrichpetroleum.com/", kantor: "Houston, USA", catatan: "Fokus pada eksploitasi dan pengembangan gas alam dan minyak mentah di Haynesville Shale."},
+            {nama: "Gran Tierra Energy Inc.", jenis: "Canadian E&P", situs: "https://www.grantierra.com/", kantor: "Calgary, Canada", catatan: "Fokus pada eksplorasi dan produksi minyak dan gas di Kolombia dan Ekuador."},
+            {nama: "Gulfport Energy Corp.", jenis: "Independent E&P", situs: "https://www.gulfportenergy.com/", kantor: "Oklahoma City, USA", catatan: "Salah satu produsen gas alam terbesar di Amerika Serikat yang berdekatan."},
+            {nama: "Gulf Keystone Petroleum Ltd.", jenis: "Independent E&P", situs: "https://www.gulfkeystone.com/", kantor: "London, UK", catatan: "Operator dan produsen independen terkemuka di Wilayah Kurdistan Irak."},
+            {nama: "Hardy Oil and Gas", jenis: "Independent E&P", situs: "https://www.hardyoil.com/", kantor: "London, UK", catatan: "Fokus utama pada eksplorasi dan produksi minyak dan gas internasional di India."},
+            {nama: "Hess Corporation", jenis: "Independent E&P", situs: "https://www.hess.com/", kantor: "New York, USA", catatan: "Produsen minyak dan gas serpih terkemuka, dan salah satu produsen terbesar di Teluk Meksiko Dalam."},
+            {nama: "Highpoint Resources", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Highpoint+Resources", kantor: "Denver, USA", catatan: "Fokus pada pengembangan aset minyak dan gas alam yang bertanggung jawab di Denver-Julesburg Basin."},
+            {nama: "Imperial Oil", jenis: "Canadian Integrated", situs: "https://www.imperialoil.ca/", kantor: "Calgary, Canada", catatan: "Anak perusahaan ExxonMobil, salah satu perusahaan energi terbesar di Kanada."},
+            {nama: "JKX Oil & Gas PLC", jenis: "Independent E&P", situs: "https://www.jkx.co.uk/", kantor: "London, UK", catatan: "Perusahaan E&P pasar berkembang independen dengan fokus di Eropa Timur."},
+            {nama: "Kinder Morgan", jenis: "Midstream", situs: "https://www.kindermorgan.com/", kantor: "Houston, USA", catatan: "Salah satu perusahaan transportasi pipa dan penyimpanan energi terbesar di Amerika Utara."},
+            {nama: "Kuwait Oil Company", jenis: "National Oil Company", situs: "https://www.kockw.com/", kantor: "Ahmadi, Kuwait", catatan: "Anak perusahaan dari Kuwait Petroleum Corporation (KPC)."},
+            {nama: "Linn Energy", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Linn+Energy", kantor: "Houston, USA", catatan: "Perusahaan pengembangan minyak dan gas alam independen AS terkemuka."},
+            {nama: "Lukoil", jenis: "Multinational Integrated", situs: "https://www.lukoil.com/", kantor: "Moscow, Russia", catatan: "Perusahaan minyak & gas terintegrasi vertikal internasional utama."},
+            {nama: "Maersk Oil", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Maersk+Oil", kantor: "Copenhagen, Denmark", catatan: "Diakuisisi oleh TotalEnergies. Memproduksi minyak dari berbagai lokasi di seluruh dunia."},
+            {nama: "Marathon Oil Corp.", jenis: "Independent E&P", situs: "https://www.marathonoil.com/", kantor: "Houston, USA", catatan: "Perusahaan eksplorasi dan produksi independen terkemuka."},
+            {nama: "Murphy Oil Co.", jenis: "Independent E&P", situs: "https://www.murphyoilcorp.com/", kantor: "Houston, USA", catatan: "Perusahaan minyak dan gas internasional yang memproduksi minyak dan gas alam di AS dan Kanada."},
+            {nama: "National Oil Corporation (Libya)", jenis: "National Oil Company", situs: "https://noc.ly/index.php/en/", kantor: "Tripoli, Libya", catatan: "Mengemban tanggung jawab operasi sektor minyak di Libya."},
+            {nama: "Newfield Exploration Co.", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Newfield+Exploration", kantor: "The Woodlands, USA", catatan: "Diakuisisi oleh Encana (sekarang Ovintiv). Perusahaan eksplorasi dan produksi minyak mentah independen."},
+            {nama: "Nexen", jenis: "Canadian E&P", situs: "https://www.google.com/search?q=Nexen", kantor: "Calgary, Canada", catatan: "Diakuisisi oleh CNOOC. Perusahaan energi berbasis di Kanada dengan operasi di lokasi strategis di seluruh dunia."},
+            {nama: "Nigerian National Petroleum Corporation (NNPC)", jenis: "National Oil Company", situs: "https://www.nnpcgroup.com/", kantor: "Abuja, Nigeria", catatan: "Memiliki kepentingan operasional dalam penyulingan, petrokimia, transportasi, dan pemasaran produk."},
+            {nama: "Niko Resources", jenis: "Canadian E&P", situs: "https://www.google.com/search?q=Niko+Resources", kantor: "Calgary, Canada", catatan: "Operasi di India, Bangladesh, Indonesia, Kurdistan Irak, Madagaskar, Pakistan, dan Trinidad."},
+            {nama: "Noble Energy", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Noble+Energy", kantor: "Houston, USA", catatan: "Diakuisisi oleh Chevron. Perusahaan energi independen terkemuka dengan portofolio aset yang beragam."},
+            {nama: "Novatek", jenis: "Independent E&P", situs: "https://www.novatek.ru/en/", kantor: "Tarko-Sale, Russia", catatan: "Produsen gas alam independen terbesar di Rusia."},
+            {nama: "Occidental Petroleum Corp. (Oxy)", jenis: "Multinational E&P", situs: "https://www.oxy.com/", kantor: "Houston, USA", catatan: "Perusahaan eksplorasi dan produksi minyak dan gas internasional."},
+            {nama: "Oil and Natural Gas Corporation (ONGC)", jenis: "National Oil Company", situs: "https://www.ongcindia.com/", kantor: "New Delhi, India", catatan: "Perusahaan minyak mentah dan gas alam terbesar di India."},
+            {nama: "Pioneer Natural Resources", jenis: "Independent E&P", situs: "https://www.pxd.com/", kantor: "Irving, USA", catatan: "Perusahaan eksplorasi dan produksi independen besar dengan operasi di Amerika Serikat."},
+            {nama: "Premier Oil", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Premier+Oil", kantor: "London, UK", catatan: "Sekarang bagian dari Harbour Energy. Perusahaan eksplorasi dan produksi minyak dan gas."},
+            {nama: "Qatar Petroleum", jenis: "National Oil Company", situs: "https://www.qatarenergy.qa/", kantor: "Doha, Qatar", catatan: "Sekarang dikenal sebagai QatarEnergy."},
+            {nama: "Quicksilver Resources", jenis: "Independent E&P", situs: "https://www.google.com/search?q=Quicksilver+Resources", kantor: "Fort Worth, USA", catatan: "Pemimpin dalam pengembangan dan produksi sumber daya non-konvensional."},
+            {nama: "Range Resources", jenis: "Independent E&P", situs: "https://www.rangeresources.com/", kantor: "Fort Worth, USA", catatan: "Fokus pada pengembangan gas alam dan NGL di wilayah Appalachia."},
+            {nama: "Repsol YPF", jenis: "Multinational Integrated", situs: "https://www.repsol.com/", kantor: "Madrid, Spain", catatan: "Perusahaan energi global, hadir di seluruh rantai nilai."},
+            {nama: "SandRidge Energy", jenis: "Independent E&P", situs: "https://www.sandridgeenergy.com/", kantor: "Oklahoma City, USA", catatan: "Kegiatan pengeboran difokuskan pada properti minyak di Permian Basin dan Mid-Continent."},
+            {nama: "Santos Ltd.", jenis: "Australian E&P", situs: "https://www.santos.com/", kantor: "Adelaide, Australia", catatan: "Salah satu produsen gas terkemuka di Australia, memasok pelanggan Australia dan Asia."},
+            {nama: "Suncor Energy", jenis: "Canadian Integrated", situs: "https://www.suncor.com/", kantor: "Calgary, Canada", catatan: "Perusahaan energi terintegrasi terkemuka di Kanada."},
+            {nama: "Surgutneftegas", jenis: "Multinational Integrated", situs: "https://www.surgutneftegas.ru/en/", kantor: "Surgut, Russia", catatan: "Salah satu perusahaan terbesar di sektor minyak Rusia."},
+            {nama: "Talisman Energy", jenis: "Canadian E&P", situs: "https://www.google.com/search?q=Talisman+Energy", kantor: "Calgary, Canada", catatan: "Diakuisisi oleh Repsol. Perusahaan minyak dan gas hulu global yang terdiversifikasi."},
+            {nama: "Tethys Petroleum", jenis: "Independent E&P", situs: "https://www.tethys-group.com/", kantor: "Guernsey", catatan: "Perusahaan minyak dan gas dengan fokus di Asia Tengah dan Kaukasus."},
+            {nama: "Tullow Oil", jenis: "Independent E&P", situs: "https://www.tullowoil.com/", kantor: "London, UK", catatan: "Perusahaan eksplorasi dan produksi minyak dan gas independen terkemuka di Afrika dan Amerika Selatan."},
+            {nama: "W&T Offshore", jenis: "Independent E&P", situs: "https://www.wtoffshore.com/", kantor: "Houston, USA", catatan: "Produsen independen yang fokus pada eksplorasi, pengembangan, dan akuisisi di Teluk Meksiko."},
+            {nama: "Whiting Petroleum Corp.", jenis: "Independent E&P", situs: "https://www.whiting.com/", kantor: "Denver, USA", catatan: "Fokus pada pengembangan properti minyak di Bakken dan Three Forks plays."},
+            {nama: "Williams Companies", jenis: "Midstream", situs: "https://www.williams.com/", kantor: "Tulsa, USA", catatan: "Perusahaan infrastruktur energi yang menangani sekitar 30% gas alam di Amerika Serikat."},
+            {nama: "Wintershall Dea", jenis: "Independent E&P", situs: "https://www.wintershalldea.com/", kantor: "Kassel & Hamburg, Germany", catatan: "Perusahaan gas dan minyak independen terkemuka di Eropa."},
+            {nama: "Woodside Petroleum", jenis: "Australian E&P", situs: "https://www.woodside.com/", kantor: "Perth, Australia", catatan: "Perusahaan gas alam perintis di Australia dan produsen LNG global terkemuka."}
+        ];
+
+        // Mendapatkan elemen DOM
+        const companyGrid = document.getElementById('company-grid');
+        const searchInput = document.getElementById('search-input');
+        const typeFilter = document.getElementById('type-filter');
+        const noResults = document.getElementById('no-results');
+
+        // Fungsi untuk me-render kartu perusahaan ke dalam grid
+        function renderCompanies() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedType = typeFilter.value;
+
+            const filteredCompanies = companies.filter(company => {
+                const nameMatch = company.nama.toLowerCase().includes(searchTerm);
+                const notesMatch = company.catatan.toLowerCase().includes(searchTerm);
+                const typeMatch = selectedType === 'all' || company.jenis === selectedType;
+                return (nameMatch || notesMatch) && typeMatch;
+            });
+            
+            companyGrid.innerHTML = '';
+
+            if (filteredCompanies.length === 0) {
+                noResults.classList.remove('hidden');
+                companyGrid.classList.add('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                companyGrid.classList.remove('hidden');
+
+                filteredCompanies.forEach((company, index) => {
+                    const card = document.createElement('div');
+                    card.className = "bg-gray-800 border border-gray-700 rounded-lg p-5 flex flex-col transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 card-enter";
+                    card.innerHTML = `
+                        <div class="flex-grow">
+                            <span class="inline-block bg-cyan-900/50 text-cyan-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">${company.jenis}</span>
+                            <h2 class="text-xl font-bold text-white mb-2">${company.nama}</h2>
+                            <p class="text-gray-400 text-sm mb-1"><span class="font-medium text-gray-300">Kantor Pusat:</span> ${company.kantor}</p>
+                            <p class="text-gray-400 text-sm"><span class="font-medium text-gray-300">Catatan:</span> ${company.catatan}</p>
+                        </div>
+                        <div class="mt-5">
+                            <a href="${company.situs}" target="_blank" rel="noopener noreferrer" 
+                            class="w-full block text-center bg-cyan-600 text-white font-semibold rounded-lg px-4 py-2 text-sm transition-colors duration-200 hover:bg-cyan-500">
+                                Lihat Situs
+                            </a>
+                        </div>
+                    `;
+                    companyGrid.appendChild(card);
+                    // Memicu animasi fade-in
+                    setTimeout(() => card.classList.add('card-enter-active'), index * 30);
+                });
+            }
+        }
+
+        // Fungsi untuk mengisi pilihan filter berdasarkan data
+        function populateFilters() {
+            const types = ['all', ...new Set(companies.map(c => c.jenis).sort())];
+            
+            typeFilter.innerHTML = ''; // Kosongkan filter sebelum mengisi ulang
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type === 'all' ? 'Semua Jenis Perusahaan' : type;
+                typeFilter.appendChild(option);
+            });
+        }
+
+        // Event listener untuk input pencarian
+        searchInput.addEventListener('input', renderCompanies);
+
+        // Event listener untuk filter jenis perusahaan
+        typeFilter.addEventListener('change', renderCompanies);
+
+        // Panggil fungsi saat halaman pertama kali dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            populateFilters();
+            renderCompanies();
+        });
+
+    </script>
+</body>
+</html>
