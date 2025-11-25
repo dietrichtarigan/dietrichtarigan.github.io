@@ -10,7 +10,7 @@ export function Skills() {
       color: "from-cyan-500 via-sky-500 to-blue-500",
       skills: [
         { name: "Python", level: 90 },
-        { name: "C++ / Embedded C", level: 85 },
+        { name: "C++", level: 85 },
         { name: "R", level: 75 },
         { name: "MATLAB", level: 80 }
       ]
@@ -32,7 +32,7 @@ export function Skills() {
       color: "from-amber-400 via-amber-500 to-orange-500",
       skills: [
         { name: "Scikit-learn", level: 85 },
-        { name: "Pandas", level: 88 },
+        { name: "PyTorch", level: 88 },
         { name: "Data Visualization", level: 82 },
         { name: "Machine Learning", level: 80 }
       ]
@@ -45,7 +45,7 @@ export function Skills() {
         { name: "Team Leadership", level: 92 },
         { name: "Project Management", level: 90 },
         { name: "Cross-Functional Collaboration", level: 88 },
-        { name: "Mentoring", level: 85 }
+        { name: "-", level: 85 }
       ]
     }
   ];

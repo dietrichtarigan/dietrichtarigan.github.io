@@ -38,24 +38,23 @@ export function Contact() {
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "Location",
-      value: "Bandung, West Java",
+      value: "Bandung, West Java, Indonesia",
       href: "#",
       color: "from-slate-600 to-slate-700"
     },
     {
       icon: <Coffee className="w-5 h-5" />,
       label: "Coffee chat",
-      value: "+62-895-3928-47376",
-      href: "tel:+6289539284376",
+      value: "Let's connect",
+      href: "https://linkedin.com/in/dietrichtarigan",
       color: "from-amber-400 to-amber-600"
     }
   ];
 
   const socialLinks = [
-    { name: "LinkedIn", handle: "/dietrich-tarigan", url: "https://linkedin.com/in/dietrich-tarigan" },
-    { name: "GitHub", handle: "@dietrich-tarigan", url: "#" },
-    { name: "Email", handle: "tarigandietrich@gmail.com", url: "mailto:tarigandietrich@gmail.com" },
-    { name: "WhatsApp", handle: "+62-895-3928-47376", url: "https://wa.me/6289539284376" }
+    { name: "LinkedIn", handle: "/dietrichtarigan", url: "https://linkedin.com/in/dietrichtarigan" },
+    { name: "GitHub", handle: "@dietrichtarigan", url: "https://github.com/dietrichtarigan" },
+    { name: "Email", handle: "tarigandietrich@gmail.com", url: "mailto:tarigandietrich@gmail.com" }
   ];
 
   return (
@@ -78,10 +77,10 @@ export function Contact() {
             className="text-center mb-16"
           >
             <p className="text-teal-600 mb-2 tracking-widest uppercase text-sm" style={{ fontFamily: 'var(--font-urbanist)', fontWeight: 500, letterSpacing: '0.1em' }}>Get in touch</p>
-            <h2 className="mb-4 text-slate-800 text-4xl md:text-5xl" style={{ fontFamily: 'var(--font-urbanist)', fontWeight: 600 }}>Let's create something amazing together</h2>
+            <h2 className="mb-4 text-slate-800 text-4xl md:text-5xl" style={{ fontFamily: 'var(--font-urbanist)', fontWeight: 600 }}>Let's connect and collaborate</h2>
             <p className="text-slate-700 max-w-2xl mx-auto text-lg" style={{ fontFamily: 'var(--font-urbanist)', fontWeight: 300, letterSpacing: '0.01em' }}>
-              Whether you have a project in mind, want to collaborate, or just want to say hi—
-              I'd love to hear from you. I usually respond within 24 hours.
+              Interested in discussing AI, Machine Learning, or potential collaborations? 
+              Feel free to reach out—I'm always open to connecting with fellow enthusiasts and professionals.
             </p>
           </motion.div>
 
@@ -140,7 +139,7 @@ export function Contact() {
 
               <div className="p-6 bg-gradient-to-br from-slate-700 via-slate-800 to-teal-900 rounded-2xl text-white">
                 <p className="mb-2">Currently available for</p>
-                <p className="mb-4">Freelance projects & consulting</p>
+                <p className="mb-4">Freelance Projects</p>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></div>
                   <span className="text-white/60">Available now</span>

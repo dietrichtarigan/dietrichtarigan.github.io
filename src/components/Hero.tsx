@@ -6,7 +6,7 @@ import { BackgroundArt } from "./BackgroundArt";
 export function Hero() {
   const [typedText, setTypedText] = useState("");
   const fullText =
-    "apply physics & programming to solve real-world challenges.";
+    "am a Physics student passionate about AI and Machine Learning.";
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
@@ -103,15 +103,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             style={{ fontWeight: 300, letterSpacing: '0.01em' }}
           >
-            I'm a physics student at Institut Teknologi Bandung with a passion for 
-            interdisciplinary innovation. Currently interning at{" "}
-            <a
-              href="#"
-              className="text-cyan-200 hover:text-cyan-100 underline decoration-cyan-300/40 underline-offset-4 transition-colors"
-            >
-              @BRIN
-            </a>{" "}
-            (National Research and Innovation Agency), working on MOKE microscopy to study magnetic materials, while continuing to explore how machine learning and data science can advance experimental and theoretical physics.
+            I'm a Physics undergraduate at Institut Teknologi Bandung, working on research in petroleum engineering with a focus on Top-Down Reservoir Modeling and Machine Learning applications for reservoir analysis. I'm also developing data-driven solutions for labor market analysis at GSIC.
           </motion.p>
 
           <motion.div

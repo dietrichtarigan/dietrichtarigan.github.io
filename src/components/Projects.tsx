@@ -6,17 +6,6 @@ import { BackgroundArt } from "./BackgroundArt";
 export function Projects() {
   const projects = [
     {
-      title: "Solar Tracking System with PPO",
-      subtitle: "AI-powered renewable energy optimization",
-      description: "Led a team in developing a dual-axis solar tracker using Proximal Policy Optimization (PPO) reinforcement learning to maximize energy capture. Built real-time web dashboard for monitoring and control.",
-      icon: <Zap className="w-16 h-16" />,
-      tags: ["Reinforcement Learning", "IoT", "Team Lead"],
-      color: "from-amber-400 via-amber-500 to-orange-500",
-      bgPattern: "radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.2) 0%, transparent 50%)",
-      size: "large",
-      metrics: "SRE ITB • May 2025"
-    },
-    {
       title: "Health Monitoring System",
       subtitle: "IoT solution for pressure ulcer prevention",
       description: "Led cross-disciplinary team in designing smart health monitoring system with ESP32, multiple sensors, and AI-optimized web dashboard. Secured 4th place in national competition.",
@@ -24,7 +13,7 @@ export function Projects() {
       tags: ["IoT", "Healthcare", "Team Lead"],
       color: "from-sky-600 via-cyan-600 to-teal-700",
       bgPattern: "radial-gradient(circle at 30% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(20, 184, 166, 0.2) 0%, transparent 50%)",
-      size: "medium",
+      size: "large",
       metrics: "IEEE ITB • 4th Place"
     },
     {
@@ -50,15 +39,26 @@ export function Projects() {
       metrics: "AKSANTARA ITB"
     },
     {
-      title: "Quantum Physics Research",
-      subtitle: "Advanced experimental systems",
-      description: "Designing Helmholtz coil systems, developing GUI for I-V measurements with Keithley SMU, and creating image processing algorithms for Magneto-Optic Kerr Microscopy at BRIN.",
-      icon: <Atom className="w-10 h-10" />,
-      tags: ["Research", "Python", "Image Processing"],
-      color: "from-purple-600 via-indigo-600 to-cyan-600",
-      bgPattern: "radial-gradient(circle at 30% 50%, rgba(147, 51, 234, 0.2) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(99, 102, 241, 0.2) 0%, transparent 50%)",
+      title: "Petroleum Engineering Research",
+      subtitle: "Reservoir modeling with ML",
+      description: "Research on Top-Down Reservoir Modeling and Machine Learning applications to dynamic and seismic reservoir datasets for improved reservoir understanding and predictive analytics.",
+      icon: <Database className="w-10 h-10" />,
+      tags: ["Machine Learning", "Research", "Data Science"],
+      color: "from-emerald-600 via-teal-600 to-cyan-600",
+      bgPattern: "radial-gradient(circle at 30% 50%, rgba(5, 150, 105, 0.2) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(20, 184, 166, 0.2) 0%, transparent 50%)",
+      size: "medium",
+      metrics: "ITB Research Assistant"
+    },
+    {
+      title: "Labor Market Intelligence",
+      subtitle: "Data-driven policy analysis",
+      description: "Developing data-driven labor market analysis and policy intelligence system for Ministry of Manpower of Indonesia, combining data analytics with policy insights.",
+      icon: <Code2 className="w-10 h-10" />,
+      tags: ["Data Analytics", "Policy", "Python"],
+      color: "from-violet-600 via-purple-600 to-indigo-600",
+      bgPattern: "radial-gradient(circle at 40% 40%, rgba(124, 58, 237, 0.2) 0%, transparent 50%), radial-gradient(circle at 60% 60%, rgba(99, 102, 241, 0.2) 0%, transparent 50%)",
       size: "small",
-      metrics: "BRIN Internship"
+      metrics: "GSIC - Kemnaker"
     }
   ];
 
