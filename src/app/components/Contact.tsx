@@ -8,6 +8,8 @@ export default function Contact() {
 
         <p className="text-lg text-gray-700 mb-10 max-w-2xl" style={{ lineHeight: '1.7' }}>
           If you'd like to talk about research, projects, or possible collaboration, feel free to reach out.
+          I am also open to internship opportunities, including research internships, scientific internships,
+          and project-based collaborations.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl">

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import kerrImage from "../../imports/image-1.png";
 import ivMeasurementImage from "../../imports/image-2.png";
 import fetMeasurementImage from "../../imports/image-3.png";
@@ -9,6 +10,25 @@ import tempControlImage2 from "../../imports/image-6.png";
 import tempControlImage3 from "../../imports/image-7.png";
 
 export default function Projects() {
+  const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
+  const previewLength = 520;
+
+  const getPreviewText = (text: string) => {
+    if (text.length <= previewLength) return text;
+
+    const sliced = text.slice(0, previewLength);
+    const lastSpaceIndex = sliced.lastIndexOf(" ");
+    const safeCut = lastSpaceIndex > 0 ? lastSpaceIndex : previewLength;
+    return `${sliced.slice(0, safeCut)}...`;
+  };
+
+  const toggleProjectDescription = (index: number) => {
+    setExpandedProjects((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   const projects = [
     {
       title: "Kerr Contrast ROI Analyzer for MOKE Video Experiments",
@@ -70,6 +90,7 @@ export default function Projects() {
         <div className="space-y-8">
           {projects.map((project, index) => (
             <div key={index} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
+              {/** Images */}
               {project.image && (
                 <div className="mb-6 rounded-lg overflow-hidden border border-gray-200">
                   <img
@@ -139,8 +160,32 @@ export default function Projects() {
                 </div>
               )}
 
+              {/** Content */}
               <h3 className="text-xl text-gray-900 mb-4">{project.title}</h3>
-              <p className="text-gray-700 leading-relaxed mb-6 whitespace-pre-line">{project.description}</p>
+
+              {(() => {
+                const isExpanded = !!expandedProjects[index];
+                const isLongDescription = project.description.length > previewLength;
+                const displayedText = isExpanded || !isLongDescription
+                  ? project.description
+                  : getPreviewText(project.description);
+
+                return (
+                  <>
+                    <p className="text-gray-700 leading-relaxed mb-3 whitespace-pre-line">{displayedText}</p>
+                    {isLongDescription && (
+                      <button
+                        type="button"
+                        onClick={() => toggleProjectDescription(index)}
+                        className="mb-6 text-sm font-medium text-[#1e3a8a] hover:underline"
+                      >
+                        {isExpanded ? "Show less" : "Read more"}
+                      </button>
+                    )}
+                    {!isLongDescription && <div className="mb-6" />}
+                  </>
+                );
+              })()}
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag, tagIndex) => (
