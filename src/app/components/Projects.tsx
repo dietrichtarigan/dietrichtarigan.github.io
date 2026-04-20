@@ -75,7 +75,9 @@ export default function Projects() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-auto"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-52 md:h-64 object-contain bg-gray-50"
                   />
                 </div>
               )}
@@ -87,7 +89,9 @@ export default function Projects() {
                       <img
                         src={project.images[0]}
                         alt={`${project.title} - Image 1`}
-                        className="w-full h-auto"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-52 md:h-64 object-contain bg-gray-50"
                       />
                     </div>
                   )}
@@ -98,7 +102,9 @@ export default function Projects() {
                           <img
                             src={img}
                             alt={`${project.title} - Image ${imgIndex + 1}`}
-                            className="w-full h-auto"
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-40 md:h-48 object-contain bg-gray-50"
                           />
                         </div>
                       ))}
@@ -110,7 +116,9 @@ export default function Projects() {
                         <img
                           src={project.images[0]}
                           alt={`${project.title} - Image 1`}
-                          className="w-full h-auto"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-48 md:h-56 object-contain bg-gray-50"
                         />
                       </div>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -119,7 +127,9 @@ export default function Projects() {
                             <img
                               src={img}
                               alt={`${project.title} - Image ${imgIndex + 2}`}
-                              className="w-full h-auto"
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-36 md:h-44 object-contain bg-gray-50"
                             />
                           </div>
                         ))}
