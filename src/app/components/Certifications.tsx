@@ -50,7 +50,7 @@ export default function Certifications() {
   ];
 
   return (
-    <section className="py-24">
+    <section id="certifications" className="py-24 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-2xl text-gray-900 mb-10">Certifications</h2>
 

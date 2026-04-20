@@ -1,6 +1,19 @@
-import profileImage from "../../imports/WhatsApp_Image_2026-04-20_at_7.52.32_PM.jpeg";
+import { useEffect } from "react";
+import profileImage from "../../imports/WhatsApp_Image_2026-04-13_at_4.19.05_PM.jpeg";
 
 export default function Navigation() {
+  useEffect(() => {
+    const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]') ?? (() => {
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+      return link;
+    })();
+
+    favicon.type = 'image/jpeg';
+    favicon.href = profileImage;
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
