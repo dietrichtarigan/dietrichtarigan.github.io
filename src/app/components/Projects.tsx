@@ -79,6 +79,14 @@ export default function Projects() {
       tags: ["Arduino", "PID Control", "Instrumentation", "Real-time Systems", "Signal Processing", "Embedded C", "Data Visualization"],
       images: [tempControlImage1, tempControlImage2, tempControlImage3],
       links: []
+    },
+    {
+      title: "Past Projects Portfolio",
+      description: "A comprehensive collection of additional projects and technical work across various domains including research, embedded systems, and software development.",
+      tags: ["Portfolio", "Research", "Projects"],
+      links: [
+        { label: "View Projects", url: "https://docs.google.com/document/d/1HrwtWMSKBBT52-ppdkJD0z8S_3enau5sti-rqnimp20/edit?usp=sharing" }
+      ]
     }
   ];
 
