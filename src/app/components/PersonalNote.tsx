@@ -7,15 +7,19 @@ export default function PersonalNote() {
 
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              I believe there's a fundamental connection between music and physics. Music itself is a part of nature, and all of nature is governed by physical laws. Whenever I play the piano—which I do for two to three hours every day—I feel like I am stepping into a hidden realm. Perhaps it is something akin to the abstract reality of momentum space in a Fourier transform. I don't fully know; it is all a beautiful mystery.
+              I believe there is a fundamental connection between music and physics. Music is part of nature, and nature is governed by physical laws. Whenever I play the piano—which I do every day—I feel as though I am stepping into a hidden realm, where sound, emotion, structure, and motion become one. Perhaps it is something like entering Fourier space, or where what seems ordinary begins to reveal its hidden patterns. I do not fully know. To me, it remains a beautiful mystery.
             </p>
 
             <p>
-              In addition, I believe that my journey into physics is a calling from a higher power. As someone who never truly understood physics and only fell in love with science after entering university, I am deeply grateful for all His blessings. Just as the psychologist Alfred Adler suggested that we are all part of a greater whole, I believe I am an integral part of this higher world and of nature itself.
+              My journey into physics also feels like a calling from a higher power. I was not someone who always understood physics, nor did I fall in love with science from the beginning. That love grew slowly after I entered university, and for that I am deeply grateful for all His blessings. Through physics, I began to see myself not as separate from nature, but as part of something much greater: humanity, the universe, and the deeper order that holds everything together.
             </p>
 
             <p>
-              Because I am part of this grand design, I have decided to devote myself to uncovering a small fraction of nature: the mysteries of the quantum world. I have come to realize that the search for truth through science can bless the world. I hope to forge my own path and that my work can bring joy and goodness to humankind.
+              Because of this, I have chosen to devote myself to uncovering a small fraction of nature’s mysteries, especially the mysteries of the quantum world. I believe that the search for truth through science is not only an intellectual pursuit, but also a way to serve. If science can reveal even a small part of the beauty of creation, then perhaps it can also bring goodness, joy, and blessing to the world.
+            </p>
+
+            <p>
+              I hope to forge my own path in this search for truth, and I hope that one day my work can contribute something meaningful to humankind.
             </p>
 
             <p className="italic">
