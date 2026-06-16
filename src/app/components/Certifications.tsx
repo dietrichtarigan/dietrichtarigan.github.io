@@ -1,61 +1,69 @@
-import { Award, ExternalLink } from "lucide-react";
+import { Cpu, Code2, FlaskConical, Wrench, Award, ExternalLink } from "lucide-react";
 
-export default function Certifications() {
-  const certifications = [
+export default function Skills() {
+  const skillGroups = [
     {
-      title: "Deep Learning Specialization",
-      issuer: "Taught by DeepLearning.AI offered through Coursera",
-      link: "https://coursera.org/share/5d70096a7685223ef1225218a390e086"
+      title: "Simulation",
+      icon: Cpu,
+      items: ["MuMax3 (GPU micromagnetics)", "LLG equation solvers", "GPU cluster job management"]
     },
     {
-      title: "Machine Learning Specialization",
-      issuer: "Taught by Stanford University and DeepLearning.AI offered through Coursera",
-      link: "https://coursera.org/share/a8d3fd08b8a433594109694332191a5b"
+      title: "Programming",
+      icon: Code2,
+      items: ["Python (NumPy, pandas, matplotlib, OpenCV, PyVISA)", "C++ (ImGui, SFML)", "Embedded C (Arduino, ESP32)"]
     },
     {
-      title: "Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning",
-      issuer: "Taught by DeepLearning.AI offered through Coursera",
-      link: "https://coursera.org/share/ada3141d15a3768553c4b3bafefe5937"
+      title: "Experimental",
+      icon: FlaskConical,
+      items: ["Polar MOKE microscopy", "I–V & FET characterization", "Helmholtz coil calibration"]
     },
+    {
+      title: "Tools",
+      icon: Wrench,
+      items: ["Git", "LaTeX", "GPIB / PyVISA", "Linux / HPC"]
+    }
+  ];
+
+  const relevantCertifications = [
     {
       title: "Modern Topics in Condensed Matter Physics",
-      issuer: "Taught by University of Colorado Boulder offered through Coursera",
+      issuer: "University of Colorado Boulder · Coursera",
       link: "https://coursera.org/share/2d823502665ba69e4ee7b201d0035a30"
     },
     {
       title: "Introduction to Quantum Information",
-      issuer: "Taught by Korea Advanced Institute of Science and Technology (KAIST) offered through Coursera",
+      issuer: "KAIST · Coursera",
       link: "https://coursera.org/share/d08361620156673e60535ddf44f5ec37"
-    },
-    {
-      title: "Introduction to Microfabrication",
-      issuer: "Taught by University of Minnesota offered through Coursera",
-      link: "https://coursera.org/share/e1621242ee6dc7ebcf25c21431b24110"
-    },
-    {
-      title: "Microwave Engineering and Antennas",
-      issuer: "Taught by Eindhoven University of Technology offered through Coursera",
-      link: "https://coursera.org/share/b0338461a7b2ebbcb79649704dfe3a30"
-    },
-    {
-      title: "Nanotechnology: A Maker's Course",
-      issuer: "Taught by Duke University, NC State University, and UNC Chapel Hill offered through Coursera",
-      link: "https://coursera.org/share/113e576b807bde35875065ee609e4bd4"
-    },
-    {
-      title: "C Programming: Getting Started - 1",
-      issuer: "Taught by Dartmouth College and Institut Mines-Télécom offered through Coursera",
-      link: "https://coursera.org/share/e1813f7d78fad70e541b30f8be67438a"
     }
   ];
 
   return (
     <section id="certifications" className="py-24 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-2xl text-gray-900 mb-10">Certifications</h2>
+        <h2 className="text-2xl text-gray-900 mb-10">Skills</h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          {skillGroups.map((group, index) => {
+            const Icon = group.icon;
+            return (
+              <div key={index} className="p-6 bg-white rounded-lg border border-gray-200">
+                <div className="w-10 h-10 rounded-full bg-[#1e3a8a]/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-[#1e3a8a]" />
+                </div>
+                <h3 className="text-lg text-gray-900 mb-3">{group.title}</h3>
+                <ul className="text-sm text-gray-600 space-y-1.5">
+                  {group.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+
+        <h3 className="text-lg text-gray-900 mb-6">Relevant coursework</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          {relevantCertifications.map((cert, index) => (
             <a
               key={index}
               href={cert.link}

@@ -10,7 +10,7 @@ import tempControlImage2 from "../../imports/image-6.png";
 import tempControlImage3 from "../../imports/image-7.png";
 
 export default function Projects() {
-  const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
+  const [expandedProjects, setExpandedProjects] = useState<Record<string, boolean>>({});
   const previewLength = 520;
 
   const getPreviewText = (text: string) => {
@@ -22,14 +22,14 @@ export default function Projects() {
     return `${sliced.slice(0, safeCut)}...`;
   };
 
-  const toggleProjectDescription = (index: number) => {
+  const toggleProjectDescription = (key: string) => {
     setExpandedProjects((prev) => ({
       ...prev,
-      [index]: !prev[index],
+      [key]: !prev[key],
     }));
   };
 
-  const projects = [
+  const instrumentationProjects = [
     {
       title: "Kerr Contrast ROI Analyzer for MOKE Video Experiments",
       description: "During my internship at the National Research and Innovation Agency in Indonesia (BRIN), I built this GUI to analyze the Region of Interest (ROI) in the Magnetic-Optic Kerr Microscopy video to study the Kerr contrast during magnetic field sweeps. This application provides real-time video preview, interactive ROI selection, automatic frame processing, and data visualization for magneto-optical research applications. I built this with Python, OpenCV, numpy, pandas, matplotlib, and the tkinter module for the GUI.",
@@ -56,7 +56,10 @@ export default function Projects() {
       links: [
         { label: "Source Code", url: "https://github.com/dietrichtarigan/FET-measurement" }
       ]
-    },
+    }
+  ];
+
+  const academicProjects = [
     {
       title: "Interactive Double-Pendulum Laboratory: A C++ GUI Simulation and Control System",
       description: "I built a digital and interactive double-pendulum laboratory in C++ using ImGui and SFML, integrating physics, control engineering, and real-time visualization. It simulates nonlinear dynamics and allows users to switch between uncontrolled, passive, PID, and LQR controllers. The ImGui-based GUI enables live parameter tuning, while custom charts plot angles, angular velocities, torques, and energy with axis-aware scaling. The pendulum's motion and trail are rendered using SFML. In addition to being a powerful simulator, the platform also serves as an experimental tool, automatically running method comparisons, exporting data in CSV format, capturing screenshots, and performing grid search optimization to find optimal initial conditions.\n\nThrough this project, I learned that the double-pendulum system is highly nonlinear and very sensitive to its starting conditions. Large angles lead to chaotic motion, while small angles cause only mild swings. To manage this instability, I found that active control methods such as LQR and PID were much faster and more effective at restoring balance than passive damping. Of the active methods, LQR worked best because it stabilized the system quickly and reliably, with less overshoot and fewer actuator problems than PID.",
@@ -90,14 +93,12 @@ export default function Projects() {
     }
   ];
 
-  return (
-    <section id="projects" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-2xl text-gray-900 mb-10">Selected projects</h2>
-
-        <div className="space-y-8">
-          {projects.map((project, index) => (
-            <div key={index} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
+  const renderProjects = (projects: typeof instrumentationProjects, keyPrefix: string) => (
+    <div className="space-y-8">
+      {projects.map((project, index) => {
+        const key = `${keyPrefix}-${index}`;
+        return (
+            <div key={key} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
               {/** Images */}
               {project.image && (
                 <div className="mb-6 rounded-lg overflow-hidden border border-gray-200">
@@ -172,7 +173,7 @@ export default function Projects() {
               <h3 className="text-xl text-gray-900 mb-4">{project.title}</h3>
 
               {(() => {
-                const isExpanded = !!expandedProjects[index];
+                const isExpanded = !!expandedProjects[key];
                 const isLongDescription = project.description.length > previewLength;
                 const displayedText = isExpanded || !isLongDescription
                   ? project.description
@@ -184,7 +185,7 @@ export default function Projects() {
                     {isLongDescription && (
                       <button
                         type="button"
-                        onClick={() => toggleProjectDescription(index)}
+                        onClick={() => toggleProjectDescription(key)}
                         className="mb-6 text-sm font-medium text-[#1e3a8a] hover:underline"
                       >
                         {isExpanded ? "Show less" : "Read more"}
@@ -222,7 +223,24 @@ export default function Projects() {
                 </div>
               )}
             </div>
-          ))}
+        );
+      })}
+    </div>
+  );
+
+  return (
+    <section id="projects" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-2xl text-gray-900 mb-10">Selected projects</h2>
+
+        <div className="mb-16">
+          <h3 className="text-lg text-gray-700 mb-6">Instrumentation &amp; Software</h3>
+          {renderProjects(instrumentationProjects, "instrumentation")}
+        </div>
+
+        <div>
+          <h3 className="text-lg text-gray-700 mb-6">Academic Projects</h3>
+          {renderProjects(academicProjects, "academic")}
         </div>
       </div>
     </section>

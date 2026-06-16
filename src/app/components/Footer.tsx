@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="text-center">
           <div className="text-gray-900 mb-1">Dietrich Pepalem Tarigan</div>
           <div className="text-gray-600 text-sm">
-            © 2026 · Updated April 20, 2026
+            © 2026 · Updated June 16, 2026
           </div>
         </div>
       </div>

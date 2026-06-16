@@ -1,9 +1,14 @@
 export default function Experience() {
   const experiences = [
     {
+      title: "Incoming Research Intern",
+      organization: "AMEX Lab (Advanced Materials and Extreme Conditions), POSTECH",
+      description: "Will be conducting research on transport measurements in topological and van der Waals magnetic materials, under Prof. Jun Sung Kim."
+    },
+    {
       title: "Research Intern",
       organization: "BRIN",
-      description: "Worked with magnetic and electronic measurement workflows, supported MOKE-related setup, helped with Helmholtz coil parameter checks, and built Python tools for Keithley-based I–V measurements and laboratory support."
+      description: "Developed a Python instrumentation suite for the Keithley 2450 SMU (GPIB/PyVISA) for automated I–V and FET characterization; built an OpenCV-based ROI analyzer for polar MOKE video measurements of van der Waals magnetic thin films; assisted with Helmholtz coil calibration for out-of-plane field control."
     },
     {
       title: "Teaching Assistant",

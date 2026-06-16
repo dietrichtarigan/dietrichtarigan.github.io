@@ -1,28 +1,16 @@
 export default function ResearchInterests() {
   const interests = [
     {
-      title: "Quantum Devices",
-      description: "I am interested in how quantum systems are built, measured, and understood through real devices."
+      title: "Van der Waals Magnetics & Skyrmion Physics",
+      description: "Actively pursued in my undergraduate thesis: micromagnetic simulation of skyrmion and bubble-domain nucleation in Fe₃GaTe₂."
     },
     {
-      title: "Nanoelectronics",
-      description: "I want to understand how materials and device structures shape electronic behavior at small scales."
+      title: "Transport Measurements in Topological Materials",
+      description: "Target of my upcoming research internship at AMEX Lab, POSTECH, on van der Waals and topological magnetic materials."
     },
     {
-      title: "Experimental Condensed Matter Physics",
-      description: "I am drawn to careful experiments that connect physical intuition with measurement."
-    },
-    {
-      title: "Scientific Instrumentation",
-      description: "I enjoy building tools that make laboratory work more reliable and useful."
-    },
-    {
-      title: "Measurement Automation",
-      description: "I like designing workflows for data acquisition, logging, and experiment support."
-    },
-    {
-      title: "Low-Dimensional Electronic Systems",
-      description: "I am curious about how reduced dimensionality opens new physical behavior and device possibilities."
+      title: "Magneto-Optical & Electrical Characterization",
+      description: "Developed through my BRIN internship: polar MOKE analysis and Keithley-based I–V/FET measurement instrumentation."
     }
   ];
 
