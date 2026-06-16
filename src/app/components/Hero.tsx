@@ -11,22 +11,25 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl text-gray-900 mb-6" style={{ lineHeight: '1.15', letterSpacing: '-0.025em' }}>
-              Physics undergraduate building toward quantum devices and experimental research.
+              Physics undergraduate working on skyrmion physics in van der Waals magnets.
             </h1>
 
             <p className="text-lg text-gray-700 mb-10" style={{ lineHeight: '1.7' }}>
-              I'm Dietrich Pepalem Tarigan, a Physics undergraduate at Institut Teknologi Bandung.
-              My work has grown around measurement, instrumentation, and scientific programming, and
-              I'm gradually building my path toward quantum devices, nanoelectronics, and experimental
-              condensed matter physics.
+              I'm Dietrich Pepalem Tarigan, a final-year Physics undergraduate at Institut Teknologi
+              Bandung working on micromagnetic simulation of skyrmion nucleation in Fe₃GaTe₂, a
+              van der Waals ferromagnet, for my undergraduate thesis under Prof. Agung Nugroho (ITB)
+              and Dr. Joko Suwardy (BRIN). My work combines GPU-accelerated LLG simulation (MuMax3)
+              with magneto-optical characterization (polar MOKE). I will be conducting research at
+              AMEX Lab (Advanced Materials and Extreme Conditions), POSTECH, on transport
+              measurements in topological and van der Waals magnetic materials.
             </p>
 
             <div className="flex gap-4">
               <a
-                href="#projects"
+                href="#research"
                 className="px-6 py-3 bg-[#1e3a8a] text-white rounded-md hover:bg-[#1e40af] transition-colors"
               >
-                View Projects
+                View Research
               </a>
               <button
                 onClick={handleDownloadCV}

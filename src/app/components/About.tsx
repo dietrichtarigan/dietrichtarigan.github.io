@@ -12,8 +12,9 @@ export default function About() {
               before I understood more clearly what kind of work I wanted to grow into.
             </p>
             <p>
-              During my internship at BRIN, I worked with magnetic and electronic measurement workflows,
-              and that experience changed something for me.
+              During my research internship at BRIN, I worked with magnetic and electronic measurement
+              workflows — magneto-optical Kerr microscopy, Keithley-based I–V characterization, and
+              Helmholtz coil field control — and that experience changed something for me.
             </p>
           </div>
 

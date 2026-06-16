@@ -33,8 +33,9 @@ export default function Navigation() {
 
         <div className="hidden md:flex items-center gap-8">
           <a href="#about" className="text-gray-700 hover:text-gray-900 transition-colors">About</a>
+          <a href="#research" className="text-gray-700 hover:text-gray-900 transition-colors">Research</a>
           <a href="#projects" className="text-gray-700 hover:text-gray-900 transition-colors">Projects</a>
-          <a href="#certifications" className="text-gray-700 hover:text-gray-900 transition-colors">Certifications</a>
+          <a href="#certifications" className="text-gray-700 hover:text-gray-900 transition-colors">Skills</a>
           <a href="#contact" className="text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
         </div>
 
